@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="molinos" src="molinos-bw.jpg">
+        <img id="soil" src="soil.jpg">
+        <img id="bands" src="bands.jpg">
+        <img id="plaza-360" src="plaza-360.jpg">
+      </a-assets>
+      <a-box position="3.5 1 -3" rotation="0 90 0" scale="2 2 2" src="#molinos">
+        <a-animation attribute="position" to="5.5 1 -5" direction="alternate" dur="4000"
+  repeat="indefinite"></a-animation>
+      </a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" src="#plaza-360"></a-sphere>
+      <a-cylinder position="1 1.25 -3" radius="0.5" height="2.5" src="#bands"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="4" repeat="4 2" src="#soil"></a-plane>
+      <a-sky color="grey"></a-sky>
+
+      <a-light type="ambient" color="grey"></a-light>
+      <a-light type="point" intensity="2" position="-2 2 4"></a-light>
+    </a-scene>
+  </body>
+</html>

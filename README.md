@@ -95,10 +95,13 @@ are described in the
 you can enter the A-frame debugger by using the
 <CTRL><ALT>i combination when watching the scene in the browser.
 
-### Second version
+### Second version, adding assets
 
 This version, `second.html` is quite similar to the first one,
 but includes some new tests.
+It follows some of the aspects introduced in the guide
+[Building a Basic Scene](https://aframe.io/docs/0.6.0/guides/building-a-basic-scene.html).
+
 The sphere now has a 360 image projected on it.
 The box is animated, by adding a chile element specifying the animation.
 And there are a couple lights.
@@ -107,7 +110,21 @@ the `assets` element allow for the download of the different assets
 (in this case, images) without interfering with the main scene,
 which uses them.
 
-[Check the actual scene in your browser](figures-01/second.html),
+[Check the actual scene in your browser](figures-01/second.html).
+
+### Third version, adding text
+
+This version, `third.html` adds some text,
+exploring the concepts shown in the
+[documentation for the text component](https://aframe.io/docs/0.6.0/components/text.html).
+
+For keeping the application self-contained,
+I donwloaded the font files,
+`Roboto-msdf.json` and `Roboto-msdf.jpng`
+from https://cdn.aframe.io/fonts/
+to the same directory where the application is.
+
+[Check the actual scene in your browser](figures-01/third.html).
 
 ## Simple configuration for using with webpack
 

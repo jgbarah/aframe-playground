@@ -26,6 +26,8 @@ and joy (some images used, for example).
 All the files referenced here are in the `figures-01` directory
 in this repository.
 
+### First version of the first steps
+
 My first version of that example is `first.html`,
 where I create a scene with a box, a sphere and a cylinder,
 on top of a plane, with a grey sky as background.
@@ -38,6 +40,7 @@ you'll need to have in a directory the following files:
 
 ```
 figures-01
+|- aframe.min.js
 |- first.html
 |- bands.jpg
 |- molinos-bw.jpg
@@ -45,6 +48,66 @@ figures-01
 |- soil.jpg
 ```
 
+The result can be seen just by firing the browser on the HTML file:
+
+```bash
+$ firefox figures-01/first.html
+```
+
+Or you can
+[check the actual scene in your browser](figures-01/first.html),
+if it is supported by A-frame.
+You can use arrow keys or WASD keys and the mouse
+(click and drag),
+to move the camera when not in VR mode.
+You can also check it with VR,
+for example with a mobile phone in a
+[Google cardboard device](https://vr.google.com/cardboard/)
+or similar.
+
+Just in case you cannot see it with your browser,
+as loaded, the scene is:
+
+![First scene as loaded](screenshots/01-first-1.png)
+
+After moving around, you may see something like:
+
+![First scene after moving around](screenshots/01-first-1.png)
+
+Notice that the file `aframe.min.js` is included in the repository
+for your convenience.
+It is just a copy of the minified A-frame library,
+in my case
+[aframe.min.js version 0.6.1](https://aframe.io/releases/0.6.1/aframe.min.js).
+
+You can check other ways of installing A-frame in the
+[A-frame installation instructions](https://aframe.io/docs/0.6.0/introduction/installation.html).
+Later on I will show how to use npm and webpack for
+installing A-frame in a more convenient way.
+For now, having the file in the repository will be convenient.
+
+The details of what is in the `first.html` file,
+which includes all the magic needed to create the scene,
+are described in the
+[Hello, WebVR example](https://aframe.io/docs/0.6.0/introduction/html-and-primitives.html#example).
+
+*An interesting trick:*
+you can enter the A-frame debugger by using the
+<CTRL><ALT>i combination when watching the scene in the browser.
+
+### Second version
+
+This version, `second.html` is quite similar to the first one,
+but includes some new tests.
+The sphere now has a 360 image projected on it.
+The box is animated, by adding a chile element specifying the animation.
+And there are a couple lights.
+A more subtle, but important change, is that now it uses assets.
+the `assets` element allow for the download of the different assets
+(in this case, images) without interfering with the main scene,
+which uses them.
+
+[Check the actual scene in your browser](figures-01/second.html),
 
 ## Simple configuration for using with webpack
 

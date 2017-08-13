@@ -126,6 +126,74 @@ to the same directory where the application is.
 
 [Check the actual scene in your browser](figures-01/third.html).
 
+### Fourth version, adding behavior
+
+This version, `fourth.html` adds some JavaScript to have the sphere
+behave in a certain way when you look at it.
+To do that, I first added a cursor element to the camera,
+so that the cursor points to where the camera points.
+
+Then, it is just a matter of addint the `script` element at
+the end of the HTML code,
+to set event listeners for `mouseenter` and `mouseleave`
+events in the sphere.
+As you can see, this is quite similar to capturing any events
+in a regular DOM element.
+The only trick is that the cursor that I added to the camera
+behaves as a mouse,
+and then triggers those `mouseenter` and `mouseleave` events.
+See more details about this in
+[Adding Interaction, in the Building a Basic Scene guide](https://aframe.io/docs/0.6.0/guides/building-a-basic-scene.html#adding-interaction).
+
+In addition, I try writing text in a plane,
+which can be a nice way of providing banners.
+See more about this in the
+[Sizing section of the documentation of the text component](https://aframe.io/docs/0.6.0/components/text.html#sizing).
+
+[Check the actual scene in your browser](figures-01/fourth.html).
+
+### Fifth version, playing with entities
+
+In this version, `fifth.html`, I wanted to play with entities.
+I liked the `a-curvedimage` primitive,
+and I checked how I could produce it with an entity.
+I discovered that the equivalence between primitives and
+entities is not complete,
+and that there is nothing like a `curvedimage` primitive geometry.
+In fact, `curvedimage` is built based on `cylinder`.
+So, I built the equivalent to a curved image in three
+different ways:
+with a `a-curvedimage` primitive,
+with a `cylinder` primitive,
+and with an entity, using `cylinder` as the primitive geometry.
+
+You can learn more about entities in
+[ECS in A-frame](https://aframe.io/docs/0.6.0/introduction/entity-component-system.html),
+which explains its relationship with components and systems,
+in the [documentation for Entity](https://aframe.io/docs/0.6.0/core/entity.html),
+and in the
+[documentation for Component](https://aframe.io/docs/0.6.0/core/component.html).
+The [documentation for Material](https://aframe.io/docs/0.6.0/components/material.html)
+and
+[for Geometry](https://aframe.io/docs/0.6.0/components/geometry.html)
+were also useful.
+
+I also included some fog, which is a component of `a-scene`.
+The linear model worked well when I selected the appropriate
+`far` and `near` properties.
+When using fog, I can omit the `a-sky` element,
+since the "sky" will be just an accumulation of fog.
+More information in the
+[fog Component documentation](https://aframe.io/docs/0.6.0/components/fog.html).
+
+Finally, I included a stats user interface,
+by declaring the appropriate `stats` component as a property of
+`a-scene`.
+More information on that in the
+[stats Component documentation](https://aframe.io/docs/0.6.0/components/stats.html).
+
+[Check the actual scene in your browser](figures-01/fifth.html).
+
 ## Simple configuration for using with webpack
 
 There are some very nice and complete boilerplates to use A-frame with webpack,

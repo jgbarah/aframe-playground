@@ -280,7 +280,7 @@ and install via npm `webpack` (as a developer dependency) and
 ```bash
 $ npm init -y
 $ npm install --save-dev webpack
-$ npm install aframe
+$ npm install --save aframe
 ```
 
 This will create a default `packages.json` file for `npm`,
@@ -350,4 +350,26 @@ we can just load the HTML file in the browser:
 
 ```bash
 $ firefox dist/figures.html
+```
+
+But as before, we can also fire a simple HTTP server,
+like the Python one,
+which will need to export only that `dist` directory.
+
+In this case I've added everything,
+except for the `node_modules` directory,
+to the git repository (directory `figures-02`).
+Remember that the `packages.json` file was actually produced
+by npm when installing the needed packages,
+and that `dist/bundle.js` was produced by webpack.
+
+If you just want to get a populated `node_modules`,
+you only need to install via `npm` what the `package.json` specifies.
+And then you can just run `webpack` as above, to produce
+`dist/bundle.js`:
+
+```
+$ cd figures-02
+$ npm install
+$ node_modules/webpack/bin/webpack.js
 ```

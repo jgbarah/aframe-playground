@@ -54,6 +54,21 @@ The result can be seen just by firing the browser on the HTML file:
 $ firefox figures-01/first.html
 ```
 
+However, the A-frame documentation recommends using a web server instead.
+You can easily serve the directory with the scene using
+the one line python web server:
+
+```
+$ python -m SimpleHTTPServer
+```
+
+Or, if you are using Python3:
+
+```
+$ python3 -m http.server
+```
+
+
 Or you can
 [check the actual scene in your browser](figures-01/first.html),
 if it is supported by A-frame.
@@ -94,6 +109,15 @@ are described in the
 *An interesting trick:*
 you can enter the A-frame debugger by using the
 <CTRL><ALT>i combination when watching the scene in the browser.
+
+*Another one:*
+
+you can get screenshots from the scene,
+just press "<ctrl> <alt> s".
+For a 360 image,
+press "<ctrl> + <alt> + <shift> + s".
+More details at the
+[screenshot Component documentation](https://aframe.io/docs/0.6.0/components/screenshot.html).
 
 ### Second version, adding assets
 

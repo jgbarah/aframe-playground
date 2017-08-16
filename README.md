@@ -225,7 +225,7 @@ such as [aframe-webpack-boilerplate](https://github.com/mkungla/aframe-webpack-b
 But they are, well, nice, and complete, and... complex.
 So I will start with a simpler one that I can easily understand.
 
-### Creating a directory, initializing node, simple configuration
+### Creating a directory for webpack
 
 I want to create a simple project for A-frame,
 using webpack, with all the assets in the project
@@ -273,6 +273,8 @@ Once I'm done with the preliminaries,
 I need to run some commands in the root of my new directory,
 and write a configuration file for webpack.
 
+### Initialize npm and install packages
+
 First I initialize npm on it (assuming node is already installed),
 and install via npm `webpack` (as a developer dependency) and
 `aframe` (as a regular dependency):
@@ -287,6 +289,8 @@ This will create a default `packages.json` file for `npm`,
 with entries for `webpack` and `aframe` in it.
 Additionally, both packages and all their dependencies
 will now be installed under `node_modules`.
+
+### Simple configuration for webpack
 
 And I create a very simple configuration file for webpack,
 `webpack.config.js`:
@@ -343,6 +347,8 @@ figures-02/
 webpack produced the `dist/bundle.js` file,
 which is the one that we conveniently had referenced in the HTML file.
 
+### Browsing the results
+
 Now, the `dist` directory has it all.
 For this very simple case,
 we don't even need a web server,
@@ -355,6 +361,8 @@ $ firefox dist/figures.html
 But as before, we can also fire a simple HTTP server,
 like the Python one,
 which will need to export only that `dist` directory.
+
+### Looking at the code
 
 In this case I've added everything,
 except for the `node_modules` directory,
@@ -372,4 +380,186 @@ And then you can just run `webpack` as above, to produce
 $ cd figures-02
 $ npm install
 $ node_modules/webpack/bin/webpack.js
+```
+
+## Improving webpack configuration
+
+Now, I'm going to work in `figures-03`,
+improving the webpack and npm configuration to automate some tasks,
+and to make life more comfortable
+(isn't that what we all want?).
+
+### Automating the build process
+
+First, automating the build process,
+and making webpack produce minified, production ready, files.
+
+For that, I just need to run `webpack` with the corresponding options:
+`-p` for production, and `--watch` for rebuilding when there are changes.
+I'm going to include this in the npm configuration, `package.json`:
+
+```
+  ...
+  "scripts": {
+        "build": "webpack -p",
+        "watch": "webpack --watch"
+    },
+  ...
+```
+
+Now, when I run `npm run build`, it builds the thing,
+ready for production.
+When I run `npm run watch`, it builds every time there is a new version
+of a source file:
+
+```
+$ npm run watch
+
+Webpack is watching the files…
+
+Hash: f2229974cd40391a714a
+Version: webpack 3.5.4
+Time: 2150ms
+    Asset     Size  Chunks                    Chunk Names
+bundle.js  2.14 MB       0  [emitted]  [big]  main
+   [0] (webpack)/buildin/global.js 509 bytes {0} [built]
+   [1] ./src/figures.js 387 bytes {0} [built]
+    + 5 hidden modules
+
+[I save a new version of src/figures.js]
+
+Hash: 41432c82e83cf3f9c01f
+Version: webpack 3.5.4
+Time: 71ms
+    Asset     Size  Chunks                    Chunk Names
+bundle.js  2.14 MB       0  [emitted]  [big]  main
+   [1] ./src/figures.js 422 bytes {0} [built]
+    + 6 hidden modules
+...
+```
+
+I no longer need to run webpack every time I have new source files!
+
+*Important note:*
+This does not apply to changes in the webpack configuration,
+so every time I change `webpack.config.js`
+I need to run `node run watch` again.
+
+### Using webpack's web server
+
+I also want to have webpack provide its own web server,
+just in case I don't want to run one-line Python server.
+For that, we have the
+[webpack-dev-server package](https://webpack.github.io/docs/webpack-dev-server.html).
+I first install it:
+
+```
+$ npm install --save-dev webpack-dev-server
+```
+
+And include a new script for npm, in `package.json`:
+
+```
+  "scripts": {
+    ...
+    "web": "webpack-dev-server --content-base dist/"
+```
+
+Now, when running 'npm run web',
+I can point my browser to http://localhost:8080/figures.html
+and see my application.
+
+This module will also watch source files, and recompile then when needed.
+
+### Using babel for transpiling es6 to es5
+
+Next, I'm interested in writing es6 (ECMA Script v6, or ES2015) programs,
+so I will be using `babel` as a transpiler to es5.
+For that, I will use a webpack loader.
+Loaders are scripts that know how to "load", or "prepare",
+some kinds of files.
+In this base, the babel loader will prepare `.js` files.
+
+First, I need to install the loader, with npm:
+
+```
+npm install --save-dev babel-core babel-preset-es2015
+npm install --save-dev babel-loader
+```
+
+And add a configuration for the default module in webpack:
+
+```
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ],
+  }
+```
+
+### Adding support for colored messages
+
+This is a simple configuration option that will cause messsages
+in webpack output to get colored
+(as a property of `module.exports`):
+
+```
+  stats: {
+    colors: true
+  },
+```
+
+### Generate a sourcemap for debugging
+
+If you want to use a debugger on the code,
+you need a sourcemap.
+You can easily get this adding to the weebpack configuration
+(as a property of `module.exports`):
+
+```
+  devtool: 'source-map'
+```
+
+### Generating dist files and running
+
+With all this goodies, now you can use the stuff in `figures-03`
+to produce all the files (`bundle.js` and `bundle.js.map`)
+needed to run the application.
+
+The complete process (starting from the contents in the directory)
+is:
+
+```
+$ cd figures-03
+$ npm install
+$ npm run start
+```
+
+This will build everything, and launch the predefined browser
+pointing to the `dist` directory,
+exported by the webpack web server.
+If you change source code,
+webpack will recompile and the new version will be pushed to the browser.
+
+If you only want to build the stuff,
+and rebuild every time there are changes
+(for example, because you're launching your own web server),
+just run instead of the last line:
+
+```
+$ npm run watch
+```
+
+For building the production version, instead of the last line,
+run:
+
+```
+npm run build
 ```

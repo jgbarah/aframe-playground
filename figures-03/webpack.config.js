@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/figures.js',
@@ -16,11 +17,24 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
-      }
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader',
+      },
     ],
   },
   stats: {
     colors: true
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  plugins: [new HtmlWebpackPlugin({
+    template: './src/figures.html',
+    inject: 'head',
+    filename: 'index.html'
+  })]
 };

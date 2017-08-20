@@ -1,7 +1,10 @@
+// Required libraries, for webpack to work
+// including this configuration file
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// Pattern for catching MSDF font files
 const fontFilesPattern = /-msdf\.(json|png)$/
 
 module.exports = {
@@ -12,28 +15,35 @@ module.exports = {
   },
   module: {
     loaders: [
+      // JavaScript files
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src')],
         loader: 'babel-loader',
         query: {
           presets: ['es2015']
         }
       },
+      // HTML files
       {
         test: /\.html$/,
+        include: [path.resolve(__dirname, 'src')],
         loader: "html-loader"
       },
+      // Images (exclude MSDF fonts, since some are PNG)
       {
         test: /\.(jpg|png|svg)$/,
+        include: [path.resolve(__dirname, 'src')],
         exclude: fontFilesPattern,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
         }
       },
+      // MSDF fonts
       {
         test: fontFilesPattern,
+        include: [path.resolve(__dirname, 'src')],
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -44,7 +54,9 @@ module.exports = {
   stats: {
     colors: true
   },
+  // Produce a source map for debugging
   devtool: 'source-map',
+  // Produce a driver index.html file, based on figures.html
   plugins: [new HtmlWebpackPlugin({
     template: './src/figures.html',
     inject: 'head',

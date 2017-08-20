@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const fontFilesPattern = /-msdf\.(json|png)$/
+
 module.exports = {
   entry: './src/figures.js',
   output: {
@@ -24,7 +26,18 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|svg)$/,
+        exclude: fontFilesPattern,
         loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: fontFilesPattern,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
       },
     ],
   },

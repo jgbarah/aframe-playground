@@ -2,6 +2,10 @@
 
 import 'aframe';
 
+// Require font files to have them included in dist
+const roboto_json = require ("./Roboto-msdf.json")
+const roboto_png = require ("./Roboto-msdf.png")
+
 function activate () {
   var sphere = document.querySelector('a-sphere');
   sphere.addEventListener('mouseenter', function () {

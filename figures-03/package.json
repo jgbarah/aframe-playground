@@ -5,6 +5,8 @@
   "main": "figures.js",
   "scripts": {
     "build": "webpack -p",
+    "clean": "rm -r dist/*",
+    "cleanbuild": "rm -r dist/* && webpack -p",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --content-base dist/ --open"
   },

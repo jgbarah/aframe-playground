@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+   <a-scene>
+      <a-assets>
+      </a-assets>
+
+      <a-scatterplot position="-0.5 1.2 -1.2" rotation="0 60 0"
+        src="cities.json"
+        x="Area" y="Pop 2000" z="Pop 1980" val="Vehicles">
+      </a-scatterplot>
+
+      <a-sky color="grey"></a-sky>
+
+      <a-light type="ambient" color="grey"></a-light>
+      <a-light type="point" intensity="2" position="-2 2 4"></a-light>
+
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>

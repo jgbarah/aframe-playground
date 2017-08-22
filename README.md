@@ -19,6 +19,7 @@ Now, the notes:
 * [First steps in creating an A-frame scene](figures-01/README.md)
 * [Simple configuration for webpack](figures-02/README.md)
 * [Improving webpack configuration](figures-03/README.md)
+* [Some 3D plots](plots/README.md)
 
 And a
 [templates directory I'm using](templates/README.md),

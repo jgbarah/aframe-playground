@@ -20,12 +20,6 @@ Now, the notes:
 * [Simple configuration for webpack](figures-02/README.md)
 * [Improving webpack configuration](figures-03/README.md)
 
-## Back to A-frame
-
-Once I'm happy with webpack configuration,
-let's go back to A-frame.
-Focus. Focus! Focus!!
-
-Did I say I need some focus?
-
-I will work now on directory `figures-04`.
+And a
+[templates directory I'm using](templates/README.md),
+as I learn about A-frame and webpack and npm and all the stuff.

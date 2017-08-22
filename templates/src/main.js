@@ -8,3 +8,8 @@ import 'aframe';
 // const roboto_png = require ("./Roboto-msdf.png")
 
 // Actual code for the application
+function dom_loaded() {
+  // Code to run once DOM is loaded goes here
+};
+
+document.addEventListener('DOMContentLoaded', dom_loaded);

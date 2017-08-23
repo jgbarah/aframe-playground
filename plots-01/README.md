@@ -10,7 +10,7 @@ Focus. Focus! Focus!!
 
 Did I say I need some focus?
 
-I will work now on directory `plots`.
+I will work now on directory `plots-01`.
 I'm going to play a bit with
 [aframe-scatterplot](https://www.npmjs.com/package/aframe-scatterplot)
 

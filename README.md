@@ -20,7 +20,8 @@ Now, the notes:
 * [Simple configuration for webpack](figures-02/README.md)
 * [Improving webpack configuration](figures-03/README.md)
 * [Some 3D plots](plots-01/README.md)
+* [Playing towards my 3D plots](plots-02/README.md))
 
-And a
-[templates directory I'm using](templates/README.md),
-as I learn about A-frame and webpack and npm and all the stuff.
+I have also produced a
+[templates directory](templates/README.md),
+which I'm using as I learn about A-frame and webpack and npm and all the stuff.

@@ -26,7 +26,6 @@
   "dependencies": {
     "aframe": "^0.6.1",
     "aframe-scatterplot": "^1.0.3",
-    "d3": "^4.10.0",
-    "install": "^0.10.1"
+    "d3": "^4.10.0"
   }
 }

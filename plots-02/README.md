@@ -1,7 +1,7 @@
 
 *[Back to the main page](../README.md)*
 
-## Playing towards my 3D plots
+## Playing towards my 3D scatterplots
 
 I got my first scatterplot. Let's go for more of them.
 But now, I'm going to write my own code for that.
@@ -108,6 +108,191 @@ relative to the box, since they are defined as their children.
 See below two screenshots of the scene with the
 framing box and the two spheres.
 
-![Scene with braming box and two spheres (!)](../screenshots/box-spheres-1.png)
+![Scene with framing box and two spheres (!)](../screenshots/box-spheres-1.png)
 
-![Scene with braming box and two spheres (2)](../screenshots/box-spheres-2.png)
+![Scene with framing box and two spheres (2)](../screenshots/box-spheres-2.png)
+
+### Towards a scatterplot
+
+Let's do something more interesting.
+I'm going to use spheres to represent points in a 3D scatterplot.
+For that, I write an A-frame component, `scatterplot`,
+which will have the data for the plot
+(an array of points, each with their coordinates, size, and color).
+I will add this component to an `a-box` element,
+which will act as a framing box for the scatterplot.
+Coordinates of the points in the scatterplot will be their own,
+and they will be converted to fit in the framing box.
+The complete code is in `index.html` and `main.js` in the `plots-02`
+directory.
+
+The result is a follows:
+
+![Scene with framing box and scatter plot](../screenshots/box-spheres-3.png)
+
+The main function, is quite simple:
+
+```javascript
+function main() {
+  create_components();
+  var scene = document.querySelector('a-scene');
+  var frame = document.createElement('a-box');
+  frame.setAttribute('position', {x: -3, y: 0, z: -8});
+  frame.setAttribute('geometry', {width: 10, height: 5, depth: 4});
+  frame.setAttribute('rotation', {x: 0, y: -30, z: 0},);
+  frame.setAttribute('material', {
+    'color': 'blue',
+    'transparent': true,
+    'opacity': 0.1
+  });
+  scene.appendChild(frame);
+  frame.setAttribute('scatterplot', 'points',
+    '[{"x": -3, "y": 0, "z": -4, "radius": 0.2, "color": "red"},' +
+     '{"x": -4, "y": 1, "z": -2, "radius": 0.1, "color": "yellow"},' +
+     '{"x": -6.7, "y": 2, "z": 0, "radius": 0.3, "color": "yellow"},' +
+     '{"x": -2.4, "y": 3, "z": 2, "radius": 0.5, "color": "yellow"},' +
+     '{"x": -1, "y": 4, "z": 4, "radius": 0.2, "color": "yellow"},' +
+     '{"x": 1, "y": 5, "z": 6, "radius": 0.3, "color": "green"}]');
+};
+```
+
+The function `create_components` creates the `scatterplot` component,
+and registers it with A-Frame.
+Then, I get the element corresponding to `a-scene`
+(which you can find in `index.html`),
+create the `a-box` which will be used as frame for the scatterplot,
+set its basic attributes,
+and set `scatterplot` as one of its attributes.
+`scatterplot` has, in its `points` proprierty,
+the description of the scatterplot to plot:
+a list of all the points,
+each of them in the format {x, y, z, radius, color}.
+
+So, the magic is done by the `scatterplot` component.
+Its structure is as follows (code in `create_components`):
+
+```javascript
+AFRAME.registerComponent('scatterplot', {
+  schema: {
+    points: {
+      parse: JSON.parse,
+      stringify: JSON.stringify
+    }
+  },
+  init: function () {
+    ...
+  },
+  chart_bounds: function() {
+    ...
+  },
+  to_frame_coords: function(chart_coords) {
+    ...
+  },
+  point: function (position, radius, color){
+    ...
+  },
+});
+```
+
+The `schema` defines the attribute that the component will have.
+In my case, it is a single attrribute: `points`.
+It is a string, in JSON format,
+with the data for all the points in the scatterplot.
+See the code in `main` for an example of a description of the plot.
+You can get some more detail about a JSON string in the
+schema for a component in this
+[answer in StackOverflow](https://stackoverflow.com/a/41545576/2075265).
+Both JSON.parse (which parses the string and converts it into an object)
+and JSON.stringify (which converts an object into a JSON string)
+are already available, so no need to import more modules.
+
+The `init` function is standard for an A-frame component,
+and will be called when the component is created.
+It will insert into the framing box the spheres that will represent the
+points in the plot,
+locating them properly,
+by computing their coordinates relative to the box.
+
+The other functions are specific to implement what is needed in 'init':
+
+* `chart_bounds` computes the bounds (maximum value, minimum value,
+  and size for each coordinate) for the chart,
+  in 'chart coordinates'.
+* `to_frame_coords` converts chart coordinates
+(those in which the points are specified)
+to coordinates relative to the frame,
+using properties computer by `chart_bounds`.
+* `point` creates the sphere corresponding to a point,
+and inserts it as a child of the framing box.
+
+Code for `init`:
+
+```javascript
+init: function () {
+  var geometry = this.el.components.geometry.data;
+  this.data.frame_size = {x: geometry.width,
+    y: geometry.height,
+    z: geometry.depth};
+  var bounds = this.chart_bounds();
+  this.data.chart_bounds = {max: bounds.max, min: bounds.min};
+  this.data.chart_size = bounds.size
+  for (const point of this.data.points) {
+    var position = this.to_frame_coords({x: point.x, y: point.y, z: point.z});
+    this.point(position, point.radius, point.color);
+  };
+},
+```
+
+Code for `chart_bounds`:
+
+```javascript
+chart_bounds: function() {
+  var max = {x: 0, y: 0, z: 0};
+  var min = {x: 0, y: 0, z: 0};
+  for (const point of this.data.points) {
+    for (const coord in point) {
+      if (point[coord] > max[coord]) {
+        max[coord] = point[coord];
+      } else if (point[coord] < min[coord]) {
+        min[coord] = point[coord];
+      };
+    };
+  };
+  var size = {};
+  for (const coord in max) {
+    size[coord] = max[coord] - min[coord];
+  };
+  return {max: max, min: min, size: size};
+},
+```
+
+Code for `to_frame_coords`:
+
+```javascript
+to_frame_coords: function(chart_coords) {
+  var frame_coords = {};
+  var chart_min = this.data.chart_bounds.min;
+  var chart_size = this.data.chart_size;
+  var frame_size = this.data.frame_size;
+  for (const coord in chart_coords) {
+    frame_coords[coord] =
+      (((chart_coords[coord] - chart_min[coord]) *
+        frame_size[coord]) /
+      chart_size[coord]) - frame_size[coord] / 2;
+  }
+  return frame_coords;
+},
+```
+
+Code for `point`:
+
+```javascript
+point: function (position, radius, color){
+  var sphere = document.createElement('a-sphere');
+  sphere.setAttribute('position', position);
+  sphere.setAttribute('geometry', {'radius': radius});
+  sphere.setAttribute('material', {'color': color});
+  this.el.appendChild(sphere);
+  return(sphere);
+},
+```

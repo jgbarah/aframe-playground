@@ -5,6 +5,8 @@
 
 I got my first scatterplot. Let's go for more of them.
 But now, I'm going to write my own code for that.
+If you are impatient about the result,
+click and [see it live](web/).
 
 ### Inserting spheres in the DOM
 

@@ -225,7 +225,13 @@ using properties computer by `chart_bounds`.
 * `point` creates the sphere corresponding to a point,
 and inserts it as a child of the framing box.
 
-Code for `init`:
+Code for `init` is below.
+Computes some properties: `chart_bounds` and `chart_size`,
+using the function `chart_bounds`, and `frame_size`.
+All of them are conveniently stored as properties of `this.data`,
+which is visible also as `this.el.components.scatterplot.data`.
+Then, all the points are plotted as spheres,
+using the `point` function.
 
 ```javascript
 init: function () {
@@ -243,7 +249,10 @@ init: function () {
 },
 ```
 
-Code for `chart_bounds`:
+Code for `chart_bounds`, below.
+Just look for the minum and maximum value for each coordinate,
+for all the points.
+Computes the size (maximum minus minimum) of the chart too.
 
 ```javascript
 chart_bounds: function() {
@@ -266,7 +275,16 @@ chart_bounds: function() {
 },
 ```
 
-Code for `to_frame_coords`:
+Code for `to_frame_coords`, below.
+Scales from chart coordinates
+(those used for the list of points)
+to frame coordinates.
+Frame coordinates are those used to specify the position
+of spheres corresponding to points,
+relative to the framing box.
+uses the values produced by `chart_bounds`,
+which were stored in `chart_bounds` and `chart_size`
+proprerties of the component.
 
 ```javascript
 to_frame_coords: function(chart_coords) {
@@ -284,7 +302,11 @@ to_frame_coords: function(chart_coords) {
 },
 ```
 
-Code for `point`:
+Code for `point` is below.
+Inserts a sphere, corresponding to a point in the plot,
+in the appropriate position,
+relative to the framing box.
+Position is in framing box coordinates.
 
 ```javascript
 point: function (position, radius, color){

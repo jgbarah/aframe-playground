@@ -128,11 +128,16 @@ and they will be converted to fit in the framing box.
 The complete code is in `index.html` and `main.js` in the `plots-02`
 directory.
 
-The result is a follows:
+The result is as follows:
 
 ![Scene with framing box and scatter plot](../screenshots/box-spheres-3.png)
 
-The main function, is quite simple:
+Some of the documentation I've used:
+
+* [Writing a Component](https://aframe.io/docs/0.6.0/introduction/writing-a-component.html)
+* [How to Write an A-Frame VR Component](http://ngokevin.com/blog/aframe-component)
+
+Now, the code. The main function is quite simple:
 
 ```javascript
 function main() {

@@ -21,6 +21,7 @@ Now, the notes:
 * [Improving webpack configuration](figures-03/README.md)
 * [Some 3D plots](plots-01/README.md)
 * [Playing towards my 3D scatterplots](plots-02/README.md)
+* [Adding axis and tooltips](plots-03/README.md)
 
 I have also produced a
 [templates directory](templates/README.md),

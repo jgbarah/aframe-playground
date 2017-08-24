@@ -16,7 +16,18 @@ The result, with a tooltip shown, is like this:
 
 ![Scatterplot with axis and tooltip](scatterplot-axis-tooltip.png)
 
-You can also [see it live](web/)
+You can also [see it live](web/).
+Move the cursor (the tiny black circle in the middle)
+by looking around if you are in virtual reality,
+or by clicking and dragging the pointer in desktop,
+until it reaches one of the spheres. Wait for about one second,
+and the sphere should get bigger, and a tooltip should appear on its right.
+
+*Note:* For some reason, it seems that if the sphere is completely
+within the framing box, the tooltip is not seen,
+apparently because the box hides it
+(despite the box being transparent).
+I'm still not sure if this is an A-frame bug...
 
 The code for this step is available in the `plots-03` directory.
 

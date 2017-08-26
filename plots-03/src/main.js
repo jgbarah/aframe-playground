@@ -194,4 +194,6 @@ function main() {
      '{"x": 1, "y": 5, "z": 6, "radius": 0.3, "color": "green"}]');
 };
 
-document.addEventListener('DOMContentLoaded', main);
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('a-scene').addEventListener('loaded', main);
+});

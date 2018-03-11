@@ -1,18 +1,21 @@
 {
-  "name": "figures",
+  "name": "figures-02",
   "version": "1.0.0",
-  "description": "Simple tests with A-frame",
-  "main": "figures.js",
+  "description": "*[Back to the main page](../README.md)*",
+  "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
-  "license": "GPL-3.0",
+  "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.5.4"
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
   },
   "dependencies": {
-    "aframe": "^0.6.1"
+    "aframe": "^0.8.0"
   }
 }

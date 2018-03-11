@@ -10,6 +10,7 @@
         <img id="bands" src="bands.jpg">
         <img id="window" src="window.jpg">
       </a-assets>
+
       <a-curvedimage position="-2 1.5 -4" src="#window" height="9.0" radius="10" theta-length="120"
                rotation="0 100 0" scale="0.8 0.8 0.8"></a-curvedimage>
 
@@ -24,13 +25,14 @@
         position="-3.5 0.5 -2" rotation="-45 30 0" scale="2.5 2.5 2.5" font="Roboto-msdf.json"></a-text>
       <a-sky color="grey"></a-sky>
 
-
       <a-light type="ambient" color="grey"></a-light>
       <a-light type="point" intensity="2" position="-2 2 4"></a-light>
 
-      <a-camera>
-        <a-cursor></a-cursor>
-      </a-camera>
+      <a-entity position="-3 2 1" rotation="0 -25 0">
+        <a-camera>
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
     </a-scene>
 
   </body>

@@ -7,6 +7,7 @@ There are some very nice and complete boilerplates to use A-frame with webpack,
 such as [aframe-webpack-boilerplate](https://github.com/mkungla/aframe-webpack-boilerplate).
 But they are, well, nice, and complete, and... complex.
 So I will start with a simpler one that I can easily understand.
+We will use webpack 4.x.
 
 ### Creating a directory for webpack
 
@@ -65,6 +66,7 @@ and install via npm `webpack` (as a developer dependency) and
 ```bash
 $ npm init -y
 $ npm install --save-dev webpack
+$ npm install --save-dev webpack-cli
 $ npm install --save aframe
 ```
 
@@ -86,22 +88,24 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
 };
 ```
 
 And we're ready to let webpack do its magic:
 
 ```bash
-$ node_modules/webpack/bin/webpack.js
-Hash: f2229974cd40391a714a
-Version: webpack 3.5.4
-Time: 2036ms
+$ node_modules/webpack/bin/webpack.js --mode development
+Hash: a53dcfc73db13baa2470
+Version: webpack 4.1.1
+Time: 1101ms
+Built at: 2018-3-10 22:24:58
     Asset     Size  Chunks                    Chunk Names
-bundle.js  2.14 MB       0  [emitted]  [big]  main
-   [0] (webpack)/buildin/global.js 509 bytes {0} [built]
-   [1] ./src/figures.js 387 bytes {0} [built]
-    + 5 hidden modules
+bundle.js  2.3 MiB    main  [emitted]  [big]  main
+Entrypoint main [big] = bundle.js
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {main} [built]
+[./src/figures.js] 387 bytes {main} [built]
+    + 4 hidden modules
 ```
 
 After this, the structure of my project is as follows:
@@ -119,8 +123,6 @@ figures-02/
 |- node_modules/
   |- aframe/
     - ...
-  |- node_modules/
-    - ...
 |- src/
   | - figures.js
 |- packages.json
@@ -129,6 +131,35 @@ figures-02/
 
 webpack produced the `dist/bundle.js` file,
 which is the one that we conveniently had referenced in the HTML file.
+
+Since we used the `--mode development` arguments, that file is not minimized,
+which makes it more suitable for debugging. You could also use
+`--mode production`, to get a minimized `dist/bundle.js` file,
+ready for production.
+
+For convenience, this can be automated in the `package.json` file,
+adding two entries to the scripts `scripts` section:
+
+```
+    "scripts": {
+      "dev": "webpack --mode development",
+      "build": "webpack --mode production"
+    }
+```
+
+Now, you can run `webpack` using `npm run` as:
+
+```bash
+$ npm run dev
+```
+
+or
+
+```bash
+$ npm run build
+```
+
+Of course, from the base directory where the project is.
 
 ### Browsing the results
 
@@ -159,8 +190,10 @@ you only need to install via `npm` what the `package.json` specifies.
 And then you can just run `webpack` as above, to produce
 `dist/bundle.js`:
 
-```
+```bash
 $ cd figures-02
 $ npm install
-$ node_modules/webpack/bin/webpack.js
+$ npm run build
 ```
+
+You can [check out the results directly](dist/figures.html).

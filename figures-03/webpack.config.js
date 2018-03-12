@@ -1,11 +1,7 @@
 // Required libraries, for webpack to work
-// including this configuration file
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// Pattern for catching MSDF font files
-const fontFilesPattern = /-msdf\.(json|png)$/
 
 module.exports = {
   entry: './src/figures.js',
@@ -14,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    loaders: [
+    rules: [
       // JavaScript files
       {
         test: /\.js$/,
@@ -28,35 +24,38 @@ module.exports = {
       {
         test: /\.html$/,
         include: [path.resolve(__dirname, 'src')],
-        loader: "html-loader"
+        use: ['html-loader']
       },
-      // Images (exclude MSDF fonts, since some are PNG)
+      // Images
       {
         test: /\.(jpg|png|svg)$/,
         include: [path.resolve(__dirname, 'src')],
-        exclude: fontFilesPattern,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        use: [
+          {
+            loader: 'file-loader',
+            options: {name: '[name].[ext]'}
+          }
+        ]
       },
-      // MSDF fonts
+      // JSON files
       {
-        test: fontFilesPattern,
+        type: 'javascript/auto',
+        test: /\.json$/,
         include: [path.resolve(__dirname, 'src')],
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
-      },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {name: '[name].[ext]'}
+          }
+        ]
+      }
+
     ],
   },
   stats: {
     colors: true
   },
-  // Produce a source map for debugging
   devtool: 'source-map',
-  // Produce a driver index.html file, based on figures.html
   plugins: [new HtmlWebpackPlugin({
     template: './src/figures.html',
     inject: 'head',

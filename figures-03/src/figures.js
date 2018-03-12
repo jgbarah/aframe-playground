@@ -4,8 +4,10 @@
 import 'aframe';
 
 // Require font files to have them included in dist
-const roboto_json = require ("./Roboto-msdf.json")
-const roboto_png = require ("./Roboto-msdf.png")
+//const roboto_json = require ("./Roboto-msdf.json");
+//const roboto_png = require ("./Roboto-msdf.png");
+import roboto_json from './Roboto-msdf.json';
+import roboto_png from './Roboto-msdf.png';
 
 // Actual code for the application
 function activate () {

@@ -10,52 +10,27 @@ and to make life more comfortable
 
 ### Automating the build process
 
-First, automating the build process,
-and making webpack produce minified, production ready, files.
-
-For that, I just need to run `webpack` with the corresponding options:
-`-p` for production, and `--watch` for rebuilding when there are changes.
+First, let's automate webpack building the code everyting some source
+file changes.
+For that, I just need to run `webpack` with a new option:
+`--watch`, for rebuilding when there are changes.
 I'm going to include this in the npm configuration, `package.json`:
 
 ```
   ...
   "scripts": {
-        "build": "webpack -p",
-        "watch": "webpack --watch"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
     },
   ...
 ```
 
 Now, when I run `npm run build`, it builds the thing,
-ready for production.
+ready for production. When I run `npm run dev`, it builds
+all, for development (non-minimized files, etc).
 When I run `npm run watch`, it builds every time there is a new version
-of a source file:
-
-```
-$ npm run watch
-
-Webpack is watching the files…
-
-Hash: f2229974cd40391a714a
-Version: webpack 3.5.4
-Time: 2150ms
-    Asset     Size  Chunks                    Chunk Names
-bundle.js  2.14 MB       0  [emitted]  [big]  main
-   [0] (webpack)/buildin/global.js 509 bytes {0} [built]
-   [1] ./src/figures.js 387 bytes {0} [built]
-    + 5 hidden modules
-
-[I save a new version of src/figures.js]
-
-Hash: 41432c82e83cf3f9c01f
-Version: webpack 3.5.4
-Time: 71ms
-    Asset     Size  Chunks                    Chunk Names
-bundle.js  2.14 MB       0  [emitted]  [big]  main
-   [1] ./src/figures.js 422 bytes {0} [built]
-    + 6 hidden modules
-...
-```
+of a source file (for development, in this case).
 
 I no longer need to run webpack every time I have new source files!
 
@@ -81,10 +56,10 @@ And include a new script for npm, in `package.json`:
 ```
   "scripts": {
     ...
-    "web": "webpack-dev-server --content-base dist/"
+    "start": "webpack-dev-server --mode development --content-base dist/"
 ```
 
-Now, when running 'npm run web',
+Now, when running 'npm run start',
 I can point my browser to http://localhost:8080/figures.html
 and see my application.
 
@@ -110,11 +85,11 @@ And add a configuration for the default module in webpack:
 
 ```
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         include: [path.resolve(__dirname, 'src')],
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           presets: ['es2015']
         }
@@ -125,12 +100,12 @@ And add a configuration for the default module in webpack:
 
 I add the `include` property to be sure that only files in the `src`
 directory are tested.
-For example, I don't want those in 'node_modules' to be tested...
+For example, I don't want those in `node_modules` to be tested...
 (and include rules seem better than exclude ones).
 
 ### Adding support for colored messages
 
-This is a simple configuration option that will cause messsages
+This is a simple configuration option that will cause messages
 in webpack output to get colored
 (as a property of `module.exports`):
 
@@ -144,7 +119,7 @@ in webpack output to get colored
 
 If you want to use a debugger on the code,
 you need a sourcemap.
-You can easily get this adding to the weebpack configuration
+You can easily get this adding to the webpack configuration
 (as a property of `module.exports`):
 
 ```
@@ -159,11 +134,11 @@ I want to have it in `src`, instead of `dist`,
 since it looks more like a source file for the project.
 
 For that, I'm going to use it as a template for the HTML that
-act as the driver...
+acts as the driver...
 Although in my case, the template is going to be
-practically the HTML file I want.
-The only thing I need to change from the
-`dist/images.html` I had is removing, in the `head`,
+almost equal to the HTML file I want.
+The only thing I need to change from the previous
+`dist/images.html` is removing, in the `head`,
 the reference to the `bundle.js` script,
 which will be included in the 'template'.
 
@@ -195,7 +170,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 The first line will requite the plugin, and the last lines,
 to be included as a property of `module.exports`,
 will actually launch the plugin.
-It will generate an HTML in the `dist` directory
+It will generate an HTML file in the `dist` directory
 (because that's our output directory),
 using the name `index.html`
 (because of the property `filename`),
@@ -205,7 +180,7 @@ and injecting the needed JavaScript code
 in the `head` element.
 
 Now, if I just run for example `npm run start`
-my broswer will be pointed to the new `index.html`
+my browser will be pointed to the new `index.html`
 (since that's the default launching it on the directory url).
 
 ### Copy images from src
@@ -231,7 +206,8 @@ npm install html-loader --save-dev
 npm install file-loader --save-dev
 ```
 
-And some additions to `webpack.config.js`:
+And some additions to `webpack.config.js`, in the `rules` list of the
+`module` propierty, of the `module.exports` variable:
 
 ```
   {
@@ -255,8 +231,7 @@ and the second one, for each of them,
 will copy the corresponding file to the `dist` directory.
 
 As a result, now after running for example `npm run build`
-I get `.jpg` files with their own names,
-thanks to the `options` entry.
+I get `.jpg` files with their own names, thanks to the `options` entry.
 If I don't use it,
 I will get as names the file hash and the corresponding extension.
 This is useful to avoid issues with caches,
@@ -279,54 +254,22 @@ since I prefered something more automatic.
 But well, for sake of simplicity,
 and not spending more time exploring other options,
 I decided to just require the files in the main JavaScript entry point,
-`figures.js`, and then let `file-loader` copy them to `dist`.
+`figures.js`, and then let `webpack` copy them to `dist`.
 For that, I added the following lines to `figures.js`:
 
 ```
 // Require font files to have them included in dist
-const roboto_json = require ("./Roboto-msdf.json")
-const roboto_png = require ("./Roboto-msdf.png")
+const roboto_json = require ("./Roboto-msdf.json");
+const roboto_png = require ("./Roboto-msdf.png");
 ```
 
-And a new test to `webpack.config.js`,
-which is very specific, because I just want MSDF files
-to be copied this way.
-In fact, since one of the files is a `.png` file,
-I also need to ensure that it won't be catch by the test on images,
-so I have to restrict it.
-For simplifying adding future fonts,
-I define a constant at the beggining of the `webpack.config.js` file,
-and then use it when testing for files and fonts:
-
-```
-const fontFilesPattern = /-msdf\.(json|png)$/
-
-module.exports = {
-  ...
-    loaders: [
-    {
-      test: /\.(jpg|png|svg)$/,
-      include: [path.resolve(__dirname, 'src')],
-      exclude: fontFilesPattern,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]'
-      }
-    },
-    {
-      test: fontFilesPattern,
-      include: [path.resolve(__dirname, 'src')],
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]'
-      }
-    },
-  ...
-```
+I didn't need a new entry in `rules` for the PNG file, because it was
+already covered in the rule for images, above. Also, no rule is needed
+for the JSON file, since they are handled directly by webpack.
 
 ### Adding a cleaning script
 
-In may cases, it is convenient to build from scratch.
+In many cases, it is convenient to build from scratch.
 Given the structure of compilation that I'm using,
 you only need to be sure that `dist` directory is empty before building.
 For that, I've added a couple of new scripts in package.json:
@@ -335,7 +278,7 @@ For that, I've added a couple of new scripts in package.json:
   "scripts": {
     ...
     "clean": "rm -r dist/*",
-    "cleanbuild": "rm -r dist/* && webpack -p",
+    "cleanbuild": "rm -r dist/* && webpack --mode production",
     ...
   },
 ```

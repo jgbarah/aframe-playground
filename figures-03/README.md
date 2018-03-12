@@ -250,7 +250,7 @@ So I want a copy of those two files
 (`Roboto-msdf.json` and `Roboto-msdf.png`) in the dist directory.
 
 I'm not completely happy with the way I did it,
-since I prefered something more automatic.
+since I preferred something more automatic.
 But well, for sake of simplicity,
 and not spending more time exploring other options,
 I decided to just require the files in the main JavaScript entry point,
@@ -264,8 +264,7 @@ const roboto_png = require ("./Roboto-msdf.png");
 ```
 
 I didn't need a new entry in `rules` for the PNG file, because it was
-already covered in the rule for images, above. Also, no rule is needed
-for the JSON file, since they are handled directly by webpack.
+already covered in the rule for images, above. For the JSON file, since they are handled directly by webpack.
 
 ### Adding a cleaning script
 
@@ -322,3 +321,10 @@ run:
 ```
 $ npm run build
 ```
+
+### Results
+
+See an screenshot of the resulting scene below.
+You can also check the [virtual reality scene directly](web/index.html).
+
+![Screenshot of the scene](web/screenshot.png)

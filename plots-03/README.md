@@ -33,6 +33,8 @@ The code for this step is available in the `plots-03` directory.
 
 ### Adding axis
 
+Adding axis was a matter of adding lines to the chart.
+
 ### The tooltip component
 
 ### Everything together

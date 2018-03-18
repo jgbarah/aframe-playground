@@ -4,12 +4,12 @@
 ## Adding a complex object
 
 Now, I'm going to work in `figures-04`,
-adding an object to the scene, of arbitrary shape, in OBJ format.
+adding an object to the scene, of arbitrary shape, in some formats.
 This will be also a good example of how to add new stuff to our project.
 
 ### Inserting an object in the scene
 
-Let's start by inserting the object, `urjc.obj`, in the scene.
+Let's start by inserting a object in OBJ format, `urjc.obj`, in the scene.
 For that, we will use the `obj-model` property:
 
 ```html
@@ -145,7 +145,7 @@ An animation just completes the entity, making it rotate.
 As we saw in the previous section, the complete process to build the project is:
 
 ```
-$ cd figures-03
+$ cd figures-04
 $ npm install
 $ npm run start
 ```

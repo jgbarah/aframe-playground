@@ -8,9 +8,6 @@ import roboto_json from './Roboto-msdf.json';
 import roboto_png from './Roboto-msdf.png';
 // URJC object
 import urjc_object from './urjc.obj';
-// Car object (glTF, needs several components)
-//import car_object from './car.gltf';
-//import car_bin from './scene.bin';
 
 // Actual code for the application
 function activate () {

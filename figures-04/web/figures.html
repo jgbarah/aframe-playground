@@ -1,6 +1,6 @@
 <html>
   <head>
-  <script type="text/javascript" src="bundle.js"></script></head>
+  </head>
   <body>
     <a-scene>
       <a-assets>
@@ -10,6 +10,7 @@
         <img id="window" src="window.jpg">
 
         <a-asset-item id="urjc" src="urjc.obj"></a-asset-item>
+        <a-asset-item id="car" src="auto/scene.gltf"></a-asset-item>
       </a-assets>
 
       <a-curvedimage position="-2 1.5 -4" src="#window" height="9.0" radius="10" theta-length="120"
@@ -32,8 +33,15 @@
         </a-animation>
       </a-entity>
 
+      <a-entity position="-2 2 -9" gltf-model="#car"
+                scale="0.01 0.01 0.01">
+        <a-animation attribute="rotation" dur="10000" fill="forwards"
+                     to="0 360 0" repeat="indefinite">
+        </a-animation>
+      </a-entity>
+
       <a-sky color="grey"></a-sky>
-      <a-light type="ambient" color="grey"></a-light>
+      <a-light type="ambient" color="white"></a-light>
       <a-light type="point" intensity="1" position="-2 2 2"></a-light>
 
       <a-entity position="-3 2 1" rotation="0 -25 0">

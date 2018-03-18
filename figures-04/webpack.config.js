@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/figures.js',
@@ -39,7 +40,7 @@ module.exports = {
       },
       // 3D objects
       {
-        test: /\.obj$/,
+        test: /\.(obj)$/,
         include: [path.resolve(__dirname, 'src')],
         use: [
           {
@@ -67,9 +68,14 @@ module.exports = {
     colors: true
   },
   devtool: 'source-map',
-  plugins: [new HtmlWebpackPlugin({
-    template: './src/figures.html',
-    inject: 'head',
-    filename: 'index.html'
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/figures.html',
+      inject: 'head',
+      filename: 'index.html'
+    }),
+    new CopyWebpackPlugin([
+      {from:'src/auto',to:'auto'}
+    ])
+  ]
 };

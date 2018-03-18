@@ -1,0 +1,41 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="drone" src="mech_drone/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-entity position="0 2 -9" gltf-model="#drone"
+                scale="0.02 0.02 0.02">
+        <a-animation attribute="rotation" dur="10000" fill="forwards"
+                     to="0 360 0" repeat="indefinite">
+        </a-animation>
+      </a-entity>
+
+      <a-entity position="8 2 -9" gltf-model="#drone"
+                scale="0.02 0.02 0.02" animation-mixer>
+      </a-entity>
+
+      <a-entity position="-6 -2 -9" gltf-model="#drone"
+                scale="0.03 0.03 0.03" animation-mixer>
+        <a-animation attribute="rotation" dur="10000" fill="forwards"
+                     to="0 360 0" repeat="indefinite">
+        </a-animation>
+      </a-entity>
+
+      <a-sky color="grey"></a-sky>
+      <a-light type="ambient" color="white"></a-light>
+      <a-light type="point" intensity="1" position="-2 2 2"></a-light>
+
+      <a-entity position="-3 2 1" rotation="20 -25 0">
+        <a-camera>
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>

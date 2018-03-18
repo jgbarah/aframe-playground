@@ -20,6 +20,7 @@ Now, the notes:
 * [Simple configuration for webpack](figures-02/README.md)
 * [Improving webpack configuration](figures-03/README.md)
 * [Adding a complex object](figures-04/README.md)
+* [Adding objects with animations](moving-01/README.md)
 
 I have also produced a
 [templates directory](templates/README.md),

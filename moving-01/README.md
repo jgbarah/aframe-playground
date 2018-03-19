@@ -82,6 +82,45 @@ self-animating at the same time, combining what we already know:
 </a-entity>
 ```
 
+### Making it mysterious
+
+Some light and fog can change the aspect of the scene a lot.
+I tried with oscillating light and fog:
+
+```html
+<a-scene fog="type: exponential; density: 0.15; color: #000;">
+...
+    <a-animation attribute="fog.color"
+                 dur="7000"
+                 from="#000"
+                 to="#10454A"
+                 repeat="indefinite"
+                 direction="alternate">
+    </a-animation>
+    <a-sky color="grey"></a-sky>
+    <a-light type="point" intensity="0" position="-2 2 2">
+      <a-animation attribute="light.intensity"
+                   dur="7000"
+                   from="0"
+                   to="1.5"
+                   direction="alternate"
+                   repeat="indefinite">
+      </a-animation>
+    </a-light>
+...
+</a-scene>
+```
+
+The fog component is embedded as a property in `a-scene`,
+and then the first `a-animation` controls how its color changes over
+time, oscillating from black to a greeninsh color, every 7 seconds.
+I set a grey sky (so that the background is not just white),
+and a point of light oscillating between off and 1.5 in intensity,
+also every 7 seconds. The result is, well, foggy...
+
+This final touch was directly inspired by
+[How to Animate Moods in WebVR with A-Frame and the Animation Element](https://ottifox.com/develop/2017/08/30/animate-moods-in-webvr-with-aframe.html).
+
 ### Generating dist files and running everything
 
 As we saw in the previous section, the complete process to build the project is:

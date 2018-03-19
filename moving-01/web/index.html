@@ -2,7 +2,7 @@
   <head>
   <script type="text/javascript" src="bundle.js"></script></head>
   <body>
-    <a-scene>
+    <a-scene fog="type: exponential; density: 0.15; color: #000;">
       <a-assets>
         <a-asset-item id="drone" src="mech_drone/scene.gltf"></a-asset-item>
       </a-assets>
@@ -25,9 +25,24 @@
         </a-animation>
       </a-entity>
 
+      <a-animation attribute="fog.color"
+                       dur="7000"
+                       from="#fff"
+                       to="#10454A"
+                       repeat="indefinite"
+                       direction="alternate">
+      </a-animation>
       <a-sky color="grey"></a-sky>
-      <a-light type="ambient" color="white"></a-light>
-      <a-light type="point" intensity="1" position="-2 2 2"></a-light>
+<!--      <a-light type="ambient" color="white"></a-light> -->
+      <a-light type="point" intensity="0" position="-2 2 2">
+        <a-animation attribute="light.intensity"
+                     dur="7000"
+                     from="0"
+                     to="1.5"
+                     direction="alternate"
+                     repeat="indefinite">
+    	</a-animation>
+      </a-light>
 
       <a-entity position="-3 2 1" rotation="20 -25 0">
         <a-camera>

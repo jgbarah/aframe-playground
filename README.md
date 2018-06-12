@@ -11,8 +11,8 @@ or if you have cool ideas to improve some of the steps.
 But keep in mind that it is just a simple guide,
 to start with A-frame from scratch.
 
-I'm using 0.6.1, which is current when I'm starting my learning process
-(although documentation refers to 0.6.0).
+I started with version 0.6.1, which was current when I started
+my learning process, but now all should be updated to using 0.8.2.
 
 Now, the notes:
 

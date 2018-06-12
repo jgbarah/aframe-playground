@@ -15,7 +15,8 @@ in this repository.
 
 ### First version of the first steps
 
-My first version of that example is `first.html`,
+My first version of that example is
+[first.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/first.html),
 where I create a scene with a box, a sphere and a cylinder,
 on top of a plane, with a grey sky as background.
 In use some pictures for the box, sphere, cylinder,
@@ -80,7 +81,7 @@ Notice that the file `aframe.min.js` is included in the repository
 for your convenience.
 It is just a copy of the minified A-frame library,
 in my case
-[aframe.min.js version 0.8.0](https://aframe.io/releases/0.8.0/aframe.min.js).
+[aframe.min.js version 0.8.2](https://aframe.io/releases/0.8.2/aframe.min.js).
 
 You can check other ways of installing A-frame in the
 [A-frame installation instructions](https://aframe.io/docs/0.8.0/introduction/installation.html).
@@ -109,7 +110,8 @@ More details at the
 
 ### Second version, adding assets
 
-This version, `second.html` is quite similar to the first one,
+This version,
+[second.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/second.html) is quite similar to the first one,
 but includes some new gadgets.
 It follows some of the aspects introduced in the guide
 [Building a Basic Scene](https://aframe.io/docs/0.8.0/guides/building-a-basic-scene.html).
@@ -126,7 +128,8 @@ which uses them.
 
 ### Third version, adding text
 
-This version, `third.html` adds some text,
+This version,
+[third.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/third.html) adds some text,
 exploring the concepts shown in the
 [documentation for the text component](https://aframe.io/docs/0.8.0/components/text.html).
 
@@ -153,7 +156,9 @@ to the origin, pointing slightly (25 degrees) to the right.
 
 ### Fourth version, adding behavior
 
-This version, `fourth.html` adds some JavaScript to have the sphere
+This version,
+[fourth.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/fourth.html)
+adds some JavaScript to have the sphere
 behave in a certain way when you look at it.
 To do that, I first added a cursor element to the camera,
 so that the cursor points to where the camera points.
@@ -179,7 +184,9 @@ See more about this in the
 
 ### Fifth version, playing with entities
 
-In this version, `fifth.html`, I wanted to play with entities.
+In this version,
+[fifth.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/fifth.html),
+I wanted to play with entities.
 I liked the `a-curvedimage` primitive,
 and I checked how I could produce it with an entity.
 I discovered that the equivalence between primitives and

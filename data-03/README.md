@@ -1,7 +1,7 @@
 
 *[Back to the main page](../README.md)*
 
-## Visualizing data
+## Visualizing data (fully componentized)
 
 Now, I'm going to work in `data-03`,
 still visualizing some data points with a scatterplot

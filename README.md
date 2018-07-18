@@ -22,6 +22,9 @@ Now, the notes:
 * [Adding a complex object](figures-04/README.md)
 * [Adding objects with animations](moving-01/README.md)
 * [Visualizing data](data-01/README.md)
+* [Visualizing data with components](data-02/README.md)
+* [Visualizing data (fully componentized)](data-03/README.md)
+
 
 I have also produced a
 [templates directory](templates/README.md),
@@ -32,3 +35,8 @@ Some old stuff, that very likely won't even work:
 * [Some 3D plots](plots-01/README.md)
 * [Playing towards my 3D scatterplots](plots-02/README.md)
 * [Adding axis and tooltips](plots-03/README.md)
+
+If you spot any error, please
+[open an issue](https://github.com/jgbarah/aframe-playground/issues/new).
+If you want to contribute with changes, please
+[submit a pull request](https://github.com/jgbarah/aframe-playground/pulls).

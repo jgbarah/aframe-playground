@@ -36,6 +36,8 @@ Some old stuff, that very likely won't even work:
 * [Playing towards my 3D scatterplots](plots-02/README.md)
 * [Adding axis and tooltips](plots-03/README.md)
 
+All the code is in the
+[A-Frame Playground GitHub repo](https://github.com/jgbarah/aframe-playground).
 If you spot any error, please
 [open an issue](https://github.com/jgbarah/aframe-playground/issues/new).
 If you want to contribute with changes, please

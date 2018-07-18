@@ -52,7 +52,7 @@ The second property, `update`, is the code that will be run
 whenever the component is updated in the DOM, including when it is
 inserted in it for the first time:
 
-```
+```javascript
 update: function () {
   var self = this;
   self.sphere = document.createElement('a-sphere');

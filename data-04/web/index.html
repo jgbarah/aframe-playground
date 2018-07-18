@@ -1,0 +1,23 @@
+<html>
+  <head>
+  <script type="text/javascript" src="bundle.js"></script></head>
+  <body>
+    <a-scene>
+
+      <a-sky color="grey"></a-sky>
+      <a-light type="point" intensity="1" position="-2 10 10">
+      </a-light>
+
+      <a-entity plot="datapoints: data.json; position: -20 -4 -4; color: black">
+      </a-entity>
+
+      <a-entity position="2 10 14" rotation="-30 15 0">
+        <a-camera>
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>

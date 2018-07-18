@@ -15,7 +15,7 @@ var items = [
 ];
 
 
-AFRAME.registerComponent('plot', {
+AFRAME.registerComponent('datapoint', {
     schema: {
       position: {type: 'vec3', default: {x:0, y:0, z:0}},
       color: {type: 'string', default: 'red'},
@@ -77,15 +77,12 @@ AFRAME.registerComponent('axis', {
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
 
-    var el = document.querySelector('#plot');
-    el.emit('anEvent');
-
     var scene = document.querySelector('a-scene');
 
     for (let item of items) {
       console.log(item);
       var entity = document.createElement('a-entity');
-      entity.setAttribute('plot', {
+      entity.setAttribute('datapoint', {
         'color': item['color'],
         'size': item['size'],
         'position': {x: item['x'], y: item['y'], z: item['z']}

@@ -25,7 +25,7 @@ Now, the notes:
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)
 * data-04: [Visualizing data (JSON documents)](data-04/README.md)
-
+* interaction-01: [Learning to move, to touch](interaction-01/README.md)
 
 I have also produced a
 [templates directory](templates/README.md),

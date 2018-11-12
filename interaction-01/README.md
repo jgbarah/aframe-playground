@@ -14,6 +14,36 @@ we have done up to now, I'm going to first show how this is done with a simple e
 
 ### Movement in the scene
 
+Let's start with the basic movement, provided by  A-Frame by default.
+For this, it is enough to just define which objects we want in the scene,
+with no further element:
+
+```html
+<a-scene>
+  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+  <a-sky color="#ECECEC"></a-sky>
+</a-scene>
+```
+
+This will cause the following behavior:
+
+* Desktop: Dragging with the mouse simulates gaze,
+and arrow keys (or WASD keys) move the default camera relative to gaze.
+
+* Mobile: Orientation of the screen is used for gaze,
+there is no way of moving the camera.
+
+* Oculus Go: Orientation of the headset is used for gaze,
+there is no way of moving the camera.
+
+See [this scene in your browser](basic.html),
+or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/interaction-01/basic.html)
+
+### Adding a camera
+
 I want to move the camera in the scene, so that I can "move" to any place in it.
 And I want that both in desktop and Oculus Go, and to some extent in mobile:
 

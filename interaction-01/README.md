@@ -44,6 +44,22 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 
 ### Adding a camera
 
+Curiosly enough, adding a camera element to the scene makes movement in desktop
+to stop working:
+
+```html
+<a-scene>
+  ...
+  <a-entity camera position="0 1.6 0"></a-entity>
+</a-scene>
+```
+
+See [this scene with a camera](basic-camera.html),
+or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/interaction-01/basic-camera.html)
+
+
+### Recovering movement
+
 I want to move the camera in the scene, so that I can "move" to any place in it.
 And I want that both in desktop and Oculus Go, and to some extent in mobile:
 

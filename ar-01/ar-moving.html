@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Simple AR
+  When in mobile (tested in Firefox, Chrome on Android),
+  point to the Hiro marker, and the objects will appear
+  in the screen (a red box exactly on the marker, the
+  other objects a bit behind, according to their Z coordinates).
+-->
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+
+      <a-box position='0 0.1 0' material='color: red;' scale="1 .2 1"></a-box>
+
+      <a-box position="0 0 -1" rotation="0 90 0" scale=".5 .5 .5" material='color: blue;'>
+        <a-animation attribute="position" to="0 0 1" direction="alternate" dur="4000"
+          repeat="indefinite"></a-animation>
+      </a-box>
+
+      <a-marker-camera preset='hiro'></a-marker-camera>
+    </a-scene>
+  </body>
+</html>

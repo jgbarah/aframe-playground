@@ -53,3 +53,18 @@ You can read much more details in this
 See [the scene](ar.html)
 (use a mobile, or any device with a camera),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/ar-01/ar.html)
+
+## Adding movement
+
+Different feartures of AFrame can be used with AR-Aframe.
+For example, adding movement is easy. Let's add a moving box:
+
+```html
+<a-box position="0 0 -1" rotation="0 90 0" scale=".5 .5 .5" material='color: blue;'>
+  <a-animation attribute="position" to="0 0 1" direction="alternate" dur="4000"
+    repeat="indefinite"></a-animation>
+</a-box>
+```
+
+See [the scene](ar-moving.html)
+or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/ar-01/ar-moving.html)

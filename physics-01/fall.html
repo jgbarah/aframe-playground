@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<!-- Simple physics
+  Using aframe-physics-system.
+
+  The yellow plane stays static. Red box falls down on the plane.
+  Blue box falls down on the border of the plane, revolvs on it, and then
+  falls down again forever.
+-->
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="http://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <a-scene physics="debug: true">
+      <!-- Camera -->
+        <a-entity camera position="0 1.6 5" look-controls wasd-controls></a-entity>
+      <!-- Static floor -->
+      <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="8" height="8"
+               color="yellow"></a-plane>
+      <!-- Dynamic box -->
+      <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
+                color="red"></a-box>
+      <!-- Dynamic box -->
+      <a-box dynamic-body position="2 10 0" width="1" height="1" depth="1"
+              color="blue"></a-box>
+
+    </a-scene>
+
+  </body>
+</html>

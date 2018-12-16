@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- Simple physics
+  Using aframe-physics-system.
+
+  The yellow plane stays static. Red box falls down on the plane.
+  Green box falls down too, but when it collides, it receives an impulse
+  towards right (positive Y axis). Due to that impulse, it may push
+  the red box to the right (in some cases, until it falls down).
+  The blue sphere has fixed velocity and no mass (thus, is not
+  affected by gravity). When it collides, it just disappears.
+-->
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="http://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('push', {
+        init: function() {
+          var self = this;
+          this.el.addEventListener("collide", function () {
+            var force = new CANNON.Vec3(4, 0, 0)
+            var local = new CANNON.Vec3(0, 0, 0)
+            var worldVelocity = self.el.body.quaternion.vmult(force);
+            self.el.body.applyImpulse(worldVelocity, local);
+            console.log(self.el.body.velocity);
+          });
+        }
+      });
+      AFRAME.registerComponent('explode', {
+        init: function() {
+          var self = this;
+          this.el.addEventListener("collide", function () {
+            self.el.parentElement.removeChild(self.el)
+          });
+        }
+      });
+    </script>
+
+  </head>
+  <body>
+    <a-scene physics="debug: true">
+      <!-- Camera -->
+      <a-entity camera position="0 1.6 5" look-controls wasd-controls></a-entity>
+      <!-- Static floor -->
+      <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="16" height="12"
+               color="yellow"></a-plane>
+      <!-- Dynamic box -->
+      <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
+                color="red"></a-box>
+      <!-- Dynamic sphere with fixed velocity -->
+      <a-sphere explode dynamic-body="mass: 0" position="-6 2 -2" velocity="1 0 0" radius="1"
+              color="blue"></a-sphere>
+      <!-- Dynamic box with impusle when colliding -->
+      <a-entity geometry="primitive: box" push dynamic-body position="-3 4 -2"
+                width="1" height="1" depth="1"
+                material="color: green"></a-entity>
+    </a-scene>
+  </body>
+</html>

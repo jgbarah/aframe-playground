@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- Selection in desktop.
+   Click, mouseenter and mouseleave on entitities with
+   click-listener component are detected (message in console and changes in size)
+   Thanks to 'cursor="rayOrigin:mouse"' in the scene.
+  -->
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent("click-listener", {
+        init: function() {
+          this.el.addEventListener("click", (e) => {
+            console.log(e.target)
+            e.target.setAttribute('scale', {x: 2, y: 2, z: 2});
+            });
+          this.el.addEventListener("mouseenter", (e) => {
+            console.log(e.target)
+            e.target.setAttribute('scale', {x: 1.5, y: 1.5, z: 1.5});
+            });
+          this.el.addEventListener("mouseleave", (e) => {
+            console.log(e.target)
+            e.target.setAttribute('scale', {x: 1, y: 1, z: 1});
+            });
+          }
+       })
+    </script>
+  </head>
+  <body>
+<!--    <a-scene cursor="rayOrigin:mouse"> -->
+    <a-scene>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow>
+        <a-animation begin="click" attribute="position"
+                     from="-1 1.5 -3" to="-1 0.5 -3" dur="1000"></a-animation>
+      </a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow>
+        <a-animation begin="click" attribute="scale" from="2 2 2" to="1 1 1" dur="1000"></a-animation>
+      </a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow>
+        <a-animation begin="mouseenter" attribute="scale" to="2 2 2" dur="1000"></a-animation>
+        <a-animation begin="mouseleave" attribute="scale" to="1 1 1" dur="1000"></a-animation>
+      </a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+    </a-scene>
+  </body>
+</html>

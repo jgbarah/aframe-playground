@@ -26,6 +26,7 @@ Now, the notes:
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)
 * data-04: [Visualizing data (JSON documents)](data-04/README.md)
 * interaction-01: [Learning to move](interaction-01/README.md)
+* interaction-02: [Selecting objects](interaction-02/README.md)
 * physics-01: [Adding some physics](physics-01/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 

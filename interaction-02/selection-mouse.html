@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <!-- Selection in desktop.
-   Click, mouseenter and mouseleave on entitities with
-   click-listener component are detected (message in console and changes in size)
+   Click, mouseenter and mouseleave on objects with the corresponding
+   animations, activated with the desktop mouse.
    Thanks to 'cursor="rayOrigin:mouse"' in the scene.
-  -->
+-->
 
 <html>
   <head>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-
-    <script>
-      AFRAME.registerComponent("click-listener", {
-        init: function() {
-          this.el.addEventListener("click", (e) => {
-            console.log(e.target)
-            e.target.setAttribute('scale', {x: 2, y: 2, z: 2});
-            });
-          this.el.addEventListener("mouseenter", (e) => {
-            console.log(e.target)
-            e.target.setAttribute('scale', {x: 1.5, y: 1.5, z: 1.5});
-            });
-          this.el.addEventListener("mouseleave", (e) => {
-            console.log(e.target)
-            e.target.setAttribute('scale', {x: 1, y: 1, z: 1});
-            });
-          }
-       })
-    </script>
   </head>
   <body>
-<!--    <a-scene cursor="rayOrigin:mouse"> -->
     <a-scene>
       <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow>
         <a-animation begin="click" attribute="position"

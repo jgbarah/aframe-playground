@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!-- Simple physics
+  Using aframe-physics-system.
+
+  The camera does not go though objects in the scene, and is "sustained"
+  by the plane acting as a floor. But if you go beyond the borders of the
+  plane, you fall down (you know, gravity...)
+-->
+
+<html>
+  <head>
+    <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+    <script src="kinema.js"></script>
+  <body>
+    <a-scene physics="debug: true">
+      <!-- Static floor -->
+      <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="8" height="20"
+               color="yellow"></a-plane>
+      <!-- Static cylinder -->
+      <a-cylinder static-body position="0 1 -1" radius="1" height="3"
+                color="orange"></a-cylinder>
+      <!-- Dynamic box -->
+      <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
+                color="red"></a-box>
+      <!-- Dynamic box -->
+      <a-box dynamic-body position="2 10 0" width="1" height="1" depth="1"
+              color="blue"></a-box>
+
+      <!-- Camera rig, with a camera and a cylynder -->
+      <a-entity kinema-body="radius: 0.8" movement-controls="fly: false" position="0 0 5" look-controls>
+        <a-entity camera position="0 1.6 0" ></a-entity>
+        <!-- Cylinder to give an idea of the "size" of the camera rig -->
+        <a-cylinder height="2" radius="0.8" color="green"></a-box>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

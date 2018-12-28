@@ -28,6 +28,7 @@ Now, the notes:
 * interaction-01: [Learning to move](interaction-01/README.md)
 * interaction-02: [Selecting objects](interaction-02/README.md)
 * physics-01: [Adding some physics](physics-01/README.md)
+* physics-02: [A camara respecting (some) physics](physics-02/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 
 I have also produced a

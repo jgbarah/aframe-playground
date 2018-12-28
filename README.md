@@ -29,6 +29,7 @@ Now, the notes:
 * interaction-02: [Selecting objects](interaction-02/README.md)
 * physics-01: [Adding some physics](physics-01/README.md)
 * physics-02: [A camara respecting (some) physics](physics-02/README.md)
+* camrender-01: [Cameras and screens](camrender-01/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 
 I have also produced a

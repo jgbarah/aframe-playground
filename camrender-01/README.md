@@ -217,6 +217,7 @@ In the following examples, we will use this `camrender.js` script to
 register the `camrender` component.
 
 ### Screens as texture
+<a name="cameras-3"></a>
 
 In the previous example, we used a plane as a screen.
 But in fact, we can use any surface to project the output of the camera,

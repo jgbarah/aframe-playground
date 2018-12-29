@@ -4,7 +4,7 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene antialias="true" cursor="rayOrigin:mouse">
 
       <a-sky color="grey"></a-sky>
       <a-light type="point" intensity="1" position="-2 10 10">
@@ -20,7 +20,7 @@
       </a-entity> -->
 
       <a-entity movement-controls="fly: true" position="0 0 0">
-        <a-entity camera position="2 10 14" rotation="-30 15 0">></a-entity>
+        <a-entity camera position="0 1.6 0"></a-entity>
         <a-entity laser-controls="hand: right"></a-entity>
         <a-entity oculus-go-controls x-button-listener></a-entity>
       </a-entity>

@@ -30,6 +30,7 @@ Now, the notes:
 * physics-01: [Adding some physics](physics-01/README.md)
 * physics-02: [A camara respecting (some) physics](physics-02/README.md)
 * camrender-01: [Cameras and screens](camrender-01/README.md)
+* camrender-02: [More and more screens!](camrender-02/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 
 I have also produced a

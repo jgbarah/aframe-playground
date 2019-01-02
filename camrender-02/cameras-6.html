@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Cameras everywhere
+  View-from-above and rear cameras projected on a screen
+  linked to the main camera (as if projected on a windshell).
+  main camera projected on a screen, moving view-from-below
+  camera projected on a box.
+-->
+
+<html>
+  <head>
+    <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+    <script src="camrender.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Objects in the scene -->
+      <a-box position='0 0.5 0' material='color: red;'></a-box>
+      <a-box position="-1 0.5 -1" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+      <a-sphere position="0 1.25 -3" radius="1.25" color="#EF2D5E" shadow>
+        <a-animation attribute="radius" to="2" direction="alternate" repeat="indefinite"></a-animation>
+      </a-sphere>
+      <a-cylinder position="1 0.75 -1" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+      <a-dodecahedron position="1 0.75 10" radius="2" color="lightgreen" shadow></a-dodecahedron>
+      <a-plane position="0 0 -2" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+
+      <!-- View-from-above camera, set above the objects, looking down (includes a cone)-->
+      <a-entity position="-1 5 -3">
+        <a-entity camera="active: false" camrender="rid: cam2"
+                  rotation="-90 90 0"></a-entity>
+        <a-cone color="green" radius-bottom=".2" radius-top=".05" height=".5"
+                rotation="180 0 0"></a-cone>
+      </a-entity>
+
+      <!-- Rig for the "regular" camera, linked to movement controls,
+           includes a cone, a rear camera, and screens for view-from-above and rear cameras -->
+      <a-entity position=".5 0 5" movement-controls="fly: true; speed: 0.1; camera: #priCam"
+                look-controls>
+        <!-- Main (regular) camera -->
+        <a-entity id="priCam" camera camrender="rid: cam1"
+                  position="0 1.6 0"></a-entity>
+        <a-cone color="brown" radius-bottom=".2" radius-top=".05" height=".5"
+                position="0 1 -1" rotation="-80 0 0"></a-cone>
+        <!-- Screen showing view-from-above camera -->
+        <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
+                            openEnded: true; thetaStart: 125; thetaLength: 40"
+                  position="0 1 -1" material="src: #cam2; opacity: .8; side: back">
+        </a-entity>
+        <!-- Rear camera -->
+        <a-entity camera camrender="rid: cam3"
+                  position="0 1.6 0" rotation="0 180 0"></a-entity>
+        <!-- Screen showing rear camera -->
+        <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
+                            openEnded: true; thetaStart: 195; thetaLength: 40"
+                  position="0 1 -1" material="src: #cam3; opacity: .8; side: back">
+        </a-entity>
+      </a-entity>
+
+      <!-- Screen for showing the main camera -->
+      <a-plane position="4 1 1" rotation="0 -15 0" width="4.5" height="3.5"
+               material="color: black">
+        <a-text position="-.3 1.56 .2" value="Main view" color="red"></a-text>
+        <a-plane position="0 0 .1" width="4" height="3"
+                 material="src:#cam1"></a-plane>
+      </a-plane>
+
+      <!-- From-below camera, set below the objects, looking up, and moving (includes a cone)-->
+      <a-entity>
+        <a-animation attribute="position" dur="30000"
+                     from="-3 -5 -6" to="3 -5 -6"
+                     direction="alternate" repeat="indefinite"></a-animation>
+        <a-entity camera="active: false" camrender="rid: cam4"
+                  position="0 -0 0" rotation="90 90 0">
+        </a-entity>
+        <a-cone color="green" radius-bottom=".2" radius-top=".05" height=".5">
+        </a-cone>
+      </a-entity>
+
+      <!-- Box for showing the view-from-below camera -->
+      <a-box position="-3 2 0" width="2" height="2" depth="2"
+             material="src:#cam4"></a-box>
+
+    </a-scene>
+  </body>
+</html>

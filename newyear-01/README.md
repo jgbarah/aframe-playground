@@ -22,11 +22,11 @@ which is a thin wrapper for
 [THREE.TextGeometry](https://threejs.org/docs/#api/en/geometries/TextGeometry):
 
 ```html
-<a-entity mixin="boldFont" material="color: gold" scale="100 100 100"
+<a-entity material="color: gold" scale="100 100 100"
           text-geometry="value: 2019" position="-70 1000 -1000">
   <a-animation attribute="position" to="-70 20 -100" dur="17000"></a-animation>
 </a-entity>
-<a-entity mixin="boldFont" material="color: gold" scale="100 100 100"
+<a-entity material="color: gold" scale="100 100 100"
           text-geometry="value: 2018" position="-70 20 -100">
   <a-animation attribute="position" to="-70 -100 -100" dur="20000"></a-animation>
 </a-entity>
@@ -59,17 +59,15 @@ And finally, the sparks on the sides of the year
 are built also with `particle-system`:
 
 ```html
-      <a-entity position="70 10 -50"
-                particle-system="preset: colors; rotationAxis: x; rotationAngle: 0.7"></a-entity>
-      <a-entity position="-55 10 -50"
-                particle-system="preset: colors rotationAxis: x; rotationAngle: 0.7"></a-entity>
+<a-entity position="70 10 -50"
+          particle-system="rotationAxis: x; rotationAngle: 0.7"></a-entity>
+<a-entity position="-55 10 -50"
+          particle-system="rotationAxis: x; rotationAngle: -0.7"></a-entity>
 ```
 
-The rest is just including a sky and some lights:
+The rest is just including some lights:
 
 ```html
-<a-sky color="white"></a-sky>
-
 <a-light type="ambient" color="white" ></a-light>
 <a-light type="point" intensiy="3" position="0 -20 -70" color="white" ></a-light>
 <a-light type="point" intensiy="3" position="0 -10 -70" color="white" ></a-light>
@@ -90,5 +88,19 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 
 The final result is like this:
 
-![Several cameras](aframe-newyear.gif)
+![New year greeting](aframe-newyear.gif)
 
+
+### Some changes
+
+A variation of the scene, somewhat simplified, and a bit more efficient
+(in terms of computing needs): Enter [this scene in your browser](newyear-2.html),
+(includes sound) or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/newyear-01/newyear-2.html)
+
+The final result is like this:
+
+![New year greeting revisited](aframe-newyear-2.gif)
+
+### Credits
+
+[Fireworks sound](http://soundbible.com/692-Fireworks.html) by Stephan in SoundBible.

@@ -31,19 +31,17 @@
       <a-entity position="0 5 0" particle-system="preset: snow"></a-entity>
 
       <a-entity position="70 10 -50"
-                particle-system="preset: colors; rotationAxis: x; rotationAngle: 0.7"></a-entity>
+                particle-system="rotationAxis: x; rotationAngle: 0.7"></a-entity>
       <a-entity position="-55 10 -50"
                 particle-system="preset: colors rotationAxis: x; rotationAngle: 0.7"></a-entity>
-      <a-entity mixin="boldFont" material="color: gold" scale="100 100 100"
+      <a-entity material="color: gold" scale="100 100 100"
                 text-geometry="value: 2019" position="-70 1000 -1000">
       	<a-animation attribute="position" to="-70 20 -100" dur="17000"></a-animation>
       </a-entity>
-      <a-entity mixin="boldFont" material="color: gold" scale="100 100 100"
+      <a-entity material="color: gold" scale="100 100 100"
                 text-geometry="value: 2018" position="-70 20 -100">
       	<a-animation attribute="position" to="-70 -100 -100" dur="20000"></a-animation>
       </a-entity>
-
-      <a-sky color="white"></a-sky>
 
       <a-light type="ambient" color="white" ></a-light>
       <a-light type="point" intensiy="3" position="0 -20 -70" color="white" ></a-light>

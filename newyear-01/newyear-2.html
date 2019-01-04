@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- Hapy new year
+  Original code by giyermo https://github.com/giyermo/feliz2019
+-->
+
+<html>
+  <head>
+    <!--
+    <script src="//rawgit.com/aframevr/aframe/cf15c15/dist/aframe-master.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+    <script src="//unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+	  <script src="//rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+	  <script src="//unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
+    -->
+    <script src="aframe-master-cf15c15.min.js"></script>
+    <script src="aframe-extras-5.0.0.min.js"></script>
+    <script src="aframe-text-geometry-component-0.5.1.min.js"></script>
+    <script src="aframe-environment-component-7528e44.min.js"></script>
+    <script src="aframe-particle-system-component-1.1.3.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <audio id="fireworks" src="fireworks.mp3" ></audio>
+      </a-assets>
+    	<a-entity environment="preset: starry; ground: hills; groundColor: white;
+    	                       groundColor2: grey; groundYScale: 20; lighting: none"></a-entity>
+
+      <a-entity position="0 2.25 -15" particle-system="preset: snow; particleCount: 1000; size: 2"></a-entity>
+
+      <a-entity position="90 0 -50"
+                particle-system="rotationAxis: x; rotationAngle: .2; color: blue,red; size: 5;
+                                 velocityValue: 0 100 0; maxAge: 2"></a-entity>
+      <a-entity position="-90 0 -50"
+                particle-system="rotationAxis: x; rotationAngle: -.2; color: blue,red; size: 5;
+                                 velocityValue: 0 100 0; maxAge: 2"></a-entity>
+
+      <a-sound src="#fireworks" loop="true" volume="4"
+               autoplay="true" position="90 0 -50"></a-sound>
+      <a-sound src="#fireworks" loop="true" volume="4"
+               autoplay="true" position="-90 0 -50"></a-sound>
+
+      <a-entity material="color: gold" position="-65 20 -55"
+                text-geometry="value: 2018; size: 35">
+      	<a-animation attribute="position" to="-65 -100 -55" dur="20000"></a-animation>
+      </a-entity>
+      <a-entity material="color: gold" size="50" position="-85 1000 -1000"
+                text-geometry="value: 2019; size: 50">
+      	<a-animation attribute="position" to="-85 20 -55" dur="17000"></a-animation>
+      </a-entity>
+
+      <a-light type="ambient" color="white" ></a-light>
+
+		  <a-entity movement-controls position="0 0 0" rotation="10 0 0">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

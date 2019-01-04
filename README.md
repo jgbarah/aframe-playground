@@ -32,6 +32,7 @@ Now, the notes:
 * camrender-01: [Cameras and screens](camrender-01/README.md)
 * camrender-02: [More and more screens!](camrender-02/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
+* newyear-01: [Scene for greeting the new year](newyear-01/README.md)
 
 I have also produced a
 [templates directory](templates/README.md),

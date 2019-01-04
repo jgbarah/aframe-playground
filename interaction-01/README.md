@@ -135,11 +135,11 @@ for getting the `movement-controls` component.
 <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
 ```
 
-And build the scene using that component, instead of the camera:
+So, I  build the scene using that component, instead of `a-camera`:
 
 ```html
-<a-entity movement-controls="fly: true" look-controls>
-  <a-entity camera position="0 1.6 0" ></a-entity>
+<a-entity movement-controls="fly: true">
+  <a-entity camera position="0 1.6 0" look-controls></a-entity>
 </a-entity>
 ```
 
@@ -154,9 +154,6 @@ We still need to specify the `look-controls` component,
 to control gaze with the mouse in desktop.
 We don't need `wasd-controls`, since it is pulled in by
 `movement-controls` by default.
-
-It is worth noticing that `look-controls` could also be attached
-to the `camera` component, and it would work the same way.
 
 Watch [the scene](moving-camera-3.html),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/interaction-01/moving-camera-3.html)

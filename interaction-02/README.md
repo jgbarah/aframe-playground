@@ -121,15 +121,15 @@ and then include the following elements (note that `cursor` and
 
 ```html
 <a-entity movement-controls="fly: true" position="0 0 0">
-  <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
+  <a-entity camera position="0 1.6 0" look-controls></a-entity>
   <a-entity cursor="rayOrigin:mouse"></a-entity>
   <a-entity laser-controls="hand: right"></a-entity>
 </a-entity>
 ```
 
 In this code, `movement-controls` adds the capabilities to move in Oculus Go and other devices,
-`camera` adds the camera with `look-controls` and `wasd-controls`,
-so that it can move with arrow (or WASD) keys in desktop.
+`camera` adds the camera with `look-controls` (`wasd-controls` is pulled in by `movement-controls`,
+so we don't need to include it to move with arrow or WASD keys in desktop).
 Finally, `cursor` and `laser-controls` work as we described above.
 
 Watch [the resulting scene in your browser](selection-2.html),

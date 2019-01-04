@@ -10,8 +10,8 @@ AFRAME.registerComponent('camrender',{
             type: 'number',
             default: 90.0
        },
-       // Id of the renderer element
-       rid: {
+       // Id of the canvas element used for rendering the camera
+       cid: {
             type: 'string',
             default: 'camRenderer'
        },
@@ -27,35 +27,26 @@ AFRAME.registerComponent('camrender',{
        }
     },
     'init': function() {
-        // Create a-assets to add renderer to it
-        var assetsEl = document.createElement('a-assets');
-        this.el.sceneEl.appendChild(assetsEl);
         // Counter for ticks since last render
         this.counter = 0;
+        // Find canvas element to be used for rendering
+        var canvasEl = document.getElementById(this.data.cid);
         // Create renderer
-        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+        this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas: canvasEl } );
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setSize( this.data.width, this.data.height );
-        // Set properties for renderer DOM element, and add it to a-assets
-        this.renderer.domElement.id = this.data.rid;
+        // Set properties for renderer DOM element
         this.renderer.domElement.crossorigin = "anonymous"
         this.renderer.domElement.height = this.data.height;
         this.renderer.domElement.width = this.data.width;
-        assetsEl.appendChild(this.renderer.domElement);
-        // Remove some attributes from camera, if they are present
-        this.el.removeAttribute('look-controls');
-        this.el.removeAttribute('wasd-controls');
     },
     'tick': function(time, timeDelta) {
         var loopFPS = 1000.0 / timeDelta;
         var hmdIsXFasterThanDesiredFPS = loopFPS / this.data.fps;
         var renderEveryNthFrame = Math.round(hmdIsXFasterThanDesiredFPS);
         if(this.counter % renderEveryNthFrame === 0){
-            this.render(timeDelta);
+            this.renderer.render( this.el.sceneEl.object3D , this.el.object3DMap.camera );
             }
         this.counter += 1;
-    },
-    'render': function(){
-        this.renderer.render( this.el.sceneEl.object3D , this.el.object3DMap.camera );
     }
 });

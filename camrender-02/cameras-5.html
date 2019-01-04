@@ -11,6 +11,12 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <!-- Canvases for rendering secondary camera -->
+        <canvas id="cam2"></canvas>
+        <canvas id="cam3"></canvas>
+      </a-assets>
+
       <!-- Objects in the scene -->
       <a-box position='0 0.5 0' material='color: red;'></a-box>
       <a-box position="-1 0.5 -1" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
@@ -23,29 +29,29 @@
       <a-sky color="#ECECEC"></a-sky>
 
       <!-- View-from-above camera, set above the objects, looking down (includes a cone)-->
-      <a-entity camera="active: false" camrender="rid: cam2"
+      <a-entity camera="active: false" camrender="cid: cam2"
                 position="-1 5 -3" rotation="-90 90 0">
       </a-entity>
 
       <!-- Rig for the "regular" camera, linked to movement controls,
            includes a cone, a rear camera, and screens for view-from-above and rear cameras -->
-      <a-entity position="1.5 0 3" movement-controls="fly: true; speed: 0.1; camera: #priCam"
-                look-controls>
+      <a-entity position="1.5 0 3" movement-controls="fly: true; speed: 0.1; camera: #priCam">
         <!-- Main (regular) camera -->
-        <a-entity id="priCam" camera position="0 1.6 0"></a-entity>
-        <a-cone color="brown" radius-bottom=".2" radius-top=".05" height=".5"
-                position="0 1 -1" rotation="-80 0 0"></a-cone>
-        <!-- Screen showing view-from-above camera -->
-        <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
-                            openEnded: true; thetaStart: 125; thetaLength: 40"
-                  position="0 1 -1" material="src: #cam2; opacity: .8; side: back"></a-entity>
+        <a-entity id="priCam" camera position="0 1.6 0" look-controls>
+          <a-cone color="brown" radius-bottom=".2" radius-top=".05" height=".5"
+                  position="0 -.6 -1" rotation="-80 0 0"></a-cone>
+          <!-- Screen showing view-from-above camera -->
+          <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
+                              openEnded: true; thetaStart: 125; thetaLength: 40"
+                    position="0 -.6 -1" material="src: #cam2; opacity: .8; side: back"></a-entity>
+          <!-- Screen showing rear camera -->
+          <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
+                              openEnded: true; thetaStart: 195; thetaLength: 40"
+                    position="0 -.6 -1" material="src: #cam3; opacity: .8; side: back"></a-entity>
+        </a-entity>
         <!-- Rear camera -->
-        <a-entity camera camrender="rid: cam3"
+        <a-entity camera="active: false" camrender="cid: cam3; fps: 30"
                   position="0 1.6 0" rotation="0 180 0"></a-entity>
-        <!-- Screen showing rear camera -->
-        <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
-                            openEnded: true; thetaStart: 195; thetaLength: 40"
-                  position="0 1 -1" material="src: #cam3; opacity: .8; side: back"></a-entity>
       </a-entity>
 
     </a-scene>

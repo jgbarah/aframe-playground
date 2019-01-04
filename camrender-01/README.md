@@ -56,7 +56,7 @@ is as follows:
 The camera is positioned above the scene, looking down, and rotated 90 degreees.
 Its active property is set to false because this is not the main camera of the scene.
 The trick of this camera is in the `camrender` component.
-[Later on](#camrender) I will discuss how the component is implememnted,
+[Later on](#the-camrender-component) I will discuss how the component is implememnted,
 but for now it is enough to say that it will use a canvas element to produce a rendering
 of the view of the camera. This canvas element is suitable for being used as the material for an AFrame object.
 The `cid` property of `camrender` is the HTML id of that canvas,
@@ -69,7 +69,7 @@ which will usually live within the `a-assets` element of the scene:
 ```
 
 To use the `camrender` component we need to include in the HTML `head` the JavaScript script
-that implements it. Assuming it is in file `camrender.html`, available from the same directory:
+that implements it. Assuming it is in file `camrender.js`, available from the same directory:
 
 ```html
 <script src="camrender.js"></script>
@@ -97,7 +97,6 @@ The final result is like this:
 ![Camera above](aframe-cameras-1.gif)
 
 ### The camrender component
-<a name="camrenderer"></a>
 
 As shown in the example above, to make the secondary camera render its output in a
 `canvas` HTML element we used the `camrender` component.
@@ -210,7 +209,6 @@ In the following examples, we will use this `camrender.js` script to
 provide the `camrender` component.
 
 ### Screens as texture
-<a name="cameras-3"></a>
 
 In the previous example, I used a plane as a screen.
 But in fact, we can use any surface to project the output of the camera,

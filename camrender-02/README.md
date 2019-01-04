@@ -34,7 +34,7 @@ The relevant part of the scene is as follows:
 ```
 
 You can notice that it is pretty much the same code we used for
-[cameras-3](../camrender-01/README.md#cameras-3), except for the
+[cameras-3](../camrender-01/README.md#screens-as-texture), except for the
 addition of the last entity, the screen, within the main camera.
 As we did before, we use the `material` component to project the canvas
 that is rendering the camera (`cam2` in this case).

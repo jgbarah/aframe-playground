@@ -31,12 +31,17 @@ Now, the notes:
 * physics-02: [A camara respecting (some) physics](physics-02/README.md)
 * camrender-01: [Cameras and screens](camrender-01/README.md)
 * camrender-02: [More and more screens!](camrender-02/README.md)
+* camrender-03: [Making it components](camrender-03/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 * newyear-01: [Scene for greeting the new year](newyear-01/README.md)
+
+Some of the code used in the examples is available as [A-Frame reusable components](components),
+which you can just include in your code.
 
 I have also produced a
 [templates directory](templates/README.md),
 which I'm using as I learn about A-frame and webpack and npm and all the stuff.
+
 
 Some old stuff, that very likely won't even work:
 

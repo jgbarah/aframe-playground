@@ -15,6 +15,7 @@
         <canvas id="cam1"></canvas>
         <canvas id="cam2"></canvas>
       </a-assets>
+
       <!-- Objects in the scene -->
       <a-box position='0 0.5 0' material='color: red;'></a-box>
       <a-box position="-1 0.5 -1" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
@@ -35,7 +36,7 @@
 
       <!-- Screen for showing the main camera -->
       <a-plane position="3 1 1" rotation="0 -15 0" width="4" height="3"
-               material="src: #cam1; opacity: .95"></a-plane>
+               material="src: #cam1; opacity: .95" canvas-updater></a-plane>
 
       <!-- Secondary camera, set above the objects, looking down -->
       <a-entity camera="active: false" camrender="cid: cam2"
@@ -44,7 +45,7 @@
 
       <!-- Box for showing the secondary camera -->
       <a-box position="-3 2 0" width="2" height="2" depth="2"
-             material="src:#cam2"></a-box>
+             material="src:#cam2" canvas-updater></a-box>
 
     </a-scene>
 

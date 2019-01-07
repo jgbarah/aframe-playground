@@ -43,11 +43,13 @@
           <!-- Screen showing view-from-above camera -->
           <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
                               openEnded: true; thetaStart: 125; thetaLength: 40"
-                    position="0 -.6 -1" material="src: #cam2; opacity: .8; side: back"></a-entity>
+                    position="0 -.6 -1" material="src: #cam2; opacity: .8; side: back"
+                    canvas-updater></a-entity>
           <!-- Screen showing rear camera -->
           <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
                               openEnded: true; thetaStart: 195; thetaLength: 40"
-                    position="0 -.6 -1" material="src: #cam3; opacity: .8; side: back"></a-entity>
+                    position="0 -.6 -1" material="src: #cam3; opacity: .8; side: back"
+                    canvas-updater></a-entity>
         </a-entity>
         <!-- Rear camera -->
         <a-entity camera="active: false" camrender="cid: cam3; fps: 30"

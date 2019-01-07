@@ -70,15 +70,13 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-/* global AFRAME */
-
-if (typeof AFRAME === 'undefined') {
-  throw new Error('Component attempted to register before AFRAME was available.');
-}
-
 /**
  * Camera Render component for A-Frame.
+ *
+ * Based on code from:
+ * https://wirewhiz.com/how-to-use-a-cameras-output-as-a-texture-in-aframe/
  */
+
 AFRAME.registerComponent('camrender', {
   schema: {
   // desired FPS
@@ -174,15 +172,13 @@ AFRAME.registerComponent('camrender', {
 /* 1 */
 /***/ (function(module, exports) {
 
-/* global AFRAME */
-
-if (typeof AFRAME === 'undefined') {
-  throw new Error('Component attempted to register before AFRAME was available.');
-}
-
 /**
  * Canvas updater component for A-Frame.
+ *
+ * Copy of this component, found in A-Frame tests:
+ * https://github.com/aframevr/aframe/blob/master/examples/test/canvas-texture/components/canvas-updater.js
  */
+
 AFRAME.registerComponent('canvas-updater', {
 
   dependencies: ['geometry', 'material'],
@@ -241,6 +237,12 @@ AFRAME.registerComponent('canvas-updater', {
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
+
+/* global AFRAME */
+
+if (typeof AFRAME === 'undefined') {
+  throw new Error('Component attempted to register before AFRAME was available.');
+}
 
 __webpack_require__(0);
 __webpack_require__(1);

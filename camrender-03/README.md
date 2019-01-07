@@ -57,6 +57,15 @@ npm install
 
 And commit the result in the git repo.
 
+To upload the packages to [npm](https://npmjs.com),
+I run the following commands (but before that, I check
+the package version in `package.json`):
+
+```bash
+npm adduser
+npm publish
+```
+
 ### Using the new components in a scene
 
 Once the git repository is pushed to GitHub,

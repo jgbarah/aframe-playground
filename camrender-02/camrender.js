@@ -26,27 +26,45 @@ AFRAME.registerComponent('camrender',{
             default: 400
        }
     },
-    'init': function() {
-        // Counter for ticks since last render
-        this.counter = 0;
-        // Find canvas element to be used for rendering
-        var canvasEl = document.getElementById(this.data.cid);
-        // Create renderer
-        this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas: canvasEl } );
-        this.renderer.setPixelRatio( window.devicePixelRatio );
-        this.renderer.setSize( this.data.width, this.data.height );
-        // Set properties for renderer DOM element
-        this.renderer.domElement.crossorigin = "anonymous"
-        this.renderer.domElement.height = this.data.height;
-        this.renderer.domElement.width = this.data.width;
+    'update': function(oldData) {
+        var data = this.data
+        if (oldData.cid !== data.cid) {
+            // Find canvas element to be used for rendering
+            var canvasEl = document.getElementById(this.data.cid);
+            // Create renderer
+            this.renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                canvas: canvasEl
+            });
+            // Set properties for renderer DOM element
+            this.renderer.setPixelRatio( window.devicePixelRatio );
+            this.renderer.domElement.crossorigin = "anonymous";
+        };
+        if (oldData.width !== data.width || oldData.height !== data.height) {
+            // Set size of canvas renderer
+            this.renderer.setSize(data.width, data.height);
+            this.renderer.domElement.height = data.height;
+            this.renderer.domElement.width = data.width;
+        };
+        if (oldData.fps !== data.fps) {
+            // Set how often to call tick
+            this.tick = AFRAME.utils.throttleTick(this.tick, 1000 / data.fps , this);
+        };
     },
     'tick': function(time, timeDelta) {
-        var loopFPS = 1000.0 / timeDelta;
-        var hmdIsXFasterThanDesiredFPS = loopFPS / this.data.fps;
-        var renderEveryNthFrame = Math.round(hmdIsXFasterThanDesiredFPS);
-        if(this.counter % renderEveryNthFrame === 0){
-            this.renderer.render( this.el.sceneEl.object3D , this.el.object3DMap.camera );
-            }
-        this.counter += 1;
+        this.renderer.render( this.el.sceneEl.object3D , this.el.object3DMap.camera );
+    }
+});
+
+AFRAME.registerComponent('canvas-updater', {
+    dependencies: ['geometry', 'material'],
+
+    tick: function () {
+	    var el = this.el;
+	    var material;
+
+	    material = el.getObject3D('mesh').material;
+	    if (!material.map) { return; }
+        material.map.needsUpdate = true;
     }
 });

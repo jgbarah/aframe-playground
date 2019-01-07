@@ -1,12 +1,10 @@
-/* global AFRAME */
-
-if (typeof AFRAME === 'undefined') {
-  throw new Error('Component attempted to register before AFRAME was available.');
-}
-
 /**
  * Camera Render component for A-Frame.
+ *
+ * Based on code from:
+ * https://wirewhiz.com/how-to-use-a-cameras-output-as-a-texture-in-aframe/
  */
+
 AFRAME.registerComponent('camrender', {
   schema: {
   // desired FPS

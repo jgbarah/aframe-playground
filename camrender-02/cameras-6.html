@@ -8,7 +8,8 @@
 
 <html>
   <head>
-    <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
+<!--    <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@cb4de2e19d577e9b5c34f01efe1c1d96c1d1c2e0/dist/aframe-master.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
     <script src="camrender.js"></script>
   </head>
@@ -30,7 +31,7 @@
       <a-cylinder position="1 0.75 -1" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
       <!-- Box for showing the view-from-below camera -->
       <a-box position="-3 2 0" width="2" height="2" depth="2"
-             material="src:#cam4"></a-box>
+             material="src:#cam4" canvas-updater></a-box>
       <a-dodecahedron position="1 0.75 10" radius="2" color="lightgreen" shadow></a-dodecahedron>
       <a-plane position="0 0 -2" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
       <a-sky color="#ECECEC"></a-sky>
@@ -54,17 +55,20 @@
           <!-- Screen showing view-from-above camera -->
           <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
                               openEnded: true; thetaStart: 105; thetaLength: 40"
-                    position="0 -.6 -1" material="src: #cam2; opacity: .8; side: back">
+                    position="0 -.6 -1" material="src: #cam2; opacity: .8; side: back"
+                    canvas-updater>
           </a-entity>
           <!-- Screen showing view-from-below camera -->
           <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
                               openEnded: true; thetaStart: 205; thetaLength: 40"
-                    position="0 -.6 -1" material="src: #cam4; opacity: .8; side: back">
+                    position="0 -.6 -1" material="src: #cam4; opacity: .8; side: back"
+                    canvas-updater>
           </a-entity>
           <!-- Screen showing rear camera -->
           <a-entity geometry="primitive: cylinder; radius:.7; height: .3;
                               openEnded: true; thetaStart: 155; thetaLength: 40"
-                    position="0 -.6 -1" material="src: #cam3; opacity: .8; side: back">
+                    position="0 -.6 -1" material="src: #cam3; opacity: .8; side: back"
+                    canvas-updater>
           </a-entity>
         </a-entity>
         <!-- Rear camera -->
@@ -77,7 +81,7 @@
                material="color: black">
         <a-text position="-.3 1.56 .2" value="Main view" color="red"></a-text>
         <a-plane position="0 0 .1" width="4" height="3"
-                 material="src:#cam1"></a-plane>
+                 material="src:#cam1" canvas-updater></a-plane>
       </a-plane>
 
       <!-- From-below camera, set below the objects, looking up, and moving (includes a cone)-->

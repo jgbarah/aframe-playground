@@ -1,16 +1,14 @@
 ## Playground Components
 
-[![Version](http://img.shields.io/npm/v/aframe-playground-component.svg?style=flat-square)](https://npmjs.org/package/aframe-playground-component)
-[![License](http://img.shields.io/npm/l/aframe-playground-component.svg?style=flat-square)](https://npmjs.org/package/aframe-playground-component)
+[![Version](http://img.shields.io/npm/v/aframe-playground-components.svg?style=flat-square)](https://npmjs.org/package/aframe-playground-components)
+[![License](http://img.shields.io/npm/l/aframe-playground-components.svg?style=flat-square)](https://npmjs.org/package/aframe-playground-components)
 
 A-Frame Playground components for [A-Frame](https://aframe.io):
 
-* Camrender ([Documentation](#camrender))
-
+* Camrender ([Documentation](#camrender)).
   Component that renders the output of a camera in a canvas.
   
-* Canvas Updater ([Documentation](#canvas-updater))
-
+* Canvas Updater ([Documentation](#canvas-updater)).
   Component for updating a material showing a canvas,
   when the canvas is updated.
   
@@ -57,8 +55,6 @@ Install and use by directly including the [browser files](dist):
 ```
 
 #### npm
-
-(Still not available)
 
 Install via npm:
 

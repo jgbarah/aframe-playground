@@ -1,6 +1,6 @@
 {
   "name": "aframe-playground-components",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Components for the A-Frame Playground",
   "main": "index.js",
   "unpkg": "components/dist/aframe-playground-components.min.js",

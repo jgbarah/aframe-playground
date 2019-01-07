@@ -1,12 +1,10 @@
-/* global AFRAME */
-
-if (typeof AFRAME === 'undefined') {
-  throw new Error('Component attempted to register before AFRAME was available.');
-}
-
 /**
  * Canvas updater component for A-Frame.
+ *
+ * Copy of this component, found in A-Frame tests:
+ * https://github.com/aframevr/aframe/blob/master/examples/test/canvas-texture/components/canvas-updater.js
  */
+
 AFRAME.registerComponent('canvas-updater', {
 
   dependencies: ['geometry', 'material'],

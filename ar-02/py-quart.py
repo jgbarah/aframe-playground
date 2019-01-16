@@ -25,7 +25,7 @@ def parse_args ():
                         help="Directory where generated QRs are written")
     parser.add_argument("--dir", type=str, default='.',
                         help="Directory where generated QRs are written")
-    parser.add_argument("--points", type=str, default=6,
+    parser.add_argument("--points", type=str, default=10,
                         help="Points per pixel")
     args = parser.parse_args()
     return args

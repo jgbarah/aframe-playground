@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Our first scene in the A-Frame Playground</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <!-- <script src="aframe.min.js"></script> -->
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene fog="type: linear; color: lightgrey; far: 15; near: 1" stats>
+      <a-assets>
+        <img id="soil" src="soil.jpg">
+        <img id="bands" src="bands.jpg">
+        <img id="window" src="window.jpg">
+
+        <a-asset-item id="drone" src="mech_drone/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-entity
+          geometry="primitive: cylinder; height: 6.0; radius: 5;
+            theta-length: 70; open-ended: true"
+          position="0 3 -4"
+          rotation="0 220 0"
+          material="src: #window; side: double"></a-entity>
+      <a-cylinder height="6.0" radius="5" theta-length="70" open-ended="true"
+        side="double" position="0 3 -4" rotation="0 140 0"
+        color="red"></a-cylinder>
+      <a-curvedimage height="6.0" radius="5" theta-length="70"
+        position="0 3 -4" rotation="0 60 0" src="#window"></a-curvedimage>
+
+      <a-sphere position="-2 1.25 -5" radius="1.25" src="#soil"></a-sphere>
+      <a-cylinder position="1 1.25 -3" radius="0.5" height="2.5" src="#bands"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="15" height="6" repeat="4 2" src="#soil"></a-plane>
+
+      <a-entity position="1 2.5 -3" gltf-model="#drone" animation-mixer
+                scale="0.01 0.01 0.01">
+      </a-entity>
+
+      <a-entity position="-4 2.5 -1" gltf-model="#drone" animation-mixer
+                scale="0.01 0.01 0.01">
+      </a-entity>
+
+      <a-entity position="4 2.5 -1" gltf-model="#drone" animation-mixer
+                scale="0.01 0.01 0.01">
+      </a-entity>
+
+      <a-light type="ambient" color="grey"></a-light>
+      <a-light type="point" intensity="2" position="-2 2 4"></a-light>
+
+      <a-sky color="lightgrey"></a-sky>
+
+      <a-entity movement-controls="fly: true" position="0 0 5">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

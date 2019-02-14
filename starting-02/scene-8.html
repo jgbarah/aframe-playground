@@ -15,6 +15,7 @@
         <img id="window" src="window.jpg">
 
         <a-asset-item id="drone" src="mech_drone/scene.gltf"></a-asset-item>
+        <audio id="robot" src="robot.ogg" preload="auto"></audio>
       </a-assets>
 
       <a-entity
@@ -34,15 +35,20 @@
       <a-plane position="0 0 -4" rotation="-90 0 0" width="15" height="6" repeat="4 2" src="#soil"></a-plane>
 
       <a-entity position="1 2.5 -3" gltf-model="#drone" animation-mixer
-                scale="0.01 0.01 0.01">
+                scale="0.01 0.01 0.01"
+                animation="property: rotation; dur: 10000; to:0 360 0; loop: true">
       </a-entity>
 
-      <a-entity position="-4 2.5 -1" gltf-model="#drone" animation-mixer
-                scale="0.01 0.01 0.01">
+      <a-entity position="-5 3 -1" gltf-model="#drone" animation-mixer
+                scale="0.01 0.01 0.01"
+                animation="property: position; dur: 10000; to: -3 .5 -1; dir: alternate; loop: true"
+                sound="src: #robot; autoplay: true; loop: true; distanceModel: exponential">
       </a-entity>
 
-      <a-entity position="4 2.5 -1" gltf-model="#drone" animation-mixer
-                scale="0.01 0.01 0.01">
+      <a-entity position="6 3 -1" gltf-model="#drone" animation-mixer
+                scale="0.01 0.01 0.01"
+                animation="property: position; dur: 10000; to: 4 .5 -1; dir: alternate; loop: true"
+                sound="src: #robot; autoplay: true; loop: true; distanceModel: exponential">
       </a-entity>
 
       <a-light type="ambient" color="grey"></a-light>

@@ -4,8 +4,8 @@
 ## First steps in creating an A-frame scene
 
 I will start by using the first example in the
-[A-frame Introduction](https://aframe.io/docs/0.9.0/introduction/),
-the [Hello, WebVR example](https://aframe.io/docs/0.9.0/introduction/html-and-primitives.html#example).
+[A-frame Introduction](https://aframe.io/docs/0.8.0/introduction/),
+the [Hello, WebVR example](https://aframe.io/docs/0.8.0/introduction/html-and-primitives.html#example).
 I've done some minor modifications both for convenience
 (I want to export all the assets,
 so that the example works even if I'm not connected),
@@ -24,41 +24,49 @@ and plane,
 which gives the scene a bit more of interest.
 
 For running this first version,
-you'll need to have the following structure of directories and files:
+you'll need to have in a directory the following files:
 
 ```
-assets
-|-js
-  |- aframe.min.js
-|- imgs
-  |- bands.jpg
-  |- molinos-bw.jpg
-  |- window.jpg
-  |- soil.jpg
 figures-01
+|- aframe.min.js
 |- first.html
+|- bands.jpg
+|- molinos-bw.jpg
+|- window.jpg
+|- soil.jpg
 ```
 
-To see our scene in the browser, the A-frame documentation recommends
-serving these files via a web server.
-You can easily do that using
-the one line python web server, run in the root of the hierarchy above
-(which is the root of this git repository, too):
+The result can be seen just by firing the browser on the HTML file:
+
+```bash
+$ firefox figures-01/first.html
+```
+
+However, the A-frame documentation recommends using a web server instead.
+You can easily serve the directory with the scene using
+the one line python web server:
+
+```
+$ python -m SimpleHTTPServer
+```
+
+Or, if you are using Python3:
 
 ```
 $ python3 -m http.server
 ```
 
-You can also
-[directly check the scene in your browser](first.html),
-as the files are served by GitHub.
+
+Or you can
+[check the actual scene in your browser](first.html),
+if it is supported by A-frame.
 You can use arrow keys or WASD keys and the mouse
 (click and drag),
 to move the camera when not in VR mode.
 You can also check it with VR,
 for example with a mobile phone in a
 [Google cardboard device](https://vr.google.com/cardboard/)
-with Oculus Go or with Oculus Quest.
+or similar.
 
 Just in case you cannot see it with your browser,
 as loaded, the scene is:
@@ -69,20 +77,14 @@ After moving around, you may see something like:
 
 ![First scene after moving around](../screenshots/01-first-2.png)
 
-Notice that I have grouped in the `assets` directory
-the files that we will be using in several examples
-(the A-Frame library, images, etc.)
-
-In particular,
- `assets/js/aframe.min.js` is just a copy of the minified A-frame library,
-in my case the CDN version
-[aframe.min.js version 0.9.2](https://aframe.io/releases/0.9.2/aframe.min.js).
-HTML files that I will use in the examples will usually include
-a line to use `assets/js/aframe.min.js`, and another one,
-commented out, to use the above CDN version of it (for convenience).
+Notice that the file `aframe.min.js` is included in the repository
+for your convenience.
+It is just a copy of the minified A-frame library,
+in my case
+[aframe.min.js version 0.8.2](https://aframe.io/releases/0.8.2/aframe.min.js).
 
 You can check other ways of installing A-frame in the
-[A-frame installation instructions](https://aframe.io/docs/0.9.0/introduction/installation.html).
+[A-frame installation instructions](https://aframe.io/docs/0.8.0/introduction/installation.html).
 Later on I will show how to use npm and webpack for
 installing A-frame in a more convenient way.
 For now, having the file in the repository will be convenient.
@@ -90,19 +92,20 @@ For now, having the file in the repository will be convenient.
 The details of what is in the `first.html` file,
 which includes all the magic needed to create the scene,
 are described in the
-[Hello, WebVR example](https://aframe.io/docs/0.9.0/introduction/html-and-primitives.html#example).
+[Hello, WebVR example](https://aframe.io/docs/0.8.0/introduction/html-and-primitives.html#example).
 
 *An interesting trick:*
 you can enter the A-frame debugger by using the
 `<CTRL> <ALT> i` combination when watching the scene in the browser.
 
 *Another one:*
+
 you can get screenshots from the scene,
 just press `<ctrl> <alt> s`.
 For a 360 image,
 press `<ctrl> <alt> <shift> s`.
 More details at the
-[screenshot Component documentation](https://aframe.io/docs/0.9.0/components/screenshot.html).
+[screenshot Component documentation](https://aframe.io/docs/0.8.0/components/screenshot.html).
 
 
 ### Second version, adding assets
@@ -111,10 +114,10 @@ This version,
 [second.html](https://github.com/jgbarah/aframe-playground/blob/master/figures-01/second.html) is quite similar to the first one,
 but includes some new gadgets.
 It follows some of the aspects introduced in the guide
-[Building a Basic Scene](https://aframe.io/docs/0.9.0/guides/building-a-basic-scene.html).
+[Building a Basic Scene](https://aframe.io/docs/0.8.0/guides/building-a-basic-scene.html).
 
 The sphere now has a 360 image projected on it.
-The box is animated, by adding a component specifying the animation.
+The box is animated, by adding a child element specifying the animation.
 And there are a couple lights.
 A more subtle, but important change, is that now it uses assets.
 the `assets` element allow for the download of the different assets
@@ -134,8 +137,7 @@ For keeping the application self-contained,
 I donwloaded the font files,
 `Roboto-msdf.json` and `Roboto-msdf.jpng`
 from https://cdn.aframe.io/fonts/
-to the same directory where the application is,
-to the `assets/fonts` directory.
+to the same directory where the application is.
 
 I also added a camera, to decide from where I want to look at the scene.
 For positioning the camera, I need a wrapper `a-entity` object,
@@ -171,12 +173,12 @@ The only trick is that the cursor that I added to the camera
 behaves as a mouse,
 and then triggers those `mouseenter` and `mouseleave` events.
 See more details about this in
-[Adding Interaction, in the Building a Basic Scene guide](https://aframe.io/docs/0.9.0/guides/building-a-basic-scene.html#adding-interaction).
+[Adding Interaction, in the Building a Basic Scene guide](https://aframe.io/docs/0.8.0/guides/building-a-basic-scene.html#adding-interaction).
 
 In addition, I try writing text in a plane,
 which can be a nice way of providing banners.
 See more about this in the
-[Sizing section of the documentation of the text component](https://aframe.io/docs/0.9.0/components/text.html#sizing).
+[Sizing section of the documentation of the text component](https://aframe.io/docs/0.8.0/components/text.html#sizing).
 
 [Check the actual scene in your browser](fourth.html).
 
@@ -198,14 +200,14 @@ with a `cylinder` primitive,
 and with an entity, using `cylinder` as the primitive geometry.
 
 You can learn more about entities in
-[ECS in A-frame](https://aframe.io/docs/0.9.0/introduction/entity-component-system.html),
+[ECS in A-frame](https://aframe.io/docs/0.8.0/introduction/entity-component-system.html),
 which explains its relationship with components and systems,
-in the [documentation for Entity](https://aframe.io/docs/0.9.0/core/entity.html),
+in the [documentation for Entity](https://aframe.io/docs/0.8.0/core/entity.html),
 and in the
-[documentation for Component](https://aframe.io/docs/0.9.0/core/component.html).
-The [documentation for Material](https://aframe.io/docs/0.9.0/components/material.html)
+[documentation for Component](https://aframe.io/docs/0.8.0/core/component.html).
+The [documentation for Material](https://aframe.io/docs/0.8.0/components/material.html)
 and
-[for Geometry](https://aframe.io/docs/0.9.0/components/geometry.html)
+[for Geometry](https://aframe.io/docs/0.8.0/components/geometry.html)
 were also useful.
 
 I also included some fog, which is a component of `a-scene`.
@@ -214,22 +216,12 @@ The linear model worked well when I selected the appropriate
 When using fog, I can omit the `a-sky` element,
 since the "sky" will be just an accumulation of fog.
 More information in the
-[fog Component documentation](https://aframe.io/docs/0.9.0/components/fog.html).
+[fog Component documentation](https://aframe.io/docs/0.8.0/components/fog.html).
 
 Finally, I included a stats user interface,
 by declaring the appropriate `stats` component as a property of
 `a-scene`.
 More information on that in the
-[stats Component documentation](https://aframe.io/docs/0.9.0/components/stats.html).
+[stats Component documentation](https://aframe.io/docs/0.8.0/components/stats.html).
 
 [Check the actual scene in your browser](fifth.html).
-
-### Note on the size of images
-
-A-Frame (or Three.js, or WebGL, I'm not sure) seem to be happier with images with
-dimensions that are multiple of 2. Therefore, I use `mogrify`, in the Debian
-`imagemagick` package, for resizing them to 1024x1024. For example:
-
-```bash
-$ mogrify -resize 1024x1024! bands.jpg
-```

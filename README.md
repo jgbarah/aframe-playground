@@ -17,7 +17,8 @@ my learning process, but now all should be updated to using 0.9.2.
 Now, the notes:
 
 * figures-01: [First steps in creating an A-frame scene](figures-01/README.md)
-* moving-01: [Adding objects with animations](moving-01/README.md)
+* figures-04: [Adding complex 3D objects](figures-04/README.md)
+* moving-01: [Adding 3D objects with animations](moving-01/README.md)
 * data-01: [Visualizing data](data-01/README.md)
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)

@@ -1,7 +1,7 @@
 
 *[Back to the main page](../README.md)*
 
-## Adding objects with animations
+## Adding 3D objects with animations
 
 Now, I'm going to work in `moving-01`,
 creating a scene  with a moving object from

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+<!--    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
+    <script src="../assets/js/aframe.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script> -->
+    <script src="../assets/js/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #D3D3D3"
+             fog="type: exponential; density: 0.12; color: #696969;"
+             animation="property: fog.color; dur: 7000;
+                       from: #696969; to: #fff;
+                       loop: true; dir: alternate">
+      <a-assets>
+        <a-asset-item id="drone" src="../assets/3d/mech_drone/scene.gltf">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity position="0 2 -9" gltf-model="#drone"
+                scale="0.02 0.02 0.02"
+                animation="property: rotation; dur: 10000;
+                           to: 0 360 0; loop: true">
+      </a-entity>
+
+      <a-entity position="8 2 -9" gltf-model="#drone"
+                scale="0.02 0.02 0.02" animation-mixer>
+      </a-entity>
+
+      <a-entity position="-6 -2 -9" gltf-model="#drone"
+                scale="0.03 0.03 0.03" animation-mixer
+                animation="property: rotation; dur: 10000;
+                           to: 0 360 0; loop: true">
+      </a-entity>
+
+      <a-light type="point" intensity="0" position="-2 2 2"
+               animation="property: light.intensity;
+                          dur: 7000; from: 0; to: 1.5;
+                          dir: alternate; loop: true">
+      </a-light>
+
+      <a-entity position="-3 2 1" rotation="20 -25 0">
+        <a-camera>
+        </a-camera>
+      </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>

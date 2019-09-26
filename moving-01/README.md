@@ -104,4 +104,4 @@ This final touch was directly inspired by
 
 ### Results
 
-Check the resulting [virtual reality scene](index.html).
+Check the resulting [virtual reality scene](figures.html).

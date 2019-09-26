@@ -48,7 +48,6 @@ I have also produced a
 [templates directory](templates/README.md),
 which I'm using as I learn about A-frame and webpack and npm and all the stuff.
 
-
 Some old stuff, that very likely won't even work:
 
 * [Some 3D plots](plots-01/README.md)
@@ -57,6 +56,14 @@ Some old stuff, that very likely won't even work:
 
 All the code is in the
 [A-Frame Playground GitHub repo](https://github.com/jgbarah/aframe-playground).
+
+For the examples, you can use your own GitHub or GitLab repos,
+configuring them to be exported as web sites.
+But if you want a simple yet powerful system to test your code,
+you can also use [Glitch.com](https://glitch.com).
+For example, the first example in Glitch: [project](https://glitch.com/~jumbled-whistle),
+[live app](https://jumbled-whistle.glitch.me).
+
 If you spot any error, please
 [open an issue](https://github.com/jgbarah/aframe-playground/issues/new).
 If you want to contribute with changes, please

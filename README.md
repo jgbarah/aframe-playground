@@ -17,6 +17,7 @@ my learning process, but now all should be updated to using 0.9.2.
 Now, the notes:
 
 * figures-01: [First steps in creating an A-frame scene](figures-01/README.md)
+* pictures-01: [Some pictures around](pictures-01/README.md)
 * figures-04: [Adding complex 3D objects](figures-04/README.md)
 * moving-01: [Adding 3D objects with animations](moving-01/README.md)
 * data-01: [Visualizing data](data-01/README.md)
@@ -39,9 +40,9 @@ which you can just include in your code.
 While I was learning about A-Frame, I was also learning about Webpack,
 and I took some notes:
 
-* webpack/figures-02: [Simple configuration for webpack](figures-02/README.md)
-* webpack/figures-03: [Improving webpack configuration](figures-03/README.md)
-* webpack/figures-04: [Adding a complex object](figures-04/README.md)
+* webpack/figures-02: [Simple configuration for webpack](webpack/figures-02/README.md)
+* webpack/figures-03: [Improving webpack configuration](webpack/figures-03/README.md)
+* webpack/figures-04: [Adding a complex object](webpack/figures-04/README.md)
 
 
 I have also produced a

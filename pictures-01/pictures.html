@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene renderer="colorManagement: true;" stats>
+
+      <a-assets>
+        <img id="picture01" src="imgs/picture01.jpg">
+        <img id="picture02" src="imgs/picture02.jpg">
+        <img id="picture03" src="imgs/picture03.jpg">
+        <img id="picture04" src="imgs/picture04.jpg">
+        <img id="picture05" src="imgs/picture05.jpg">
+        <img id="picture06" src="imgs/picture06.jpg">
+        <img id="picture07" src="imgs/picture07.jpg">
+        <img id="picture08" src="imgs/picture08.jpg">
+      </a-assets>
+
+      <a-plane src="#picture01" position="-3 1.5 -2" height="1.5" width="2"
+               rotation="0 45 0"></a-plane>
+      <a-plane src="#picture02" position="0 1.5 -3" height="2" width="1.5"
+               rotation="0 0 0"></a-plane>
+      <a-plane src="#picture03" position="3 1.5 -2" height="1.5" width="2"
+               rotation="0 -45 0"></a-plane>
+      <a-plane src="#picture04" position="4 1.5 0" height="1.5" width="2"
+               rotation="0 -90 0"></a-plane>
+      <a-plane src="#picture05" position="3 1.5 2" height="1.5" width="2"
+               rotation="0 -135 0"></a-plane>
+      <a-plane src="#picture06" position="0 1.5 3" height="1.5" width="2"
+               rotation="0 180 0"></a-plane>
+      <a-plane src="#picture07" position="-3 1.5 2" height="1.5" width="2"
+               rotation="0 135 0"></a-plane>
+      <a-plane src="#picture08" position="-4 1.5 0" height="1.5" width="2"
+               rotation="0 90 0"></a-plane>
+
+      <a-entity movement-controls="fly: true" position="0 0 0">
+        <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
+        <a-entity oculus-go-controls oculus-quest-controls x-button-listener></a-entity>
+      </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>

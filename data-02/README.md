@@ -10,7 +10,7 @@ But now, I will be using A-frame components
 for the spheres and the axis.
 
 We will follow the documentation in
-[Writing a component](https://aframe.io/docs/0.8.0/introduction/writing-a-component.html)
+[Writing a component](https://aframe.io/docs/1.2.0/introduction/writing-a-component.html)
 
 ### Writing a component
 

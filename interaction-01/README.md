@@ -72,7 +72,7 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 
 The first step towards recovering movement is to recover camera orientation (gaze)
 in desktop. This is easy: just include a
-[look-controls](https://aframe.io/docs/0.8.0/components/look-controls.html) component:
+[look-controls](https://aframe.io/docs/1.2.0/components/look-controls.html) component:
 
 ```html
 <a-scene>
@@ -91,7 +91,7 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 
 To recover movement of the camera in the scene using the WASD (or arrow)
 keys on desktop, we can add a
-[wasd-controls](https://aframe.io/docs/0.8.0/components/wasd-controls.html) component.
+[wasd-controls](https://aframe.io/docs/1.2.0/components/wasd-controls.html) component.
 
 ```html
 <a-scene>

@@ -102,7 +102,7 @@ As shown in the example above, to make the secondary camera render its output in
 `canvas` HTML element we used the `camrender` component.
 Check [its complete code](https://github.com/jgbarah/aframe-playground/blob/master/camrenderer-01/camrender.js),
 it is not that difficult to understand if you have read about
-[components in the AFrame documentation](https://aframe.io/docs/0.8.0/core/component.html).
+[components in the AFrame documentation](https://aframe.io/docs/1.2.0/core/component.html).
 The code is a copy, with slight modifications, of the one shown in
 [How to use cameras output as a texture in AFrame](https://wirewhiz.com/how-to-use-a-cameras-output-as-a-texture-in-aframe/)
 Let's visit some parts of this code.

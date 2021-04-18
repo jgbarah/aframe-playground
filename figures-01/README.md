@@ -52,6 +52,10 @@ $ python3 -m http.server
 You can also
 [directly check the scene in your browser](first.html),
 as the files are served by GitHub.
+See more options for how to browse all the demos in this
+playground in [Setting up the environment](../environment.md).
+
+
 You can use arrow keys or WASD keys and the mouse
 (click and drag),
 to move the camera when not in VR mode.

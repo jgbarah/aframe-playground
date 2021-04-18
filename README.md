@@ -12,7 +12,7 @@ But keep in mind that it is just a simple guide,
 to start with A-frame from scratch.
 
 I started with version 0.6.1, which was current when I started
-my learning process, but now all should be updated to using 0.9.2.
+my learning process, but now all should be updated to using 1.2.0.
 
 Now, the notes:
 

@@ -16,6 +16,7 @@ my learning process, but now all should be updated to using 0.9.2.
 
 Now, the notes:
 
+* environment: [Setting up an environment for running demos](environment.md)
 * figures-01: [First steps in creating an A-frame scene](figures-01/README.md)
 * pictures-01: [Some pictures around](pictures-01/README.md)
 * figures-04: [Adding complex 3D objects](figures-04/README.md)

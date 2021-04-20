@@ -90,4 +90,4 @@ An animation just completes the entity, making it rotate.
 
 ### Results
 
-Check the resulting [virtual reality scene](web/index.html).
+Check the resulting [virtual reality scene](figures.html).

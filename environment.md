@@ -41,6 +41,8 @@ by clicking "Show".
 but you don't need to open an account. If you do, you can also
 organize your projects (as you can in Glitch).
 
+* [CodePen](https://codepen.io). Similar to Glitch and JSFiddle.
+
 ### Using your own HTTP / HTTPS server
 
 There are many (simple) options to serve a directory in your

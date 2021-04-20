@@ -40,32 +40,32 @@ figures-01
 ```
 
 To see our scene in the browser, the A-frame documentation recommends
-serving these files via a web server.
-You can easily do that using
-the one line python web server, run in the root of the hierarchy above
+serving these files via a web server. See [Setting up the environment](../environment.md)
+for details, but if you have Python 3 installed,
+you can easily serve the file via a web server
+running,  in the root of the hierarchy above
 (which is the root of this git repository, too):
 
 ```
 $ python3 -m http.server
 ```
 
-You can also
+You can also use web services such as [Glitch](glitch.com/) or
+[JSFiddle](https://jsfiddle.net/).
+Finally, you can also
 [directly check the scene in your browser](first.html),
-as the files are served by GitHub.
-See more options for how to browse all the demos in this
-playground in [Setting up the environment](../environment.md).
+as the files are served by [GitHub.io](https://github.io) web server.
 
-
-You can use arrow keys or WASD keys and the mouse
-(click and drag),
-to move the camera when not in VR mode.
+If you watch the scene in a desktop browser,
+you can use arrow keys or WASD keys and the mouse
+(click and drag), to move the camera around.
 You can also check it with VR,
 for example with a mobile phone in a
 [Google cardboard device](https://vr.google.com/cardboard/)
 with Oculus Go or with Oculus Quest.
+In VR devices where you can move around, you can just move around in the scene.
 
-Just in case you cannot see it with your browser,
-as loaded, the scene is:
+In any case, you will see something similar to:
 
 ![First scene as loaded](../screenshots/01-first-1.png)
 
@@ -119,10 +119,11 @@ It follows some of the aspects introduced in the guide
 
 The sphere now has a 360 image projected on it.
 The box is animated, by adding a component specifying the animation.
-And there are a couple lights.
+And there are a couple lights, and a colored background.
+
 A more subtle, but important change, is that now it uses assets.
 the `assets` element allow for the download of the different assets
-(in this case, images) without interfering with the main scene,
+(in this case, images) without interfering with the main scene
 which uses them.
 
 [Check the actual scene in your browser](second.html).

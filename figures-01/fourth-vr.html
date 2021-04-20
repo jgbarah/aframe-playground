@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
 <!--    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
     <script src="../assets/js/aframe.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene background="color: grey">
       <a-assets>
         <img id="molinos" src="../assets/imgs/molinos-bw.jpg">
         <img id="soil" src="../assets/imgs/soil.jpg">
@@ -30,14 +31,13 @@
         font="./assets/Roboto-msdf.json"
         text="value: This is another test"></a-entity>
 
-      <a-sky color="grey"></a-sky>
-
       <a-light type="ambient" color="grey"></a-light>
       <a-light type="point" intensity="2" position="-2 2 4"></a-light>
 
-      <a-entity position="-3 1 1" rotation="0 -25 0">
-        <a-camera cursor="rayOrigin:mouse">
-        </a-camera>
+      <a-entity movement-controls="fly: true" position="-3 1 1" rotation="0 -25 0">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
       </a-entity>
 
     </a-scene>

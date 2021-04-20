@@ -185,6 +185,51 @@ See more about this in the
 
 [Check the actual scene in your browser](fourth.html).
 
+### Fourth version, for augmented reality
+
+In a mobile device, or a real AR device, this scene can be presented within
+the real world. For that, we need to remove the background, and little else:
+just launch in the browser in your mobile phone, and click on the AR icon.
+
+[Check the scene, prepared for AR, in your mobile browser](fourth-ar.html).
+
+### Fourth version with mouse as pointer
+
+Instead of using the gaze as pointer, we can also use the mouse.
+For that, we only need to add the proper property (`rayOrigin`) to the coursor:
+
+```html
+      <a-entity position="-3 1 1" rotation="0 -25 0">
+        <a-camera cursor="rayOrigin:mouse">
+        </a-camera>
+      </a-entity>
+```
+
+[Check the scene in your browser](fourth-mouse.html).
+
+### Fourth version ready for VR devices
+
+For properly working in VR devices, we want to add movement controls
+(the `movement-controls` component,
+from [A-Frame Extras](https://www.npmjs.com/package/aframe-extras)),
+look controls, and laser controls (using the corresponding A-Frame
+components):
+
+```html
+      <a-entity movement-controls="fly: true" position="-3 1 1" rotation="0 -25 0">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
+      </a-entity>
+```
+
+**Note:** For A-Frame Extras to work, you need a line specifying the
+corresponding script, in the head of the HTML document, after the
+A-Frame script is added.
+
+[Check the scene in your VR device](fourth-vr.html).
+
+
 ### Fifth version, playing with entities
 
 In this version,

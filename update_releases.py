@@ -11,7 +11,11 @@ substs_html = [
     {'regex': re.compile(r"//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v\d+.\d+.\d+/dist/aframe-extras.min.js"),
      'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"},
     {'regex': re.compile(r"//cdn.rawgit.com/donmccurdy/aframe-extras/v\d+.\d+.\d+/dist/aframe-extras.min.js"),
-     'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"}
+     'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"},
+    {'regex': re.compile(r"//cdn.rawgit.com/donmccurdy/aframe-physics-system/v\d+.\d+.\d+/dist/aframe-physics-system.min.js"),
+     'new': "//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"},
+    {'regex': re.compile(r"//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v\d+.\d+.\d+/dist/aframe-physics-system.min.js"),
+     'new': "//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"}
     ]
 
 substs_md = [

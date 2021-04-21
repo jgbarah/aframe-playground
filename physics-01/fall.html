@@ -11,21 +11,25 @@
 <html>
   <head>
     <script src="//aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
-    <a-scene physics="debug: true">
+    <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
       <!-- Camera -->
         <a-entity camera position="0 1.6 5" look-controls wasd-controls></a-entity>
       <!-- Static floor -->
-      <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="8" height="8"
-               color="yellow"></a-plane>
+      <a-plane ammo-body="type: static" ammo-shape="type: box"
+          position="0 0 -4" rotation="-90 0 0" width="8" height="8"
+          color="yellow"></a-plane>
       <!-- Dynamic box -->
-      <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
-                color="red"></a-box>
+      <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+          position="0 4 -2" width="3" height="2" depth="1"
+          color="red"></a-box>
       <!-- Dynamic box -->
-      <a-box dynamic-body position="2 10 0" width="1" height="1" depth="1"
-              color="blue"></a-box>
+      <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+          position="2 10 0" width="1" height="1" depth="1"
+          color="blue"></a-box>
 
     </a-scene>
 

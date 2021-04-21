@@ -12,13 +12,24 @@ But keep in mind that it is just a simple guide,
 to start with A-frame from scratch.
 
 I started with version 0.6.1, which was current when I started
-my learning process, but now all should be updated to using 1.2.0.
+my learning process, but (if there is no mistake)
+everything is updated to using 1.2.0.
 
-Now, the notes:
 
-* environment: [Setting up an environment for running demos](environment.md)
-* figures-01: [First steps in creating an A-frame scene](figures-01/README.md)
-* pictures-01: [Some pictures around](pictures-01/README.md)
+* [Setting up an environment for running demos](environment.md)
+
+* [First steps in creating an A-frame scene](figures-01/README.md).
+  Let's build some simple scenes, based on the [first scene introduced
+  by the A-Frame docuentation](https://aframe.io/docs/1.2.0/introduction/#getting-started).
+  Geometric bodies, simple textures, some lights, some minimal interaction
+  with the scene...
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/figures-01)]
+
+* [Some pictures around](pictures-01/README.md).
+  Simple scene showing how to set up several pictures around you, that can be
+  used to decorate a real room, when using augmented reality.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/pictures-01)]
+
 * figures-04: [Adding complex 3D objects](figures-04/README.md)
 * moving-01: [Adding 3D objects with animations](moving-01/README.md)
 * data-01: [Visualizing data](data-01/README.md)

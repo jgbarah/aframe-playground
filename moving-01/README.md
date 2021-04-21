@@ -105,3 +105,12 @@ This final touch was directly inspired by
 ### Results
 
 Check the resulting [virtual reality scene](figures.html).
+
+### To probe further
+
+There is a nice demo of how to build a GLTF model viewer with A-Frame,
+the [A-Frame Showcase Model Viewer](https://aframe.io/aframe/examples/showcase/model-viewer/).
+It works with desktop, mobile, and VR devices. In some devices supporting
+Android ARCore you can also see the model in AR (tested with Chrome on Android).
+
+The [source code for this demo is available in Glitch](https://glitch.com/edit/#!/aframe-model-viewer?path=model-viewer.js).

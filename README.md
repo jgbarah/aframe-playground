@@ -30,8 +30,16 @@ everything is updated to using 1.2.0.
   used to decorate a real room, when using augmented reality.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/pictures-01)]
 
-* figures-04: [Adding complex 3D objects](figures-04/README.md)
-* moving-01: [Adding 3D objects with animations](moving-01/README.md)
+* [Adding complex 3D objects](figures-04/README.md).
+  3D objects in various formates can be easily included in the scene.
+  Let's see how to add OBJ and GLTF objects in a simple scene.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/figures-04)]
+
+* [Adding 3D objects with animations](moving-01/README.md)
+  3D objects in GLTF format may encode animations. It is easy to have those
+  objects animated in our scene.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/moving-01)]
+
 * data-01: [Visualizing data](data-01/README.md)
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- Selection in desktop and Oculus Go
+<!-- Selection in desktop and Oculus Go, Rift, Quest 1, Quest 2
   When in desktop:
    Click, mouseenter and mouseleave on objects with the corresponding
    animations, activated with the desktop mouse.
    Thanks to 'cursor="rayOrigin:mouse"' in the scene.
-  When in Oculus Go:
+  When in Oculus:
    Click, mouseenter and mouseleave on objects with the corresponding
    animations, activated with the ray controlled with the Go control
    (using the trigger to activate "click").
@@ -13,22 +13,26 @@
 
 <html>
   <head>
-    <script src="https://rawgit.com/aframevr/aframe/cf15c15/dist/aframe-master.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
 
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow>
-        <a-animation begin="click" attribute="position"
-                     from="-1 1.5 -3" to="-1 0.5 -3" dur="1000"></a-animation>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow
+        animation="startEvents: click; property: position;
+          from: -1 1.5 -3; to: -1 0.5 -3 dur: 1000">
       </a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow>
-        <a-animation begin="click" attribute="scale" from="2 2 2" to="1 1 1" dur="1000"></a-animation>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+        animation="startEvents: click; property: scale;
+          from: 2 2 2; to: 1 1 1; dur: 1000">
       </a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow>
-        <a-animation begin="mouseenter" attribute="scale" to="2 2 2" dur="1000"></a-animation>
-        <a-animation begin="mouseleave" attribute="scale" to="1 1 1" dur="1000"></a-animation>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow
+        animation__enter="startEvents: mouseenter; property: scale;
+          to: 2 2 2; dur: 1000"
+        animation__leave="startEvents: mouseleave; property: scale;
+          to: 1 1 1; dur: 1000">
       </a-cylinder>
+
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
       <a-sky color="#ECECEC"></a-sky>
 

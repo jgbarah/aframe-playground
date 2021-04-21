@@ -15,16 +15,8 @@ build web front-end applications.
 ### Raising events with the mouse
 
 When we're in desktop, we can raise events in objects with the mouse.
-For that, we need a `cursor` element in the scene.
-We can include it as an argument to the scene:
-
-```html
-<a-scene cursor="rayOrigin:mouse">
-...
-</a-scene>
-```
-
-Or, maybe more convenientely, include it as an element within the scene
+For that, we need a `cursor` element in the scene,
+as an element within the scene
 (this is how we will include in the following examples):
 
 ```html
@@ -33,21 +25,22 @@ Or, maybe more convenientely, include it as an element within the scene
 </a-scene>
 ```
 
-The cursor is basically defining a ray, that may "touch"
+The cursor is basically defining a ray, which may "touch"
 some object, selecting it. Since for now we're using it with a mouse,
 we want the ray to come "from the object to where the mouse points".
 This is what `rayOrigin:mouse` does.
 
 To find out that we're actually selecting objects, and raising event in them,
 we need to define some handler for those events in the objects themselves.
-We can for example use some [animation](https://aframe.io/docs/master/components/animation.html).
-This will make the box "jump" when we click on it
+We can for example use the
+[animation component](https://aframe.io/docs/1.2.0/components/animation.html):
+this will make the box "jump" when we click on it
 
 ```html
-<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow>
-  <a-animation begin="click" attribute="position"
-               from="-1 1.5 -3" to="-1 0.5 -3" dur="1000"></a-animation>
-</a-box>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow
+        animation="startEvents: click; property: position;
+          from: -1 1.5 -3; to: -1 0.5 -3 dur: 1000">
+      </a-box>
 ```
 
 That is: when the "click" event is detected in this object,
@@ -59,14 +52,17 @@ and a cylinder grow when mouse enters it, and come back to its original size
 when muse leaves.
 
 ```html
-<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow>
-  <a-animation begin="click" attribute="scale" from="2 2 2" to="1 1 1" dur="1000"></a-animation>
-</a-sphere>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+        animation="startEvents: click; property: scale;
+          from: 2 2 2; to: 1 1 1; dur: 1000">
+      </a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow
+        animation__enter="startEvents: mouseenter; property: scale;
+          to: 2 2 2; dur: 1000"
+        animation__leave="startEvents: mouseleave; property: scale;
+          to: 1 1 1; dur: 1000">
+      </a-cylinder>
 
-<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow>
-  <a-animation begin="mouseenter" attribute="scale" to="2 2 2" dur="1000"></a-animation>
-  <a-animation begin="mouseleave" attribute="scale" to="1 1 1" dur="1000"></a-animation>
-</a-cylinder>
 ```
 
 Watch [this scene in your browser](selection-mouse.html),

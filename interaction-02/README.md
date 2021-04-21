@@ -72,33 +72,33 @@ The final result is like this:
 
 ![Selecting elements with the mouse](aframe-selection-mouse.gif)
 
-### Supporting Oculus Go control
+### Supporting Oculus controls
 
-Support of the Oculus Go control in AFrame comes via the
-[oculus-go-controls component](https://aframe.io/docs/master/components/oculus-go-controls.html),
-Currently (December 2018) it is not supported by the latest release
-of Aframe (0.8.2), so we need to use a development version.
-For that, I will use a fixed commit, just to avoid regressions,
-at least until a new version of AFrame is released.
-So, instead of the usual line we're using to include AFrame 0.8.2
-in all our HTML pages, we will use the following one:
+Support of the Oculus controls in AFrame comes via
+two components: 
+[oculus-go-controls](https://aframe.io/docs/1.2.0/components/oculus-go-controls.html)
+for Oculus Go, and
+[oculus-touch-controls](https://aframe.io/docs/1.2.0/components/oculus-touch-controls.html)
+for Rift, Rift S, Oculus Quest 1 and 2. There are components
+for other devices (MagicLeap, Gear, etc).
+They will handle events from the corresponding controls, if present
+(so, we can add all of them to the scene, and only those that are present will work).
 
-```html
-<script src="https://rawgit.com/aframevr/aframe/cf15c15/dist/aframe-master.min.js"></script>
-```
-
-In addition to this, we need to include an AFrame component in the scene to deal
+We're not going to use these controls directly, but by the intermediation of
+a more abstract component:
+[laser-controls](https://aframe.io/docs/1.2.0/components/laser-controls.html).
+It sits on top of the available controls, and deals
 with the raytracing to selecting an object:
 
 ```html
 <a-entity laser-controls="hand: right"></a-entity>
 ```
 
-And that's all we need. The rest of the scene is exactly the same we had.
+That's all we need. The rest of the scene is exactly the same we had.
 If we don't remove from it the `cursor` component, it will also work
 in desktop, exactly the way it worked.
 
-It is important to notice that, in Oculus Go, movement won't work,
+It is important to notice that, in Oculus, movement won't work,
 since we have not included the `movement-controls` component we used when
 we added that capability.
 

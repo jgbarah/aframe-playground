@@ -40,12 +40,23 @@ everything is updated to using 1.2.0.
   objects animated in our scene.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/moving-01)]
 
+* [Learning to move](interaction-01/README.md).
+  Moving around in the scene involves having a camera.
+  But when we include it, we lose the "default" one that A-Frame injected
+  for us. Let's learn how to have a camera and explicit movement controls
+  that work in different devices.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/interaction-01)]
+
+* [Selecting objects](interaction-02/README.md)
+  We can also interact with the scene causing some events to fire,
+  and changing properties of the different objects in the scene when
+  they are fired.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/interaction-02)]
+  
 * data-01: [Visualizing data](data-01/README.md)
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)
 * data-04: [Visualizing data (JSON documents)](data-04/README.md)
-* interaction-01: [Learning to move](interaction-01/README.md)
-* interaction-02: [Selecting objects](interaction-02/README.md)
 * physics-01: [Adding some physics](physics-01/README.md)
 * physics-02: [A camara respecting (some) physics](physics-02/README.md)
 * camrender-01: [Cameras and screens](camrender-01/README.md)

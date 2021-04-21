@@ -9,12 +9,18 @@ substs_html = [
     {'regex': re.compile(r"//aframe.io/releases/\d+.\d+.\d+/aframe.min.js"),
      'new': "//aframe.io/releases/1.2.0/aframe.min.js"},
     {'regex': re.compile(r"//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v\d+.\d+.\d+/dist/aframe-extras.min.js"),
+     'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"},
+    {'regex': re.compile(r"//cdn.rawgit.com/donmccurdy/aframe-extras/v\d+.\d+.\d+/dist/aframe-extras.min.js"),
      'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"}
     ]
 
 substs_md = [
     {'regex': re.compile(r"//aframe.io/docs/\d+.\d+.\d+/"),
-     'new': "//aframe.io/docs/1.2.0/"}
+     'new': "//aframe.io/docs/1.2.0/"},
+    {'regex': re.compile(r"//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v\d+.\d+.\d+/dist/aframe-extras.min.js"),
+     'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"},
+    {'regex': re.compile(r"//cdn.rawgit.com/donmccurdy/aframe-extras/v\d+.\d+.\d+/dist/aframe-extras.min.js"),
+     'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"}
 ]
 
 def update_file(substs, filename):

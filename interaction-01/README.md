@@ -132,7 +132,7 @@ so I'm using the
 for getting the `movement-controls` component.
 
 ```
-<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 ```
 
 So, I  build the scene using that component, instead of `a-camera`:

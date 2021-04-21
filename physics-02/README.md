@@ -30,7 +30,7 @@ So, the JavaScript modules included in the `head` of our HTML file will be like 
 ```html
 <script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
 <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
-<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 ```
 
 The rest, is adding the rig to the camera:

@@ -2,7 +2,7 @@
 
 * js:
   - aframe.min.js: https://aframe.io/releases/0.9.2/aframe.min.js
-  - aframe-extras.min.js: https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js
+  - aframe-extras.min.js: https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js
 
 * imgs: Several images
 

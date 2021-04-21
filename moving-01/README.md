@@ -44,7 +44,7 @@ from [aframe-extras](https://github.com/donmccurdy/aframe-extras/).
 We will need to load the library:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"</script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"</script>
 ```
 
 Finally, we only need to use the parameter `animation-mixer`

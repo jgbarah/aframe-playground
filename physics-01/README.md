@@ -10,7 +10,14 @@ physical bodies: falling with gravity, bouncing when interacting with elastic bo
 behaving to push as if bodies had mass, etc.
 
 For all of this, we can use the [aframe-physics-system](https://github.com/donmccurdy/aframe-physics-system/)
-module, which uses [Cannon.js](http://www.cannonjs.org/) behind the scenes.
+module, using [Ammo.js](https://github.com/kripken/ammo.js/) behind the scenes.
+
+**Note:** As of A-Frame 1.2.0, the Cannon.js backend is not working with aframe-physics-system.
+Thus, all the demos in this playground are working with the Ammo.js backend.
+Check detailed instructions
+about how to configure aframe-physics-system for working with Ammo.js in the
+[Ammo driver documentation](https://github.com/n5ro/aframe-physics-system/blob/master/AmmoDriver.md#basics). Have in mind also that the Cannon.js backend may be deprecated in
+the future, according to aframe-physics-system documentation.
 
 ### Falling boxes
 
@@ -19,24 +26,31 @@ and let physics control their behaviour.
 For example, if you place a box in the scene, and there is gravity,
 it will just fall down until something stops it (it that ever happens).
 
-The basic components introduced by this physics module are:
+The basic components introduced by this physics module (using the Ammo.js backend) are:
 
-* `static-body` defines an object placed in some place, which will remain static
-whatever happen to it (it is not affected by gravity, nor by other bodies colliding with it),
-The second
+* `ammo-body`: adds "body physics" to an entity. The entity will have its
+  own geometry, and this component will add a physics behaviour, depending
+  on its type (a property of `ammo-body`). Main types are `static`
+  (a body which will remain static whatever happen to it:
+  it is not affected by gravity, nor by other bodies colliding with it),
+  and `dynamic` (a body subject to gravity, or to other bodies
+  colliding with it).
 
-* `dynamic-body` defines an object subject to gravity, or to other bodies
-colliding with it.
+* `ammo-shape`: the shape of the collision shape that will "surround"
+  the body. Usual shapes (specified as properties of the component) are
+  `box` or `sphere`, although more complex collision shapes are possible.
 
 Let's try them, by defining a simple scena with a static plane,
 and two dynamic boxes over it.
 
-First, in the `head` element of the HTML page, we include the physics module:
+First, in the `head` element of the HTML page, we include the physics module,
+and the ammo.js module, needed for it to work:
 
 ```html
 <head>
   ...
-  <script src="http://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+  <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+  <script src="http://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
 </head>
 ```
 
@@ -44,14 +58,17 @@ Then, let's define the scene (not the `physics` property in the `scene` element,
 so that the scene is subject to physics):
 
 ```html
-<a-scene physics="debug: true">
+<a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
   <a-entity camera position="0 1.6 5" look-controls wasd-controls></a-entity>
-  <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="8" height="8"
-           color="yellow"></a-plane>
-  <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
-         color="red"></a-box>
-  <a-box dynamic-body position="2 10 0" width="1" height="1" depth="1"
-         color="blue"></a-box>
+  <a-plane ammo-body="type: static" ammo-shape="type: box"
+      position="0 0 -4" rotation="-90 0 0" width="8" height="8"
+      color="yellow"></a-plane>
+  <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+      position="0 4 -2" width="3" height="2" depth="1"
+      color="red"></a-box>
+  <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+      position="2 10 0" width="1" height="1" depth="1"
+      color="blue"></a-box>
 </a-scene>
 ```
 
@@ -84,13 +101,13 @@ The new component is defined below:
 <script>
   AFRAME.registerComponent('push', {
     init: function() {
-      var self = this;
-      this.el.addEventListener("collide", function () {
-        var force = new CANNON.Vec3(4, 0, 0)
-        var local = new CANNON.Vec3(0, 0, 0)
-        var worldVelocity = self.el.body.quaternion.vmult(force);
-        self.el.body.applyImpulse(worldVelocity, local);
-        console.log(self.el.body.velocity);
+          var el = this.el;
+          el.addEventListener("collidestart", function () {
+            const impulse = new Ammo.btVector3(1.4, 1, 0);
+            const pos = new Ammo.btVector3(0, 0, 0);
+            el.body.applyImpulse(impulse, pos);
+            Ammo.destroy(impulse);
+            Ammo.destroy(pos);
       });
     }
   });
@@ -98,12 +115,17 @@ The new component is defined below:
 ```
 
 We only needed to define a `init` function for the component,
-which sets a handler for the `collide` event, which is fired by the 
+which sets a handler for the `collidestart` event, which is fired by the 
 physics system when bodies collide.
 When this happens, the handler (second argument to `addEventListener`)
-will use `CANNON` primitives to set the impulse,
-and then the velocity is logged in console, to check for the change
-that this impulse should have caused.
+will use `Ammo` primitives to set the impulse.
+
+Note that for the `collidestart` event to be fired,
+the property `emitCollisionEvents` of the body has to be set to true:
+
+```html
+  ammo-body="type: dynamic; emitCollisionEvents: true;"
+```
 
 To show this new component, we define a scene with a static plane,
 to "regular" dynamic boxes falling on it, and one dynamic box
@@ -111,16 +133,21 @@ to "regular" dynamic boxes falling on it, and one dynamic box
 every time it collides with the plane:
 
 ```html
-<a-scene physics="debug: true">
+<a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
   <a-entity camera position="0 1.6 5" look-controls wasd-controls></a-entity>
-  <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="16" height="12"
-           color="yellow"></a-plane>
-  <a-box dynamic-body position="0 4 -2" width="3" height="2" depth="1"
-         color="red"></a-box>
-  <a-box dynamic-body position="2 10 0" width="1" height="1" depth="1"
-         color="blue"></a-box>
-  <a-entity geometry="primitive: box" push dynamic-body position="-3 4 -2" width="1" height="1" depth="1"
-            material="color: green"></a-entity>
+  <a-plane ammo-body="type: static" ammo-shape="type: box"
+      position="0 0 -4" rotation="-90 0 0" width="16" height="12"
+      color="yellow"></a-plane>
+  <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+      position="0 4 -2" width="3" height="2" depth="1"
+      color="red"></a-box>
+  <a-box ammo-body="type: dynamic" ammo-shape="type: box"
+      position="2 10 0" width="1" height="1" depth="1"
+      color="blue"></a-box>
+  <a-entity geometry="primitive: box" push
+      ammo-body="type: dynamic; emitCollisionEvents: true;" ammo-shape="type: box"
+      position="-3 4 -2" width="1" height="1" depth="1"
+      material="color: green"></a-entity>
 </a-scene>
 ```
 

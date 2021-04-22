@@ -28,8 +28,8 @@ Since 'kinematics-body' builds on a component defined in
 So, the JavaScript modules included in the `head` of our HTML file will be like this:
 
 ```html
-<script src="//aframe.io/releases/0.8.2/aframe.min.js"></script>
-<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+<script src="//aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
 <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 ```
 

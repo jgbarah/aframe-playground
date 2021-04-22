@@ -72,7 +72,7 @@ The final result is like this:
 
 ![Selecting elements with the mouse](aframe-selection-mouse.gif)
 
-### Supporting Oculus controls
+### Supporting controls of VR devices
 
 Support of the Oculus controls in AFrame comes via
 two components: 
@@ -105,13 +105,13 @@ we added that capability.
 Watch [the resulting scene in your browser](selection.html),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/interaction-02/selection.html)
 
-### Adding camera movement in Oculus Go
+### Adding camera movement in VR devices
 
 As we already did when [adding camera movement](../interaction-01/README.md)
-for the Oculus Go, we need a `movement-controls` component
-(provided by the [AFrame Extras library](https://github.com/donmccurdy/aframe-extras)),
+for VR devices, we need a `movement-controls` component
+(provided by the [A-Frame Extras library](https://github.com/donmccurdy/aframe-extras)),
 to use the touchpad in the Go control.
-See the previous section for learning how to include AFrame Extras,
+See the previous section for learning how to include A-Frame Extras,
 and then include the following elements (note that `cursor` and 
 `laser-controls`, that we already had are now within `movement-controls`):
 
@@ -123,7 +123,7 @@ and then include the following elements (note that `cursor` and
 </a-entity>
 ```
 
-In this code, `movement-controls` adds the capabilities to move in Oculus Go and other devices,
+In this code, `movement-controls` adds the capabilities to move in several VR devices,
 `camera` adds the camera with `look-controls` (`wasd-controls` is pulled in by `movement-controls`,
 so we don't need to include it to move with arrow or WASD keys in desktop).
 Finally, `cursor` and `laser-controls` work as we described above.
@@ -134,14 +134,14 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 ### Now, with event handlers
 
 We can write our own JavaScript event handlers, instead of relying
-on what AFrame components provide. This is for sure much more flexible,
+on what A-Frame components provide. This is for sure much more flexible,
 since we will program any behavior we may want, but requires writing some
 JaveScript code, instead of just dealing with HTML.
 
-In this case, we will write our own AFrame component
+In this case, we will write our own A-Frame component
 that behaves as we want, when it receives `click`, `mouseenter`, or
 `mouseleave` events. For details on how to write a component,
-read [Writing a component](https://aframe.io/docs/master/introduction/writing-a-component.html)
+read [Writing a component](https://aframe.io/docs/1.2.0/introduction/writing-a-component.html)
 in the AFrame documentation.
 In our case, we will focus on explaining how the event handlers
 are installed by the initialization module of our component,

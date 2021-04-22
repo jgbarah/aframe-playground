@@ -81,7 +81,7 @@ Notice that the file `aframe.min.js` is included in the repository
 for your convenience.
 It is just a copy of the minified A-frame library,
 in my case
-[aframe.min.js version 0.8.2](https://aframe.io/releases/0.8.2/aframe.min.js).
+[aframe.min.js version 0.8.2](https://aframe.io/releases/1.2.0/aframe.min.js).
 
 You can check other ways of installing A-frame in the
 [A-frame installation instructions](https://aframe.io/docs/1.2.0/introduction/installation.html).

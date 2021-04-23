@@ -171,29 +171,38 @@ For that, it is enough to make its mass equal to 0.
 The element will be like this:
 
 ```html
-<a-sphere explode dynamic-body="mass: 0" position="-6 2 -2" velocity="1 0 0" radius="1"
+<a-sphere explode ammo-body="type: kinematic; emitCollisionEvents: true;"
+          ammo-shape="type: sphere"
+          position="-6 2 -2" velocity="1 0 0" radius="1"
           color="blue"></a-sphere>
 ```
 
 As seen, velocity is expressed using the `velocity` component.
+For this component to work, we use `kinematic` as the type of
+body. Kinematic bodies are not subject to the physical rules
+of movement, but to the movement we specify (in this case, via
+the `velocity` component). Thus, it will not be affected by
+gravity (but it will still collide with other bodies).
+
 We also use the `explode` component, which we defined earlier,
 in the `head` element of the HTML page:
 
-```html
-<script>
+```js
 AFRAME.registerComponent('explode', {
-    init: function() {
-      var self = this;
-      this.el.addEventListener("collide", function () {
-        self.el.parentElement.removeChild(self.el)
-      });
-    }
-  });
-</script>
+  init: function() {
+    var el = this.el;
+    el.addEventListener("collidestart", function () {
+      el.parentElement.removeChild(el)
+    });
+  }
+});
 ```
 
-This component will add a listener for the `collide` event,
+This component will add a listener for the `collidestart` event,
 which will remove the element from the page.
+
+Finally, we add a new box to the right, so it is more likely that the
+sphere has something to collide with.
 
 Watch [this scene in your browser](velocity.html),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/physics-01/velocity.html)

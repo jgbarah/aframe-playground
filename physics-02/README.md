@@ -14,35 +14,22 @@ and it is better to use teleports or meshes for moving around.
 But still I find it very convenient for some cases, such as
 first person games. Consider moving around in a maze, for example.
 
-### Using kinematic-body
+### Using kinematic bodies
 
-Fortunately, there is a component just for this.
-The [kinematic-body](https://github.com/donmccurdy/aframe-extras/blob/master/src/misc/kinematic-body.js)
-component of [AFrame Extras](https://github.com/donmccurdy/aframe-extras)
-is designed to act as a "rig" for a camera. Unfortunately, it is deprecated,
-but [more on that below](#deprecation).
-
-Since 'kinematics-body' builds on a component defined in
-[AFrame Physics System](https://github.com/donmccurdy/aframe-physics-system/)
-(`velocity`), we need to also includ it.
-So, the JavaScript modules included in the `head` of our HTML file will be like this:
+We can use a kinematic body, from `aframe-physics-system` (Ammo backend),
+connected to a rig with the camera. We will also use `movement-controls`
+from `aframe-extras` to move the camera around, as we already did in
+some previos demos.
 
 ```html
-<script src="//aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-```
-
-The rest, is adding the rig to the camera:
-
-```html
-<a-entity kinematic-body="radius: 0.8" movement-controls="fly: false" position="0 0 5" look-controls>
+<a-entity movement-controls="fly: false" position="0 0 5" look-controls>
   <a-entity camera position="0 1.6 0" ></a-entity>
-  <a-cylinder height="2" radius="0.8" color="green"></a-box>
+  <!-- Cylinder to give an idea of the "size" of the camera rig -->
+  <a-cylinder ammo-body="type: kinematic" ammo-shape="type: cylinder"
+      height="2" radius="0.8" color="green"></a-box>
 </a-entity>
 ```
 
-The `radius` parameter to `kinematic-body` is the radius of the sphere using to detect collision.
 I've set `fly:false` for `movement-controls` to simulate better
 a land vehicule (or a person walking), but that's not really needed.
 Since `camera` is now in a child entity of the rig, its position is relative to it.
@@ -51,8 +38,7 @@ when the scene loads, at  "X=0, Y=1.6, Z=5". When the rig moves,
 the camera will move with it.
 
 I've added also a cylinder as a child of the rig, just to approximately show
-the radius of collision. A sphere would be a better representation, but in this
-specific case, the cylinder seems to be easier to see from the camera.
+the radius of collision.
 
 Watch [this scene in your browser](camera.html),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/physics-02/camera.html)

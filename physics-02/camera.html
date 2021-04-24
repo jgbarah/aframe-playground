@@ -14,6 +14,30 @@
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('collision-wire', {
+        schema: {
+          element: {type: 'string'}
+        },
+        init: function() {
+          let el = this.el;
+          let element = this.data.element;
+
+          el.addEventListener("collidestart", function (event) {
+            if ( event.detail.targetEl.id === element) {
+              el.setAttribute('material', {'wireframe': true});
+            };
+          });
+          el.addEventListener("collideend", function (event) {
+            if ( event.detail.targetEl.id === element) {
+              el.setAttribute('material', {'wireframe': false});
+            };
+          });
+        }
+      });
+    </script>
+  </head>
   <body>
     <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
       <!-- Static floor -->
@@ -21,7 +45,9 @@
           position="0 0 -4" rotation="-90 0 0" width="8" height="20"
           color="yellow"></a-plane>
       <!-- Static cylinder -->
-      <a-cylinder ammo-body="type: static" ammo-shape="type: box"
+      <a-cylinder ammo-body="type: static; emitCollisionEvents: true;"
+          ammo-shape="type: cylinder"
+          collision-wire="element: cam"
           position="0 1 -1" radius="1" height="3"
           color="orange"></a-cylinder>
       <!-- Dynamic box -->
@@ -37,8 +63,8 @@
       <a-entity movement-controls="fly: false" position="0 0 5" look-controls>
         <a-entity camera position="0 1.6 0" ></a-entity>
         <!-- Cylinder to give an idea of the "size" of the camera rig -->
-        <a-cylinder ammo-body="type: kinematic" ammo-shape="type: cylinder"
-            height="2" radius="0.8" color="green"></a-box>
+        <a-cylinder id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder"
+            height="2" radius="0.8" color="green"></a-cylinder>
       </a-entity>
 
     </a-scene>

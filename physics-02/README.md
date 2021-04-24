@@ -5,9 +5,13 @@
 
 When living in a world with physics, we may want the camera to
 respect it, but only in part. I still want the camera reacting to
-arrow keys (in desktop) or to the touchpad (in Oculus Go) for moving around.
+arrow keys (in desktop) or to the virtual device control for moving around.
 But I want it to collide with objects, so that it doesn't move through them.
-I also want the camera to be subject to gravity, if there is gravity in the scene.
+However, in the case of static bodies, instead of "not moving through them",
+I will make them to show a wireframe. The idea is that when you're moving
+around in VR, the devide cannot stop you from "entering" a static body
+in the scene. Therefore, the way of showing you are doing something
+that doesn't match the physics of VR, is to show the wireframe.
 
 *Note: * In many cases, moving the camera with the keys or touchpad is not a good idea,
 and it is better to use teleports or meshes for moving around.
@@ -25,8 +29,8 @@ some previos demos.
 <a-entity movement-controls="fly: false" position="0 0 5" look-controls>
   <a-entity camera position="0 1.6 0" ></a-entity>
   <!-- Cylinder to give an idea of the "size" of the camera rig -->
-  <a-cylinder ammo-body="type: kinematic" ammo-shape="type: cylinder"
-      height="2" radius="0.8" color="green"></a-box>
+  <a-cylinder id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder"
+      height="2" radius="0.8" color="green"></a-cylinder>
 </a-entity>
 ```
 
@@ -37,8 +41,48 @@ Therefore, seting it to "X=0, Y=1.6, Z=0" will really position it,
 when the scene loads, at  "X=0, Y=1.6, Z=5". When the rig moves,
 the camera will move with it.
 
-I've added also a cylinder as a child of the rig, just to approximately show
-the radius of collision.
+I've added also a cylinder as a child of the rig, as a collider to
+push or interact with other bodies in the scene.
+
+I've also added a new component, in a script element in the header.
+This component, `collision-wire` is used to show a wireframe on it
+when the camera collides with it (see previous discussion on what do
+with static bodies). This component is set on the static cylinder in
+the scene. The code for the component is as follows:
+
+```js
+AFRAME.registerComponent('collision-wire', {
+  schema: {
+    element: {type: 'string'}
+  },
+  init: function() {
+    let el = this.el;
+    let element = this.data.element;
+
+    el.addEventListener("collidestart", function (event) {
+      if ( event.detail.targetEl.id === element) {
+        el.setAttribute('material', {'wireframe': true});
+      };
+    });
+    el.addEventListener("collideend", function (event) {
+      if ( event.detail.targetEl.id === element) {
+        el.setAttribute('material', {'wireframe': false});
+      };
+    });
+  }
+});
+```
+
+The element installs event listeners for `collidestart` and `collideend`,
+and thus we also need to enable events for the element:
+
+```html
+<a-cylinder ammo-body="type: static; emitCollisionEvents: true;"
+    ammo-shape="type: cylinder"
+    collision-wire="element: cam"
+    position="0 1 -1" radius="1" height="3"
+    color="orange"></a-cylinder>
+```
 
 Watch [this scene in your browser](camera.html),
 or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/physics-02/camera.html)
@@ -46,28 +90,3 @@ or check its complete [source code](https://github.com/jgbarah/aframe-playground
 The final result is like this:
 
 ![Physics camera](aframe-camera.gif)
-
-### Preventing deprecation
-<a name="deprecation"></a>
-
-As I commented, `kinematic-body` is deprecated in AFrame Extras.
-Therefor, I've just written its code in
-[kinema.js](https://github.com/jgbarah/aframe-playground/blob/master/physics-02/kinema.js),
-so that it is still available when new versions of AFrame Extras remove it.
-I've also renamed the component to `kinema-body`, to avoid 
-conflicts with the component still offered by Aframe Extras.
-
-The code is almost the same, with the only differences of
-including `kinema.js` with the JavaScript modules
-(`aframe-extras` is still needed for `movement-controls`), and using
-the component `kinema-body` instead of `kinematic-body`:
-
-```html
-<a-entity kinema-body="radius: 0.8" movement-controls="fly: false" position="0 0 5" look-controls>
-  <a-entity camera position="0 1.6 0" ></a-entity>
-  <a-cylinder height="2" radius="0.8" color="green"></a-box>
-</a-entity>
-```
-
-Watch [this scene in your browser](camera-2.html),
-or check its complete [source code](https://github.com/jgbarah/aframe-playground/blob/master/physics-02/camera-2.html)

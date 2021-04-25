@@ -83,10 +83,22 @@ everything is updated to using 1.2.0.
   exercises: componets for the camera-related behaviours we tried.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-03)]
 
-* data-01: [Visualizing data](data-01/README.md)
-* data-02: [Visualizing data with components](data-02/README.md)
-* data-03: [Visualizing data (fully componentized)](data-03/README.md)
-* data-04: [Visualizing data (JSON documents)](data-04/README.md)
+* [Visualizing data](data-01/README.md)
+  We can use A-Frame for visualizing data. Let's go!
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-01)]
+
+* [Visualizing data with components](data-02/README.md)
+  We can do the same visualization, but now using components.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-02)]
+
+* [Visualizing data (fully componentized)](data-03/README.md)
+  Still a bit further in the "componentization" path.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-03)]
+
+* [Visualizing data (JSON documents)](data-04/README.md)
+  A final touch: visualizing data in JSON documents.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-04)]
+
 * ar-01: [Augmented reality](ar-01/README.md)
 * newyear-01: [Scene for greeting the new year](newyear-01/README.md)
 

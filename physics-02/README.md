@@ -26,23 +26,23 @@ from `aframe-extras` to move the camera around, as we already did in
 some previos demos.
 
 ```html
-<a-entity movement-controls="fly: false" position="0 0 5" look-controls>
-  <a-entity camera position="0 1.6 0" ></a-entity>
-  <!-- Cylinder to give an idea of the "size" of the camera rig -->
-  <a-cylinder id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder"
-      height="2" radius="0.8" color="green"></a-cylinder>
+<a-entity movement-controls="fly: false" position="0 0 5"
+    geometry="primitive: cylinder; height: 2; radius: 0.8"
+    material="color: green; wireframe: true"
+    id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder">
+  <a-entity camera position="0 1.6 0" look-controls></a-entity>    
 </a-entity>
 ```
 
-I've set `fly:false` for `movement-controls` to simulate better
+I've set `fly:false` for `movement-controls` to simulate
 a land vehicule (or a person walking), but that's not really needed.
+There is also a cylinder component, and a kinematic body component,
+which act as a collider to push or interact with other bodies in the scene.
+
 Since `camera` is now in a child entity of the rig, its position is relative to it.
 Therefore, seting it to "X=0, Y=1.6, Z=0" will really position it,
 when the scene loads, at  "X=0, Y=1.6, Z=5". When the rig moves,
 the camera will move with it.
-
-I've added also a cylinder as a child of the rig, as a collider to
-push or interact with other bodies in the scene.
 
 I've also added a new component, in a script element in the header.
 This component, `collision-wire` is used to show a wireframe on it

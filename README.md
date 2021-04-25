@@ -57,11 +57,16 @@ everything is updated to using 1.2.0.
   Let's have some fun adding gravity, collisions, impulse...
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/physics-01)]
 
+* [A camara respecting (some) physics](physics-02/README.md).
+  The camera in the scene now collides with objects, pushes some of them
+  (if they are dynamic) and shows collision (by showing a wireframe) with
+  others (if they are static). Works well both in the computer and in VR devices. 
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/physics-02)]
+
 * data-01: [Visualizing data](data-01/README.md)
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)
 * data-04: [Visualizing data (JSON documents)](data-04/README.md)
-* physics-02: [A camara respecting (some) physics](physics-02/README.md)
 * camrender-01: [Cameras and screens](camrender-01/README.md)
 * camrender-02: [More and more screens!](camrender-02/README.md)
 * camrender-03: [Making it components](camrender-03/README.md)

@@ -96,18 +96,6 @@ which includes all the magic needed to create the scene,
 are described in the
 [Hello, WebVR example](https://aframe.io/docs/1.2.0/introduction/html-and-primitives.html#example).
 
-*An interesting trick:*
-you can enter the A-frame debugger by using the
-`<CTRL> <ALT> i` combination when watching the scene in the browser.
-
-*Another one:*
-you can get screenshots from the scene,
-just press `<ctrl> <alt> s`.
-For a 360 image,
-press `<ctrl> <alt> <shift> s`.
-More details at the
-[screenshot Component documentation](https://aframe.io/docs/1.2.0/components/screenshot.html).
-
 
 ### Second version, adding assets
 

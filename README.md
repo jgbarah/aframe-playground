@@ -71,6 +71,8 @@ everything is updated to using 1.2.0.
 Some of the code used in the examples is available as [A-Frame reusable components](components),
 which you can just include in your code.
 
+[Some tricks that could be useful](tricks.md), for A-Frame, for Oculus devices...
+
 While I was learning about A-Frame, I was also learning about Webpack,
 and I took some notes:
 

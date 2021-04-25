@@ -59,16 +59,13 @@
           position="2 10 0" width="1" height="1" depth="1"
           color="blue"></a-box>
 
-      <!-- Camera rig, with a camera and a cylynder -->
-      <a-entity movement-controls="fly: false" position="0 0 5" look-controls>
-        <a-entity camera position="0 1.6 0" 
-        geometry="primitive: cylinder; height: 2; radius: 0.8"
-        material="color: green; wireframe: true"
-        id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder">
-          <!-- Cylinder to give an idea of the "size" of the camera rig -->
-<!--          <a-cylinder id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder"
-            height="2" radius="0.8" color="green"></a-cylinder>
--->        </a-entity>    
+      <!-- Camera rig, with a cylynder to give an idea of its "size"-->
+      <a-entity movement-controls="fly: false" position="0 0 5"
+          geometry="primitive: cylinder; height: 2; radius: 0.8"
+          material="color: green; wireframe: true"
+          id="cam" ammo-body="type: kinematic;" ammo-shape="type: cylinder">
+        <a-entity camera position="0 1.6 0" look-controls>
+        </a-entity>    
       </a-entity>
 
     </a-scene>

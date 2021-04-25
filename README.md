@@ -63,13 +63,30 @@ everything is updated to using 1.2.0.
   others (if they are static). Works well both in the computer and in VR devices. 
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/physics-02)]
 
+* [Cameras and screens](camrender-01/README.md)
+  Let's write a simple A-Frame component (`camrender`) while we learn
+  how we can have more cameras in the scene,
+  and how we can project what those cameras “see”
+  in different surfaces of the scene itself.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-01)]
+
+* [More and more screens!](camrender-02/README.md)
+  We can explore cameras further, just because cameras are funny.
+  Let’s add screens and cameras that move with our main camera
+  (like head-mounted displays),
+  multiple screens showing the same camera, and much more.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-02)]
+
+* [Making camera-related components](camrender-03/README.md)
+  Now, time to recap, and learn more about components, by
+  making components for the functionalty we learned in the previous
+  exercises: componets for the camera-related behaviours we tried.
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-03)]
+
 * data-01: [Visualizing data](data-01/README.md)
 * data-02: [Visualizing data with components](data-02/README.md)
 * data-03: [Visualizing data (fully componentized)](data-03/README.md)
 * data-04: [Visualizing data (JSON documents)](data-04/README.md)
-* camrender-01: [Cameras and screens](camrender-01/README.md)
-* camrender-02: [More and more screens!](camrender-02/README.md)
-* camrender-03: [Making it components](camrender-03/README.md)
 * ar-01: [Augmented reality](ar-01/README.md)
 * newyear-01: [Scene for greeting the new year](newyear-01/README.md)
 

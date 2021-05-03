@@ -15,21 +15,24 @@ module.exports = {
       {
         test: /\.js$/,
         include: [path.resolve(__dirname, 'src')],
+        exclude: /(node_modules)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
+        options: {
+          presets: ['@babel/preset-env']
         }
       },
       // HTML files
       {
         test: /\.html$/,
         include: [path.resolve(__dirname, 'src')],
+        exclude: /(node_modules)/,
         use: ['html-loader']
       },
       // Images
       {
         test: /\.(jpg|png|svg)$/,
         include: [path.resolve(__dirname, 'src')],
+        exclude: /(node_modules)/,
         use: [
           {
             loader: 'file-loader',
@@ -42,6 +45,7 @@ module.exports = {
         type: 'javascript/auto',
         test: /\.json$/,
         include: [path.resolve(__dirname, 'src')],
+        exclude: /(node_modules)/,
         use: [
           {
             loader: 'file-loader',
@@ -55,10 +59,14 @@ module.exports = {
   stats: {
     colors: true
   },
+  devServer: {
+    https: true,
+  },
   devtool: 'source-map',
   plugins: [new HtmlWebpackPlugin({
     template: './src/figures.html',
     inject: 'head',
+    scriptLoading: 'blocking',
     filename: 'index.html'
   })]
 };

@@ -1,5 +1,5 @@
 
-*[Back to the main page](../README.md)*
+*[Back to the main page](../../README.md)*
 
 ## Improving webpack configuration
 
@@ -53,10 +53,10 @@ $ npm install --save-dev webpack-dev-server
 
 And include a new script for npm, in `package.json`:
 
-```
+```js
   "scripts": {
     ...
-    "start": "webpack-dev-server --mode development --content-base dist/"
+    "start": "webpack serve --mode development --content-base dist/"
 ```
 
 Now, when running 'npm run start',
@@ -64,6 +64,16 @@ I can point my browser to http://localhost:8080/figures.html
 and see my application.
 
 This module will also watch source files, and recompile then when needed.
+
+It also allows for serving via HTTPS, which in many cases is a need
+(for example, when using many WebXR features). For that, you need to
+set the `https` `devServer` property to `true`:
+
+```js
+  devServer: {
+    https: true,
+  },
+```
 
 ### Using babel for transpiling es6 to es5
 
@@ -77,21 +87,21 @@ In this base, the babel loader will prepare `.js` files.
 First, I need to install the loader, with npm:
 
 ```
-npm install --save-dev babel-core babel-preset-es2015
+npm install --save-dev @babel/core @babel/preset-env
 npm install --save-dev babel-loader
 ```
 
 And add a configuration for the default module in webpack:
 
-```
+```js
   module: {
     rules: [
       {
         test: /\.js$/,
         include: [path.resolve(__dirname, 'src')],
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
+          options: {
+            presets: ['@babel/preset-env']
         }
       }
     ],
@@ -155,7 +165,7 @@ $ npm install html-webpack-plugin --save-dev
 
 And then, I need some changes to `webpack.config.js`:
 
-```
+```js
 ...
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -163,6 +173,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
   plugins: [new HtmlWebpackPlugin({
     template: './src/figures.html',
     inject: 'head',
+    scriptLoading: 'blocking',
     filename: 'index.html'
   })]
 ```
@@ -176,8 +187,12 @@ using the name `index.html`
 (because of the property `filename`),
 using our `src/figures.html` file as template,
 and injecting the needed JavaScript code
-(`bundle.js`)
-in the `head` element.
+(`bundle.js`) in the `head` element.
+The `scriptLoading: 'blocking'` option will avoid that
+the generted `script` element includes `defer`, which
+would prevent A-Frame from being loaded before the DOM is
+ready
+(see the [plugin documentation](https://github.com/jantimon/html-webpack-plugin#options)).
 
 Now, if I just run for example `npm run start`
 my browser will be pointed to the new `index.html`
@@ -287,15 +302,15 @@ or `npm run cleanbuild` when I want a built from scratch.
 
 ### Generating dist files and running everything
 
-With all this goodies, now you can use the stuff in `figures-03`
+With all this goodies, now you can use the stuff in `webpack/figures-03`
 to produce all the files (`bundle.js` and `bundle.js.map`)
 needed to run the application.
 
 The complete process (starting from the contents in the directory)
 is:
 
-```
-$ cd figures-03
+```bash
+$ cd webpack/figures-03
 $ npm install
 $ npm run start
 ```

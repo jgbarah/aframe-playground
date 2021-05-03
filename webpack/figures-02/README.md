@@ -187,7 +187,7 @@ And then you can just run `webpack` as above, to produce
 `dist/bundle.js`:
 
 ```bash
-$ cd figures-02
+$ cd webpack/figures-02
 $ npm install
 $ npm run build
 ```

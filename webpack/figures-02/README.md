@@ -1,5 +1,5 @@
 
-*[Back to the main page](../README.md)*
+*[Back to the main page](../../README.md)*
 
 ## Simple configuration for webpack
 
@@ -7,7 +7,7 @@ There are some very nice and complete boilerplates to use A-frame with webpack,
 such as [aframe-webpack-boilerplate](https://github.com/mkungla/aframe-webpack-boilerplate).
 But they are, well, nice, and complete, and... complex.
 So I will start with a simpler one that I can easily understand.
-We will use webpack 4.x.
+We will use webpack 5.x.
 
 ### Creating a directory for webpack
 
@@ -15,7 +15,7 @@ I want to create a simple project for A-frame,
 using webpack, with all the assets in the project
 (nothing to be retrieved from CDNs).
 You can find the files with which I start in the
-`figures-02` directory in this repository.
+`webpack/figures-02` directory in this repository.
 
 Let's assume I only have a `.js` file and a `.html` file,
 plus some images (JPG files) and one MSDF font (Roboto) as assets.
@@ -80,7 +80,7 @@ will now be installed under `node_modules`.
 And I create a very simple configuration file for webpack,
 `webpack.config.js`:
 
-```javascript
+```js
 const path = require('path');
 
 module.exports = {
@@ -95,17 +95,13 @@ module.exports = {
 And we're ready to let webpack do its magic:
 
 ```bash
-$ node_modules/webpack/bin/webpack.js --mode development
-Hash: a53dcfc73db13baa2470
-Version: webpack 4.1.1
-Time: 1101ms
-Built at: 2018-3-10 22:24:58
-    Asset     Size  Chunks                    Chunk Names
-bundle.js  2.3 MiB    main  [emitted]  [big]  main
-Entrypoint main [big] = bundle.js
-[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {main} [built]
-[./src/figures.js] 387 bytes {main} [built]
-    + 4 hidden modules
+$ npx webpack --mode development
+asset bundle.js 2.56 MiB [emitted] (name: main)
+runtime modules 1.13 KiB 5 modules
+cacheable modules 2.36 MiB
+  ./src/figures.js 387 bytes [built] [code generated]
+  ./node_modules/aframe/dist/aframe-master.js 2.36 MiB [built] [code generated]
+webpack 5.36.2 compiled successfully in 1426 ms
 ```
 
 After this, the structure of my project is as follows:
@@ -129,7 +125,7 @@ figures-02/
 |- webpack.config.js
 ```
 
-webpack produced the `dist/bundle.js` file,
+Webpack produced the `dist/bundle.js` file,
 which is the one that we conveniently had referenced in the HTML file.
 
 Since we used the `--mode development` arguments, that file is not minimized,

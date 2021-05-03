@@ -74,8 +74,8 @@ openssl s_server -key key.pem -cert cert.pem -accept 4443 -WWW
 The server will be listening in port 4443, and therefore it will be
 accesible as https://localhost:4443
 
-* [budo](https://github.com/mattdesl/budo). Budo es un módulo JavaScript que proporciona
-un servidor HTTP / HTTPS. Una vez instalado, puede ejecutarse como:
+* [budo](https://github.com/mattdesl/budo). Budo is a JavaScript module
+providing a HTTP / HTTPS server. Once installed, it can be run as:
 
 ```
 OPENSSL_CONF=/dev/null budo --port 7000 --live --open --ssl --key ./node_modules/public-encrypt/test/test_key.pem --cert ./node_modules/public-encrypt/test/test_cert.pem --cors
@@ -84,6 +84,21 @@ OPENSSL_CONF=/dev/null budo --port 7000 --live --open --ssl --key ./node_modules
 The server will be listening in port 7000, and therefore it will be
 accesible as https://localhost:7000
 
+* [webpack-dev-server](https://webpack.js.org/configuration/dev-server/).
+Webpack Dev Server is a module for Webpack, providing a HTTP / HTTPS server.
+If `webpack` and `webpack-dev-server` are installed, the server
+can be run as (assuming the stuff to serve is under the `dist` directory):
+
+```
+webpack serve --mode development --content-base dist/
+```
+
+See how to make the server act as a HTTPS server, in the
+[documentation for the devServer.https option](https://webpack.js.org/configuration/dev-server/#devserverhttps), and in the documentation included in
+[this section of this tutorial](webpack/figures-03/README.md)
+
+
+**Final notice:**
 These servers can also be used to check the demos with VR or AR devices,
 such as Oculus Quest. For that, you need to know the IP address of your computer,
 and then instead of using `localhost`, use the IP address.

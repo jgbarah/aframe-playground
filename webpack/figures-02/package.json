@@ -1,7 +1,7 @@
 {
   "name": "figures-02",
   "version": "1.0.0",
-  "description": "*[Back to the main page](../README.md)*",
+  "description": "Example of simple webpack usage",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"

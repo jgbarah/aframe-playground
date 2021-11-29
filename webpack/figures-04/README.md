@@ -1,31 +1,26 @@
 
-*[Back to the main page](../README.md)*
+*[Back to the main page](../../README.md)*
 
 ## Adding a complex object
 
 Now, I'm going to work in `figures-04`,
 adding an object to the scene, of arbitrary shape, in some formats.
 This will be also a good example of how to add new stuff to our project.
+The final result will be quite similar to [figures-04](../../figures-04/README.md),
+but using webpack in this case (see there details about the scene itself,
+how to include OBJ or GLTF files, etc).
 
 ### Inserting an object in the scene
 
 Let's start by inserting a object in OBJ format, `urjc.obj`, in the scene.
-For that, we will use the `obj-model` property:
-
-```html
-<a-entity position="-1 1 -9" obj-model="obj: url(urjc.obj)"
-          material="color: green" scale="0.1 0.1 0.2">
-</a-entity>
-```
-
-We will also add code in `figures.js` to ensure that `webpack`
+We will add code in `figures.js` to ensure that `webpack`
 finds the object description, `urjc.obj`:
 
 ```javascript
 import urjc_object from './urjc.obj';
 ```
 
-And finally, a new rule for `webpack.config.js`,
+And a new rule for `webpack.config.js`,
 to copy the object description to the `dist` directory:
 
 ```javascript
@@ -40,33 +35,6 @@ to copy the object description to the `dist` directory:
     }
   ]
 },
-```
-
-The result should show a green coin, with the URJC logo in it,
-in our previous scene.
-
-### Animating the object
-
-First, and just to improve how the scene loads,
-let´s add the object as an asset:
-
-```html
-<a-assets>
-  ...
-  <a-asset-item id="urjc" src="urjc.obj"></a-asset-item>
-</a-assets>
-```
-
-And let's move the object. For that, we will add a new `a-animation`
-entity, defining how the object will rotate:
-
-```html
-<a-entity position="-1 1 -9" obj-model="obj: #urjc"
-          material="color: green" scale="0.1 0.1 0.2">
-  <a-animation attribute="rotation" dur="10000" fill="forwards"
-               to="0 360 0" repeat="indefinite">
-  </a-animation>
-</a-entity>
 ```
 
 ### Adding a glTF model
@@ -115,37 +83,12 @@ module.exports = {
 }
 ```
 
-And then, in the `figures.html` file:
-
-```html
-<a-assets>
-  ...
-  <a-asset-item id="car" src="auto/scene.gltf"></a-asset-item>
-</a-assets>
-...
-<a-scene>
-  <a-entity position="-2 2 -9" gltf-model="#car"
-            scale="0.01 0.01 0.01">
-    <a-animation attribute="rotation" dur="10000" fill="forwards"
-                 to="0 360 0" repeat="indefinite">
-    </a-animation>
-  </a-entity>
-...
-</a-scene>
-```
-
-You can see how, for the car, we first define an asset
-(only with the gltf "driver" file), and then in the scene
-we create a new object, with property `gltf-model`,
-and some scale (because the model was too big for our scene).
-An animation just completes the entity, making it rotate.
-
 ### Generating dist files and running everything
 
 As we saw in the previous section, the complete process to build the project is:
 
 ```
-$ cd figures-04
+$ cd webpack/figures-04
 $ npm install
 $ npm run start
 ```

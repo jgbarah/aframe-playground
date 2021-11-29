@@ -1,7 +1,7 @@
 {
   "name": "figures-03",
   "version": "1.0.0",
-  "description": "*[Back to the main page](../README.md)*",
+  "description": "Example (source in src directory)",
   "main": "src/figures.js",
   "scripts": {
     "dev": "webpack --mode development",
@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.0",

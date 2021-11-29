@@ -20,7 +20,7 @@ everything is updated to using 1.2.0.
 
 * [First steps in creating an A-frame scene](figures-01/README.md).
   Let's build some simple scenes, based on the [first scene introduced
-  by the A-Frame docuentation](https://aframe.io/docs/1.2.0/introduction/#getting-started).
+  by the A-Frame documentation](https://aframe.io/docs/1.2.0/introduction/#getting-started).
   Geometric bodies, simple textures, some lights, some minimal interaction
   with the scene...
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/figures-01)]

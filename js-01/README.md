@@ -9,6 +9,22 @@ JavaScript. In other words, in HTML will have only an
 document is loaded in the browser, injects the rest of the
 scene in the DOM, as children of `a-secene`.
 
-### Results
+
 
 Check the resulting [virtual reality scene](scene1.html).
+
+## Building a scene with an A-Frame component
+
+Now, let's do the same, but with an A-Frame component.
+
+Check the resulting [virtual reality scene](scene2.html).
+
+
+## Events
+
+Events can be added via properties of components
+(for example, the `animation` component responds to events
+if its property `startEvents` is used), or vía JavaScript
+handlers.
+
+Check the resulting [virtual reality scene](scene3.html).

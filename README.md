@@ -77,6 +77,11 @@ everything is updated to using 1.2.0.
   multiple screens showing the same camera, and much more.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-02)]
 
+* [Working with JavaScript](js-01/README.md)
+  Let's inject some objects in the scene using JavaScript, just
+  by adding elements to the scene in the DOM, or via an A-Frame
+  component. We will also start to explore how to use events.
+  
 * [Making camera-related components](camrender-03/README.md)
   Now, time to recap, and learn more about components, by
   making components for the functionalty we learned in the previous

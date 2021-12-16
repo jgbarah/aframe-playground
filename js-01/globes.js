@@ -8,10 +8,23 @@ if (typeof AFRAME === 'undefined') {
 AFRAME.registerComponent('globe', {
 
     init: function() {
-        // Box
-        // <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
         this.el.setAttribute('animation', {'property': 'position',
                                        'to': {x: 0, y: 200, z: 0},
                                        'dur': 100000});
+    }
+});
+
+AFRAME.registerComponent('breakable', {
+
+    init: function() {
+        el = this.el;
+        el.addEventListener('click', function() {
+            color = el.getAttribute('color');
+            if (color == '#EF2D5E') {
+                el.setAttribute('color', 'red');
+            } else {
+                el.setAttribute('color', '#EF2D5E');
+            };
+        });
     }
 });

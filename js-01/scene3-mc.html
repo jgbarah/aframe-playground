@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<!--    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
+    <script src="../assets/js/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="scene3.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: grey">
+
+        <a-entity basic-scene>
+        </a-entity>
+
+        <a-entity movement-controls="fly: true" position="0 1.6 6">
+            <a-entity camera look-controls></a-entity>>
+            <a-entity cursor="rayOrigin: mouse"></a-entity>
+            <a-entity laser-controls="hand: right"></a-entity>
+        </a-entity>
+    
+
+    </a-scene>
+
+  </body>
+</html>

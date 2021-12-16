@@ -13,6 +13,8 @@ scene in the DOM, as children of `a-secene`.
 
 Check the resulting [virtual reality scene](scene1.html).
 
+[Same scene, with movement-controls](scene1-mc.html).
+
 ## Building a scene with an A-Frame component
 
 Now, let's do the same, but with an A-Frame component.

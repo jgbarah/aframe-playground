@@ -17,14 +17,10 @@ AFRAME.registerComponent('globe', {
 AFRAME.registerComponent('breakable', {
 
     init: function() {
+        scene = document.querySelector('a-scene');
         el = this.el;
         el.addEventListener('click', function() {
-            color = el.getAttribute('color');
-            if (color == '#EF2D5E') {
-                el.setAttribute('color', 'red');
-            } else {
-                el.setAttribute('color', '#EF2D5E');
-            };
+            scene.removeChild(el)
         });
     }
 });

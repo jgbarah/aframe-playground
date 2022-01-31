@@ -145,4 +145,4 @@ If you spot any error, please
 If you want to contribute with changes, please
 [submit a pull request](https://github.com/jgbarah/aframe-playground/pulls).
 
-Check our some [examples and demos](demos.md)!! 
+Check out some [examples and demos](demos.md)!! 

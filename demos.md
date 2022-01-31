@@ -20,4 +20,4 @@ Some examples of A-Frame scenes:
 * [Museum-like data room](https://babiaxr.gitlab.io/aframe-babia-components/examples/demos/1.0.11/index.html)
 * [Collaborative data room demos](https://babiaxr.gitlab.io/aframe-babia-components/examples/multiuser/choose_avatar/index.html)
 
-Note: this document may be accessed via a [short link](https://bit.ly/aframedemos)
+Note: this document may be accessed via a [short link](https://bit.ly/afdemos)

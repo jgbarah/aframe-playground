@@ -145,12 +145,4 @@ If you spot any error, please
 If you want to contribute with changes, please
 [submit a pull request](https://github.com/jgbarah/aframe-playground/pulls).
 
-Some examples of A-Frame scenes:
-
-* [Scene by Álvaro López](https://alvarolopezgarcia.github.io/a-frame-pruebas/Scene-House/camera-2.html)
-
-* [Scene by Alvaro Villalba Cabañas](https://villalba5.github.io/aframe/physics-02/pruebajuego.html)
-
-* [Programming in VR by Julián Sánchez](https://jdjuli.github.io/vr-programming/)
-
-[BabiaXR](https://babiaxr.gitlab.io/): A-Frame components for data visualization in VR.
+Check our some [examples and demos](demos.md)!! 

@@ -1,5 +1,5 @@
 
-*[Back to the main page](../README.md)*
+**[Back to the main page](../README.md)** **[Source code](https://github.com/jgbarah/aframe-playground/maps)**
 
 ## Creating an elevation map from Copernicus data
 

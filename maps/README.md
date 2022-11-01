@@ -3,30 +3,32 @@
 
 ## Creating an elevation map from Copernicus data
 
-I'm going to create a 3D elevation map, using Copernicus elevation data ([EU-DEM](https://land.copernicus.eu/imagery-in-situ/eu-dem/)). For that, I download two tiles, North and South of Madrid (`eu_dem_v11_E30N10.TIF` and `eu_dem_v11_E30N20.TIF`).
+I'm going to create a 3D elevation map, using Copernicus elevation data ([EU-DEM](https://land.copernicus.eu/imagery-in-situ/eu-dem/)). For that, I download two tiles, North and South of Madrid (`eu_dem_v11_E30N10.zip` and `eu_dem_v11_E30N20.zip`). I unzip them, which produces four files per tile (with extensions `TFw`, `TIF`). All of them are in directory `$demdata`.
 
-To work with the maps, and produce maps with the information I need, I install [gdal](https://gdal.org/). In Debian, that's easy because it is a regular package:
+To work with these maps, and produce maps with the information I need, I install [gdal](https://gdal.org/). In Debian, that's easy because it is a regular package:
 
 ```bash
 sudo apt install gdal-bin
 ```
 
-Now, I unzip files that I obtained from EU-DEM, extract a part of it, get some info about it, and produce PNG and ENVI files with elevation data: 
+Now, I build a gdal virtual dataset with both tiles, and produce a file in ENVI format (`map.bin`) with the elevation data. I do that in the `tmp` directory, whcih I will use as a temporary storage for the intermediary maps and datasets I need: 
 
 ```bash
-gdalbuildvrt test.vrt eu_dem_v11_E30N10.TIF eu_dem_v11_E30N20.TIF
-gdalinfo -mm test.vrt
-gdalwarp -te 3000000 2000000 3100000 2100000 test.vrt test.tif
-gdalinfo -mm test.tif
-gdal_translate -scale 0 2522 0 255 -outsize 200 200 -of PNG test.tif test.png
-gdal_translate -scale 0 2522 0 65535 -ot UInt16 -outsize 200 200 -of ENVI test.tif test.bin
+mkdir tmp
+cd tmp
+gdalbuildvrt map.vrt $demdata/eu_dem_v11_E30N10.TIF $demdata/eu_dem_v11_E30N20.TIF
+gdalinfo -mm map.vrt
+gdalwarp -te 3000000 2000000 3100000 2100000 map.vrt map.tif
+gdalinfo -mm map.tif
+gdal_translate -scale 0 2522 0 255 -outsize 200 200 -of PNG map.tif ../map.png
+gdal_translate -scale 0 2522 0 65535 -ot UInt16 -outsize 200 200 -of ENVI map.tif ../map.bin
 ```
 
 Let's explain the process in some more detail:
 
 * I start by using [gdalbuildvrt](https://gdal.org/programs/gdalbuildvrt.html) to build a dataset (in this case, with two TIF files for elevation data).
 
-* Then, we get the coordinates of the generated vrt file. These coordinated mean the data for this file is between 3Mmeters and 4Mmeters West, and between 1Mmeters and 3Mmeters North:
+* Then, we get the coordinates of the generated vrt file. These coordinated mean the data for this file is between 3 Mmeters (3,000 Km) and 4 Mmeters West, and between 1 Mmeters and 3 Mmeters North:
 
 ```
 Corner Coordinates:
@@ -39,9 +41,9 @@ Band 1 Block=128x128 Type=Float32, ColorInterp=Gray
 Min=-33.271 Max=3451.047   Computed Min/Max=-33.271,3451.047
 ```
 
-* Then, use [gdalwarp](https://gdal.org/programs/gdalwarp.html) to build a TIF file, `test.tif`, corresponding to a fraction of the dataset. In this case, the lower correspond to the lower left corner of the upper image included in the dataset.  Coordinates are Xmin Ymin Xmax Ymax. Have in mind that not all coordinates have values, since the map covers only Europe (and not, for example, Africa), which means that if you select a region with no values, it will say there is no elevation data, when asking for the elevation.
+* Then, I use [gdalwarp](https://gdal.org/programs/gdalwarp.html) to build a TIF file, `test.tif`, corresponding to a fraction of the dataset. In this case, the lower correspond to the lower left corner of the upper image included in the dataset.  Coordinates are Xmin Ymin Xmax Ymax. Have in mind that not all coordinates have values, since the map covers only Europe (and not, for example, Africa), which means that if you select a region with no values, it will say there is no elevation data, when asking for the elevation.
 
-* The, check with `gdalinfo` the coordinates of the produced file, and find the max and min elevation:
+* Then, I check with `gdalinfo` the coordinates of the produced file, and find the max and min elevation:
 
 ```
 Upper Left  ( 3000000.000, 2100000.000) (  5d41'57.17"W, 40d45'34.34"N)
@@ -53,16 +55,16 @@ Band 1 Block=4000x1 Type=Float32, ColorInterp=Gray
     Computed Min/Max=249.094,2521.040
 ```
 
-* The first part confirms that the coordinates in `test.tif` are from 3Mmeters W to 3.1Mmeters W, and from 2Mmeters N to 2.1Mmeters N.
+* The first part confirms that the coordinates in `test.tif` are from 3 Mmeters W to 3.1 Mmeters W, and from 2 Mmeters N to 2.1 Mmeters N.
 
-* Then, we produce a PNG file, with less resolution, to make it manageable. The first two numbers (0 2522) are the real elevation range in meters, from the TIF file, to be translated to the second two numbers (0 255), range of the PNG file (256 levels). This file is mainly to check how things are going, because you can see the relief in it, but I won´t use anymore.
+* Then, we produce a PNG file ([map.png](map.png)), with less resolution, to make it manageable. The first two numbers (0 2522) are the real elevation range in meters, from the TIF file, to be translated to the second two numbers (0 255), range of the PNG file (256 levels). This file is mainly to check how things are going, because you can see the relief in it, but I won´t use anymore.
 
-* The second `gdal_translate` does the same, but producing an ENVI file, in which long integers (16 bit) can be used, thus having much better resolution.
+* The second `gdal_translate` does the same, but producing an ENVI file ([map.bin](map.bin)), in which long integers (16 bit) can be used, thus having much better resolution.
 
-Nos, this file can already be included in the [aframe-terrain-model](https://github.com/bryik/aframe-terrain-model-component) as follows: 
+Now, this file can already be included in the [aframe-terrain-model](https://github.com/bryik/aframe-terrain-model-component) as follows: 
 
 ``` html
-<a-entity terrain-model="dem: url(eu-dem/test.bin);
+<a-entity terrain-model="dem: url(map.bin);
         planeWidth: 346;
         planeHeight: 346;
         segmentsWidth: 199;
@@ -71,6 +73,8 @@ Nos, this file can already be included in the [aframe-terrain-model](https://git
     wireframe: true"
         id="terrain"></a-entity>
 ```
+
+We can see the result by inserting this entity in an A-Frame scene, as I do in `wireframe.html`. [Check the actual scene in your browser](wireframe.html)
 
 To have colored texture, we start by creating a color relief file, as explained in [Creating color relief and slope shading with gdaldem](https://blog.mastermaps.com/2012/06/creating-color-relief-and-slope-shading.html). For example (first column is elevation, the other three is RGB): 
 

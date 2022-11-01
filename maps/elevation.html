@@ -4,27 +4,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elevation data with A-Frame (wireframe & color)</title>
+  <title>Elevation data with A-Frame</title>
   <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
 </head>
 
 <body>
   <a-scene renderer="antialias: true" >
+    <a-assets>
+      <a-asset-item id="elevation" src="map.bin"></a-asset-item>
+      <img id="terrain" src="terrain.png">
+    </a-assets>
 
     <a-entity rotation="0 180 0"
-        terrain-model="dem: url(map.bin);
-          map: url(terrain.png);
+      terrain-model="dem: #elevation;
+          map: terrain.png;
           planeWidth: 200;
           planeHeight: 200;
           segmentsWidth: 199;
           segmentsHeight: 199;
           zPosition: 20;
-      	  wireframe: true"
-	      id="terrain">
+      	  wireframe: false">
     </a-entity>
 
-    <a-entity position="0 60 -120" rotation="-20 180 0">
+    <a-entity position="0 60 -120" rotation="-20 180 0"
+        movement-controls="fly: true">
       <a-entity camera look-controls wasd-controls>
       </a-entity>
     </a-entity>

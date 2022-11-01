@@ -71,15 +71,15 @@ Band 1 Block=4000x1 Type=Float32, ColorInterp=Gray
 
 * The second `gdal_translate` does the same, but producing an ENVI file ([map.bin](map.bin)), in which long integers (16 bit) can be used, thus having much better resolution.
 
-Now, this file can already be included in the [aframe-terrain-model](https://github.com/bryik/aframe-terrain-model-component) as follows: 
+Now, this file can already be included in the [aframe-terrain-model](https://github.com/bryik/aframe-terrain-model-component) as follows (see documentation for [A-Frame Terrain Model component](https://github.com/bryik/aframe-terrain-model-component) for details): 
 
 ``` html
 <a-entity terrain-model="dem: url(map.bin);
-        planeWidth: 346;
-        planeHeight: 346;
-        segmentsWidth: 199;
-        segmentsHeight: 199;
-        zPosition: 100;
+    planeWidth: 200;
+    planeHeight: 200;
+    segmentsWidth: 199;
+    segmentsHeight: 199;
+    zPosition: 20;
     wireframe: true"
         id="terrain"></a-entity>
 ```
@@ -112,6 +112,6 @@ sudo apt install mapnik-utils python3-mapnik
 python3 terrain.py
 ```
 
-This produces a nice [terrain.png](terrain.png) file, which can be used a texture for the map. I load it in a copy of the previous scene (file `terrain.html`) by adding a new property to `terrain-model`: `map: url(terrain.png);`.
+This produces a nice [terrain.png](terrain.png) file, which can be used a texture for the map. I load it in a copy of the previous scene (file `terrain.html`) by adding a new property to `terrain-model`: `map: url(terrain.png);`.[Check the scene in your browser](terrain.html). Be patient: maybe the color map will take some seconds to load.
 
-[Check the scene in your browser](terrain.html).
+Finally, I remove the wireframe, include maps as assets, add mobility for when in VR, and some other minor details. [Check the final scene in your browser](elevation.html).

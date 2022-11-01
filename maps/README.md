@@ -3,6 +3,16 @@
 
 ## Creating an elevation map from Copernicus data
 
+### References
+
+All of this is based on:
+
+* [A-Frame Terrain Model component](https://github.com/bryik/aframe-terrain-model-component)
+
+* [Converting terrain data to WebGL-friendly format](https://blog.mastermaps.com/2013/10/terrain-building-with-threejs-part-1.html) (and some other posts linked in this one).
+
+### Description
+
 I'm going to create a 3D elevation map, using Copernicus elevation data ([EU-DEM](https://land.copernicus.eu/imagery-in-situ/eu-dem/)). For that, I download two tiles, North and South of Madrid (`eu_dem_v11_E30N10.zip` and `eu_dem_v11_E30N20.zip`). I unzip them, which produces four files per tile (with extensions `TFw`, `TIF`). All of them are in directory `$demdata`.
 
 To work with these maps, and produce maps with the information I need, I install [gdal](https://gdal.org/). In Debian, that's easy because it is a regular package:
@@ -74,84 +84,34 @@ Now, this file can already be included in the [aframe-terrain-model](https://git
         id="terrain"></a-entity>
 ```
 
-We can see the result by inserting this entity in an A-Frame scene, as I do in `wireframe.html`. [Check the actual scene in your browser](wireframe.html)
+I can see the result by inserting this entity in an A-Frame scene, as I do in `wireframe.html`. [Check the actual scene in your browser](wireframe.html)
 
-To have colored texture, we start by creating a color relief file, as explained in [Creating color relief and slope shading with gdaldem](https://blog.mastermaps.com/2012/06/creating-color-relief-and-slope-shading.html). For example (first column is elevation, the other three is RGB): 
+To have colored texture and hillshades, so that we can have something better than plain wireframe, we follow instructions in [Creating color relief and slope shading with gdaldem](https://blog.mastermaps.com/2012/06/creating-color-relief-and-slope-shading.html):
 
-```
-0 110 220 110
-900 240 250 160
-1300 230 220 170
-1900 220 220 220
-2500 250 250 250
-```
-
-Then, we use this file to produce a file for the texture: 
+* Colored relief: I produce the file [color-relief.txt] (first column is elevation, the other three are RGB) for configuring colors for some elevations, and then use it to produce a image for the colored relief (`color_relief.tif`), by running (in directory `tmp`):
 
 ```bash
-gdaldem color-relief test.tif test_relief.txt test_colour_relief.tif
-gdaldem hillshade -combined test.tif test_hillshade.tif
+gdaldem color-relief map.tif ../color-relief.txt color_relief.tif
 ```
 
-Then, we use [Mapnik](https://mapnik.org/) to combine the files. There are Debian packages, so, I first install them: 
+* Hill shades (again, in `tmp`):
+
+```bash
+gdaldem hillshade -combined map.tif hillshade.tif
+```
+
+* Then, we need [Mapnik](https://mapnik.org/) to combine the files. There are Debian packages, so, I install them: 
 
 ```bash
 sudo apt install mapnik-utils python3-mapnik
 ```
 
-Now, to run mapnik, we create an XML file specifying how to combine data (see details in [Land cover mapping with Mapnik](https://blog.mastermaps.com/2012/07/land-cover-mapping-with-mapnik.html)): 
-
-	  ```
-	  	  <Map srs="+proj=utm +zone=32 +ellps=WGS84 +datum=WGS84 +units=m +no_defs">
-	  	  
-	  	    <Style name="color relief style">
-	  	      <Rule>
-	  	        <RasterSymbolizer mode="normal" />
-	  	      </Rule>
-	  	    </Style>  
-	  	  
-	  	    <Style name="hillshade style">
-	  	      <Rule>
-	  	        <RasterSymbolizer opacity="0.3" mode="multiply" scaling="bilinear" />
-	  	      </Rule>
-	  	    </Style>
-	  	  
-	  	    <Layer name="color relief">
-	  	      <StyleName>color relief style</StyleName>
-	  	      <Datasource>
-	  	        <Parameter name="type">gdal</Parameter>
-	  	        <Parameter name="file">test_colour_relief.tif</Parameter>
-	  	      </Datasource>
-	  	    </Layer>
-	  	    
-	  	    <Layer name="hillshade">
-	  	      <StyleName>hillshade style</StyleName>
-	  	      <Datasource>
-	  	        <Parameter name="type">gdal</Parameter>
-	  	        <Parameter name="file">test_hillshade.tif</Parameter>
-	  	      </Datasource>
-	  	    </Layer>  
-	  	    
-	  	  </Map>
-	  ```
-
-And a Python file, which will be the driver for Mapnik: 
-
-``` python
-#!/usr/bin/env python3
-
-import mapnik
-map = mapnik.Map(3134, 3134)
-mapnik.load_map(map, 'test_terrain.xml')
-bbox = mapnik.Box2d(mapnik.Coord(3000000, 2000000), mapnik.Coord(3100000, 2100000))
-map.zoom_to_box(bbox)
-mapnik.render_to_file(map, 'test_terrain.png')
-```
-
-Finally, we just run that script: 
+* Now, to run mapnik, we create a XML file ([terrain.xml](terrain.xml)) specifying how to combine data (see details in [Land cover mapping with Mapnik](https://blog.mastermaps.com/2012/07/land-cover-mapping-with-mapnik.html)), and a Python file ([terrain.py](terrain.py)), which will be the driver for mapnik. In both I have to include the right files and the right coordinates for my map. Let's run that script: 
 
 ```bash
-python3 test_terrain.py
+python3 terrain.py
 ```
 
-This produces a nice `test_terrain.png` file, which can be used a texture for the map.
+This produces a nice [terrain.png](terrain.png) file, which can be used a texture for the map. I load it in a copy of the previous scene (file `terrain.html`) by adding a new property to `terrain-model`: `map: url(terrain.png);`.
+
+[Check the scene in your browser](terrain.html).

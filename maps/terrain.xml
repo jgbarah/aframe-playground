@@ -1,0 +1,31 @@
+<Map srs="+proj=utm +zone=32 +ellps=WGS84 +datum=WGS84 +units=m +no_defs">
+
+  <Style name="color relief style">
+    <Rule>
+      <RasterSymbolizer mode="normal" />
+    </Rule>
+  </Style>  
+
+  <Style name="hillshade style">
+    <Rule>
+      <RasterSymbolizer opacity="0.4" mode="multiply" scaling="bilinear" />
+    </Rule>
+  </Style>
+
+  <Layer name="color relief">
+    <StyleName>color relief style</StyleName>
+    <Datasource>
+      <Parameter name="type">gdal</Parameter>
+      <Parameter name="file">tmp/color_relief.tif</Parameter>
+    </Datasource>
+  </Layer>
+  
+  <Layer name="hillshade">
+    <StyleName>hillshade style</StyleName>
+    <Datasource>
+      <Parameter name="type">gdal</Parameter>
+      <Parameter name="file">tmp/hillshade.tif</Parameter>
+    </Datasource>
+  </Layer>  
+  
+</Map>

@@ -104,6 +104,8 @@ everything is updated to using 1.2.0.
   A final touch: visualizing data in JSON documents.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-04)]
 
+* [Creating an elevation map from Copernicus data](maps/README.md). All the process from elevation datasets to 3D elevation maps. [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/maps)]
+
 * ar-01: [Augmented reality](ar-01/README.md)
 * newyear-01: [Scene for greeting the new year](newyear-01/README.md)
 

@@ -12,7 +12,7 @@ behaving to push as if bodies had mass, etc.
 For all of this, we can use the [aframe-physics-system](https://github.com/donmccurdy/aframe-physics-system/)
 module, using [Ammo.js](https://github.com/kripken/ammo.js/) behind the scenes.
 
-**Note:** As of A-Frame 1.2.0, the Cannon.js backend is not working with aframe-physics-system.
+**Note:** As of A-Frame 1.4.0, the Cannon.js backend is not working with aframe-physics-system.
 Thus, all the demos in this playground are working with the Ammo.js backend.
 Check detailed instructions
 about how to configure aframe-physics-system for working with Ammo.js in the

@@ -28,7 +28,7 @@
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
-    "aframe": "^0.8.0",
+    ,
     "aframe-extras.animation-mixer": "^3.13.1"
   }
 }

@@ -16,6 +16,6 @@
     "webpack-cli": "^4.6.0"
   },
   "dependencies": {
-    "aframe": "^1.2.0"
+    "aframe": "^1.4.0"
   }
 }

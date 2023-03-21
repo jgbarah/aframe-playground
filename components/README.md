@@ -21,7 +21,7 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/jgbarah/aframe-playground/components/dist/aframe-playground-components.min.js"></script>
 </head>
 

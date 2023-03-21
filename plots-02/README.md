@@ -13,10 +13,10 @@ click and [see it live](web/).
 I start by learning to insert A-frame elements in the DOM.
 Useful documentation:
 
-* [Getting entities by querying and traversing](https://aframe.io/docs/1.2.0/introduction/javascript-events-dom-apis.html#getting-entities-by-querying-and-traversing).
+* [Getting entities by querying and traversing](https://aframe.io/docs/1.4.0/introduction/javascript-events-dom-apis.html#getting-entities-by-querying-and-traversing).
 Use of `.querySelector()` for locating elements in the DOM.
 
-* [Adding a component with .setAttribute()](https://aframe.io/docs/1.2.0/core/entity.html#setattribute-attr-value-componentattrvalue). Use of `.setAttribute()` for setting attributes of an element.
+* [Adding a component with .setAttribute()](https://aframe.io/docs/1.4.0/core/entity.html#setattribute-attr-value-componentattrvalue). Use of `.setAttribute()` for setting attributes of an element.
 
 The simplest code I write, which inserts to spheres in a scene,
 is as follows:
@@ -134,7 +134,7 @@ The result is as follows:
 
 Some of the documentation I've used:
 
-* [Writing a Component](https://aframe.io/docs/1.2.0/introduction/writing-a-component.html)
+* [Writing a Component](https://aframe.io/docs/1.4.0/introduction/writing-a-component.html)
 * [How to Write an A-Frame VR Component](http://ngokevin.com/blog/aframe-component)
 
 Now, the code. The main function is quite simple:

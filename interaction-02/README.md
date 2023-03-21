@@ -33,7 +33,7 @@ This is what `rayOrigin:mouse` does.
 To find out that we're actually selecting objects, and raising event in them,
 we need to define some handler for those events in the objects themselves.
 We can for example use the
-[animation component](https://aframe.io/docs/1.2.0/components/animation.html):
+[animation component](https://aframe.io/docs/1.4.0/components/animation.html):
 this will make the box "jump" when we click on it
 
 ```html
@@ -76,9 +76,9 @@ The final result is like this:
 
 Support of the Oculus controls in AFrame comes via
 two components: 
-[oculus-go-controls](https://aframe.io/docs/1.2.0/components/oculus-go-controls.html)
+[oculus-go-controls](https://aframe.io/docs/1.4.0/components/oculus-go-controls.html)
 for Oculus Go, and
-[oculus-touch-controls](https://aframe.io/docs/1.2.0/components/oculus-touch-controls.html)
+[oculus-touch-controls](https://aframe.io/docs/1.4.0/components/oculus-touch-controls.html)
 for Rift, Rift S, Oculus Quest 1 and 2. There are components
 for other devices (MagicLeap, Gear, etc).
 They will handle events from the corresponding controls, if present
@@ -86,7 +86,7 @@ They will handle events from the corresponding controls, if present
 
 We're not going to use these controls directly, but by the intermediation of
 a more abstract component:
-[laser-controls](https://aframe.io/docs/1.2.0/components/laser-controls.html).
+[laser-controls](https://aframe.io/docs/1.4.0/components/laser-controls.html).
 It sits on top of the available controls, and deals
 with the raytracing to selecting an object:
 
@@ -141,7 +141,7 @@ JaveScript code, instead of just dealing with HTML.
 In this case, we will write our own A-Frame component
 that behaves as we want, when it receives `click`, `mouseenter`, or
 `mouseleave` events. For details on how to write a component,
-read [Writing a component](https://aframe.io/docs/1.2.0/introduction/writing-a-component.html)
+read [Writing a component](https://aframe.io/docs/1.4.0/introduction/writing-a-component.html)
 in the AFrame documentation.
 In our case, we will focus on explaining how the event handlers
 are installed by the initialization module of our component,

@@ -8,7 +8,7 @@ import re
 substs_html = [
     # aframe
     {'regex': re.compile(r"//aframe.io/releases/\d+.\d+.\d+/aframe.min.js"),
-     'new': "//aframe.io/releases/1.2.0/aframe.min.js"},
+     'new': "//aframe.io/releases/1.4.0/aframe.min.js"},
     # aframe-extras
     {'regex': re.compile(r"//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v\d+.\d+.\d+/dist/aframe-extras.min.js"),
      'new': "//cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"},
@@ -21,7 +21,7 @@ substs_html = [
      'new': "//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"},
     # A-Frame docs
     {'regex': re.compile(r"//aframe.io/docs/\d+.\d+.\d+/"),
-     'new': "//aframe.io/docs/1.2.0/"}
+     'new': "//aframe.io/docs/1.4.0/"}
     ]
 
 substs_md = substs_html

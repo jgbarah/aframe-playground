@@ -10,7 +10,7 @@ from the Aframe Extras `kinematic-body` component) to add similar properties
 to the camera. Let's look at the main elements of the code...
 
 First of all, we're going to have a lot of boxes, so let's build a 
-[mixin](https://aframe.io/docs/1.2.0/core/mixins.html)
+[mixin](https://aframe.io/docs/1.4.0/core/mixins.html)
 to make all of them equial, except for their localtion.
 The mixin should be declared within the `a-assets` element of the scene:
 

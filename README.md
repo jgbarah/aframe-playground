@@ -13,14 +13,14 @@ to start with A-frame from scratch.
 
 I started with version 0.6.1, which was current when I started
 my learning process, but (if there is no mistake)
-everything is updated to using 1.2.0.
+everything is updated to using 1.4.0.
 
 
 * [Setting up an environment for running demos](environment.md)
 
 * [First steps in creating an A-frame scene](figures-01/README.md).
   Let's build some simple scenes, based on the [first scene introduced
-  by the A-Frame documentation](https://aframe.io/docs/1.2.0/introduction/#getting-started).
+  by the A-Frame documentation](https://aframe.io/docs/1.4.0/introduction/#getting-started).
   Geometric bodies, simple textures, some lights, some minimal interaction
   with the scene...
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/figures-01)]

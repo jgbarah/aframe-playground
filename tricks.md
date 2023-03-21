@@ -15,7 +15,7 @@ browser in a computer. Just press `<ctrl> <alt> s`.
 For a 360 image, press `<ctrl> <alt> <shift> s`.
 
 More details at the
-[screenshot Component documentation](https://aframe.io/docs/1.2.0/components/screenshot.html).
+[screenshot Component documentation](https://aframe.io/docs/1.4.0/components/screenshot.html).
 
 
 ### Screencasting with Oculus devices

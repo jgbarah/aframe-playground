@@ -53,6 +53,10 @@ everything is updated to using 1.4.0.
   they are fired.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/interaction-02)]
 
+* [Playing with hands](hands-01/README.md).
+  [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/hands-01)]
+
+
 * [Adding some physics](physics-01/README.md).
   Let's have some fun adding gravity, collisions, impulse...
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/physics-01)]

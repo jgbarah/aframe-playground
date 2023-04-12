@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Tests for grabbing an object</title>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <!--    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@67d1130/dist/aframe-extras.js"></script>
+    <!--    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-super-hands-component@7d95eef/dist/super-hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/examples/components/grab.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/examples/components/force-pushable.js"></script>
+  </head>
+  <body>
+    <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
+
+<!--
+      <a-light type="ambient" color="white"></a-light>
+      <a-light type="point" intensity="2" position="-3 9 2"></a-light>
+-->
+      <a-entity position="0 0 0" movement-controls="fly: false"
+		wasd-controls="acceleration: 10; fly: false">
+        <a-entity sphere-collider="objects: .object"
+            super-hands hand-controls="hand: left">
+        </a-entity>
+        <a-entity hand-controls="hand: right"
+            ammo-body="type: kinematic; emitCollisionEvents: true"
+            ammo-shape="type: sphere; fit: manual; sphereRadius: 0.02;"
+            grab>
+        </a-entity>
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+      <a-sphere radius="0.05" position="0 0.58 -0.3" color="red"
+        ammo-body="type: dynamic; shape: none; mass: 2;"
+        ammo-shape></a-sphere>
+
+      <a-entity
+        geometry="primitive: box; width: 0.1; height: 0.3; depth: 0.1"
+        position="-0.6 0.6 -0.2" rotation="0 45 0" material="color: brown"
+        ammo-body="type: dynamic; mass: 2;"
+        ammo-shape>
+      </a-entity>
+
+      <a-entity
+        geometry="primitive: box; width: 0.1; height: 0.3; depth: 0.1"
+        position="-0.6 0.6 0" rotation="0 45 0" material="color: brown"
+        ammo-body="type: dynamic; mass: 2;"
+        ammo-shape>
+      </a-entity>
+
+      <a-entity
+        geometry="primitive: box; width: 0.1; height: 0.3; depth: 0.1"
+        position="-0.6 0.6 0.2" rotation="0 45 0" material="color: brown"
+        ammo-body="type: dynamic; mass: 2;"
+        ammo-shape>
+      </a-entity>
+
+      <a-box position="0 0.5 0" width="75" height="0.1" depth="75"
+        color="green"
+        ammo-body="type: static; restitution:1"
+        ammo-shape visible="true"></a-box>
+
+    </a-scene>
+  </body>
+</html>

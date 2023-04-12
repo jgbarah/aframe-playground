@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Tests for grabbing an object</title>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <!--    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@67d1130/dist/aframe-extras.js"></script>
+    <!--    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-super-hands-component@7d95eef/dist/super-hands.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets timeout="5000">
+        <a-asset-item id="sculpture" src="sculpture.glb"></a-asset-item>
+      </a-assets>
+      <a-entity class="object"
+        geometry="primitive: box; width: 0.2; height: 0.02; depth: 0.02"
+        position="0 1.5 -0.5" rotation="0 0 0"
+        material="color: #4CC3D9; transparent: true; opacity: 0.5"
+        hoverable grabbable stretchable draggable dropppable>
+        <a-entity
+            geometry="primitive: box; width: 0.3; height: 0.3; depth: 0.3"
+            position="0.3 0 0" rotation="0 45 0" material="color: red">
+        </a-entity>
+    </a-entity>
+
+
+<!--      <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+-->
+
+<!--
+      <a-light type="ambient" color="white"></a-light>
+      <a-light type="point" intensity="2" position="-3 9 2"></a-light>
+-->
+      <a-entity position="0 0 0" movement-controls="fly: false"
+		wasd-controls="acceleration: 10; fly: false">
+        <a-entity sphere-collider="objects: .object"
+            super-hands hand-controls="hand: left">
+        </a-entity>
+        <a-entity sphere-collider="objects: .object"
+            super-hands hand-controls="hand: right">
+        </a-entity>
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

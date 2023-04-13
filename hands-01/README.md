@@ -11,4 +11,6 @@
 
 * [Grabbable object (AR)](grab-ar-2.html)
 
+* [Grabbable object, with animation (AR)](grab-ar-3.html)
+
 * [Throw a ball!](grab-physics.html)

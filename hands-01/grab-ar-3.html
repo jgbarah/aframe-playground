@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<!--
+    Model "Medieval Fantasy Book":
+    - Sketchfab: https://skfb.ly/69Qty
+    - Origin: https://muzea.malopolska.pl/pl/lista-obiektow/192
+    - License: CC-by (http://creativecommons.org/licenses/by/4.0/)
+    - Author: Pixel.
+-->
+<html>
+  <head>
+    <title>Tests for grabbing an object</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets timeout="5000">
+        <a-asset-item id="thingy" src="medieval_fantasy_book.glb"></a-asset-item>
+      </a-assets>
+      <a-entity class="object"
+        geometry="primitive: box; width: 0.3; height: 0.02; depth: 0.02"
+        position="0 1.5 -0.5" rotation="0 0 0"
+        material="color: #4CC3D9; transparent: true; opacity: 0.5"
+        hoverable grabbable stretchable draggable dropppable>
+        <a-entity gltf-model="#thingy" scale="0.008 0.008 0.008"
+            position="-0.4 0.05 0" rotation="0 90 0" animation-mixer></a-entity>
+    </a-entity>
+
+      <a-entity position="0 0 0" movement-controls="fly: false"
+		wasd-controls="acceleration: 10; fly: false">
+        <a-entity sphere-collider="objects: .object"
+            super-hands hand-controls="hand: left">
+        </a-entity>
+        <a-entity sphere-collider="objects: .object"
+            super-hands hand-controls="hand: right">
+        </a-entity>
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

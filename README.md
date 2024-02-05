@@ -13,8 +13,16 @@ to start with A-frame from scratch.
 
 I started with version 0.6.1, which was current when I started
 my learning process, but (if there is no mistake)
-everything is updated to using 1.4.0.
+everything is updated to using 1.4.0, and some demos are already
+migrated to 1.5.0.
 
+I have organized a part of the material in a seminar consisting of three sessions:
+
+* [Seminar Session 1](seminar-01)
+* Seminar Session 2
+* Seminar Session 3
+
+And there is also a series of demos which show different aspects of A-Frame:
 
 * [Setting up an environment for running demos](environment.md)
 

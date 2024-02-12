@@ -19,7 +19,7 @@ migrated to 1.5.0.
 I have organized a part of the material in a seminar consisting of three sessions:
 
 * [Seminar Session 1](seminar-01)
-* Seminar Session 2
+* [Seminar Session 2](seminar-02)
 * Seminar Session 3
 
 And there is also a series of demos which show different aspects of A-Frame:

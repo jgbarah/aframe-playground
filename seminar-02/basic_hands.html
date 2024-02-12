@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene xr-mode-ui="XRMode: xr">
+      <a-box position="-0.5 0.5 -1.5" rotation="0 45 0" color="#4CC3D9"
+          depth="0.5" height="0.5" width="0.5"></a-box>
+      <a-sphere position="0 0.5 -1.5" radius="0.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="0.5 0.25 -1.5" radius="0.25" height="0.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -2" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane>
+      <a-sky hide-on-enter-ar color="#ECECEC"></a-sky>
+
+      <a-entity id="leftHand" hand-tracking-controls="hand: left;"></a-entity>
+      <a-entity id="rightHand" hand-tracking-controls="hand: right;"></a-entity>
+
+    </a-scene>
+  </body>
+</html>

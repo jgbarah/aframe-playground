@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="dino" src="dino.glb"></a-asset-item>
+      </a-assets>
+
+      <a-box position="-2 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="-1 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="0 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="-1 0 -4" rotation="-90 0 0" width="7" height="4" color="#7BC8A4"></a-plane>
+
+      <a-entity gltf-model="#dino" position="1.5 0.7 -4" rotation="0 45 0"
+            scale="2 2 2"></a-entity>
+
+      <a-entity movement-controls="fly: true">
+        <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

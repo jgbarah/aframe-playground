@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene xr-mode-ui="XRMode: xr">
+      <a-box grabbable position="-0.1 0.8 -0.3" rotation="0 45 0" color="#4CC3D9"
+          depth="0.1" height="0.1" width="0.1"></a-box>
+      <a-sphere grabbable position="0 0.8 -0.3" radius="0.05" color="#EF2D5E"></a-sphere>
+      <a-cylinder grabbable position="0.1 0.8 -0.3" radius="0.05" height="0.2" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -0.7" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
+
+      <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
+      <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
+
+    </a-scene>
+  </body>
+</html>

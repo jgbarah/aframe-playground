@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene xr-mode-ui="XRMode: xr">
+      <a-assets>
+        <a-asset-item id="dino" src="dino.glb"></a-asset-item>
+        <a-asset-item id="drone" src="drone.glb"></a-asset-item>
+      </a-assets>
+
+      <a-entity gltf-model="#dino" position="1 1 -3"
+          animation="property:rotation; to: 0 360 0; dur: 5000;
+              loop: true; easing: linear"></a-entity>
+
+      <a-entity gltf-model="#drone" position="-1 0.6 -3"
+          scale="2 2 2" animation-mixer>
+      </a-entity>
+
+      <a-plane position="0 0.7 -3" rotation="-90 0 0" width="4" height="2" color="brown"></a-plane>
+
+      <a-entity position="0 0 -1" movement-controls="fly: true">
+        <a-entity camera look-controls wasd-controls
+            position="0 1.6 0"></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

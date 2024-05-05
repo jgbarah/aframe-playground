@@ -144,6 +144,12 @@ Some old stuff, that very likely won't even work:
 * [Playing towards my 3D scatterplots](plots-02/README.md)
 * [Adding axis and tooltips](plots-03/README.md)
 
+To find more community-maintained A-Frame components:
+
+* [C-Frame](https://github.com/c-frame): A collection of common components for A-Frame
+* [Component Directory](https://aframe.wiki/en/#!pages/component-directory.md):
+  List of community-maintained A-Frame components
+
 All the code is in the
 [A-Frame Playground GitHub repo](https://github.com/jgbarah/aframe-playground).
 

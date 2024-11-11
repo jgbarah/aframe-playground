@@ -100,6 +100,9 @@ And there is also a series of demos which show different aspects of A-Frame:
   exercises: componets for the camera-related behaviours we tried.
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/camrender-03)]
 
+* [Gaussian splats](splats/README.md)
+  Visualizing Gaussian splats with A-Frame.
+
 * [Visualizing data](data-01/README.md)
   We can use A-Frame for visualizing data. Let's go!
   [[Source code](https://github.com/jgbarah/aframe-playground/tree/master/data-01)]
